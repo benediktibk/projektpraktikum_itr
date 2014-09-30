@@ -4,6 +4,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{verbatim} 
 \usepackage[english, ngerman]{babel}
+\usepackage{lipsum}
 %%% Stand 14.09.2007
 %%% erstellt von Marion Sobotka
 %%% marion.sobotka@tum.de
@@ -108,18 +109,21 @@ In your final hardback copy, replace this page with the signed exercise sheet.
 
 
 %_______Abstract_____________________________________________
-%\topmargin5mm
-%\textheight220mm
-%\pagenumbering{arabic}
-%\phantom{u}
-%\begin{abstract}
-%  A short (1--3 paragraphs) summary of the work. Should state the problem, major assumptions, basic idea of solution, results. Avoid non--standard terms and acronyms. The abstract must be able to be read completely on its own, detached from any other work (e.g., in collections of paper abstracts). Don't use references in an abstract.
-%\begin{center}	
-%\normalsize \textbf{Zusammenfassung}\\
-%\end{center}
-%Hier die deutschsprachige Zusammenfassung
-%\end{abstract}
-%____________________________________________________________
+\topmargin5mm
+\textheight220mm
+\pagenumbering{arabic}
+\phantom{u}
+
+\begin{abstractpage}
+	\begin{abstract}{english}
+	    \lipsum[1]
+	\end{abstract}
+	\vspace{2cm}
+	\begin{abstract}{ngerman}
+	    \lipsum[1]
+	\end{abstract}
+\end{abstractpage}
+
 
 \newpage
 
