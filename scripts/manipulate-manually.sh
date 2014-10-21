@@ -1,2 +1,2 @@
 #!/bin/bash
-IceServerManipulation & GuiManipulation
+GuiManipulation
