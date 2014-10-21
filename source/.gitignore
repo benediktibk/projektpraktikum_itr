@@ -10,3 +10,5 @@
 *.mex*
 # Simulink Code Generation
 slprj/
+*.autosave
+**/*_prt/
