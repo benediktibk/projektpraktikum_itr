@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<applications>
+	<application 
+		name="QuatrobotControl" 
+		rtdbobj="platform_control"
+		startcmd="QuattrobotControl"
+		startorder="1"
+		stoporder="9"
+	/>
+	<application 
+		name="IceServerLocomotion" 
+		rtdbobj="locomotionIceServer"
+		startcmd="IceServerLocomotion"
+		startorder="4"
+		stoporder="6"
+	/>
+	<application 
+		 name="GripperDriverLeft" 
+		 rtdbobj="leftGripper" 
+		 startcmd="GripperDriver gripper_left.xml"
+		 startorder="1"
+		 stoporder="4"
+	/>
+	<application 
+		 name="GripperDriverRight" 
+		 rtdbobj="rightGripper" 
+		 startcmd="GripperDriver gripper_right.xml"
+		 startorder="2"
+		 stoporder="3"
+	/>
+	<application 
+		 name="IceServerGripperLeft" 
+		 rtdbobj="leftGripperIceServer" 
+		 startcmd="IceServerGripper -n iceServerGripperLeft -p 10014 -r leftGripperIceServer -c leftGripper -d leftGripperData"
+		 startorder="3"
+		 stoporder="2"
+	/>
+	<application 
+		 name="IceServerGripperRight" 
+		 rtdbobj="rightGripperIceServer" 
+		 startcmd="IceServerGripper -n iceServerGripperRight -p 10013 -r rightGripperIceServer -c rightGripper -d rightGripperData"
+		 startorder="4"
+		 stoporder="1"
+	/>
+	<application 
+		name="ArmDriverRight" 
+		rtdbobj="rightArm" 
+		startcmd="ArmDriver arm_right.xml"
+		startorder="1"
+		stoporder="1"
+	/>
+	<application 
+		name="ArmDriverLeft" 
+		rtdbobj="leftArm" 
+		startcmd="ArmDriver arm_left.xml"
+		startorder="2"
+		stoporder="2"
+	/>
+	<application 
+		name="IceServerArmRight" 
+		rtdbobj="rightArmIceServer" 
+		startcmd="IceServerManipulation -n iceServerArmRight -p 10003 -r rightArmIceServer -c rightArmCommand -d rightArmData"
+		startorder="3"
+		stoporder="3"
+	/>
+	<application 
+		name="IceServerArmLeft" 
+		rtdbobj="leftArmIceServer" 
+		startcmd="IceServerManipulation -n iceServerArmLeft -p 10004 -r leftArmIceServer -c leftArmCommand -d leftArmData"
+		startorder="4"
+		stoporder="4"
+	/>
+</applications>
