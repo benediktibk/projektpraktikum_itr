@@ -1,0 +1,18 @@
+Host force
+	HostName qualisys-ws
+
+Host robot1Manipulator
+	HostName cobot1a
+	User murola
+	ForwardX11 yes
+	ForwardX11Trusted yes
+
+Host robot1Platform
+	HostName cobot1b
+	User murola
+        ForwardX11 yes
+        ForwardX11Trusted yes
+
+Host robotControl
+	HostName ecrins
+	User murola

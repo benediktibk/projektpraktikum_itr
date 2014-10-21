@@ -1,0 +1,16 @@
+########### Configuration
+1. copy the file "config" to ~/.ssh/config
+
+########### Initialization
+1. connect to the platform
+	ssh robot1Platform
+2. initialize the platform
+	initialize-platform.sh
+
+MISSING: calibration of manipulators
+
+########### Driving
+1. connect to the platform
+	ssh robot1Platform
+2. start GUI for driving
+	drive-manually.sh
