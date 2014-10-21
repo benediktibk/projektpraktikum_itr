@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+<-                                                                           ->
+<- Cluster of Excellence of the German Research Foundation (DFG):            ->
+<-                                                                           ->
+<-   CoTeSys: Cognition for Technical Systems (http://www.cotesys.org)       ->
+<-                                                                           ->
+<-   Multi Joint Action Group (MuJoA) - Project #136:                        ->
+<-     Multi-Robot-Lab (MuRoLa), Joint motion coordination of head, robot    ->
+<-     manipulator arms, and mobile platform                                 ->
+<-                                                                           ->
+<- ACKNOWLEDGMENTS:                                                          ->
+<-   This work is derived from previous work conducted within the SFB453     ->
+<-                                                                           ->
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+<-                                                                           ->
+<- Low-Level Control of 7-DOF Manipulator Arms                               ->
+<-                                                                           ->
+<- Organization: Institute of Automatic Control Engineering (LSR)            ->
+<- Author:       Ulrich Unterhinninghofen                                    ->
+<- Contact:      mailto:ulrich.unterhinninghofen@tum.de                      ->
+<-                                                                           ->
+<- (C) 2008, Technische Universitaet Muenchen. All rights reserved.          ->
+<-                                                                           ->
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+
+	
+	
+<SecuritySystem name="securitySystem">
+	<Enable   board="0" channel="27" />
+	<Watchdog board="0" channel="26" />
+	<Reset    board="0" channel="24" />
+</SecuritySystem>
+	
+
+<Initialization name="initParams">
+	<!-- Left Arm	 -->
+	<Parameters Velocity = "0.3"  maxAngle="0.05"  minAngle="-0.2"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.25"  minAngle="-0.1"/>
+	<Parameters Velocity = "0.4"  maxAngle="0.8"   minAngle="-3.1"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.12"  minAngle="-0.2"/>
+	<Parameters Velocity = "0.4"  maxAngle="3.1"   minAngle="-1.3"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.25"  minAngle="-0.25"/>
+	<Parameters Velocity = "0.4"  maxAngle="1.3"   minAngle="-1.3"/>
+	
+	<!-- Right Arm	 -->
+	<Parameters Velocity = "0.3"  maxAngle="0.2"   minAngle="-0.05"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.1"   minAngle="-0.25"/>
+	<Parameters Velocity = "0.4"  maxAngle="2.1"   minAngle="-0.8"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.2"   minAngle="-0.12"/>
+	<Parameters Velocity = "0.4"  maxAngle="1.3"   minAngle="-1.3"/>
+	<Parameters Velocity = "0.3"  maxAngle="0.3"  minAngle="-0.4"/>
+	<Parameters Velocity = "0.4"  maxAngle="1.3"   minAngle="-1.3"/>
+</Initialization>
+
+
+<CommonValues name="commonValue">
+	<!-- Left Arm	 -->
+	<Channel board="2" channel="0" gain="9.587379e-6" />
+	<Channel board="2" channel="2" gain="9.587379e-6" />
+	<Channel board="2" channel="3" gain="9.587379e-6" />
+	<Channel board="2" channel="5" gain="9.587379e-6" />
+	<Channel board="3" channel="0" gain="1.533981e-5" />
+	<Channel board="3" channel="2" gain="1.533981e-5" />
+	<Channel board="3" channel="3" gain="1.533981e-5" />
+	
+	<!-- Right Arm	 -->
+	<Channel board="0" channel="0" gain="9.587379e-6" />
+	<Channel board="0" channel="2" gain="9.587379e-6" />
+	<Channel board="0" channel="3" gain="9.587379e-6" />
+	<Channel board="0" channel="5" gain="9.587379e-6" />
+	<Channel board="1" channel="0" gain="1.533981e-5" />
+	<Channel board="1" channel="2" gain="1.533981e-5" />
+	<Channel board="1" channel="3" gain="1.533981e-5" />
+</CommonValues>
+
+
+<EncoderCobot1 name="jointEncoder">
+	<!-- Left Arm -->
+        <Parameters maxTorque = "12"    Gain="110"      initialValue="0.0223002" />
+        <Parameters maxTorque = "10"    Gain="90"       initialValue="0.0562012" />
+        <Parameters maxTorque = "6"     Gain="40"       initialValue="-1.52" />
+        <Parameters maxTorque = "6"     Gain="50"       initialValue="0.0441978" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.113438" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.0161682" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.167235" />
+        <!-- Right Arm -->
+        <Parameters maxTorque = "12"    Gain="110"      initialValue="0.007706261" />
+        <Parameters maxTorque = "10"    Gain="90"       initialValue="0.05199214" />
+        <Parameters maxTorque = "6"     Gain="40"       initialValue="1.632929" />
+        <Parameters maxTorque = "6"     Gain="50"       initialValue="0.06405764" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.06820573" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.08269216" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.5199325" />
+	<!--
+	<Parameters maxTorque = "12"	Gain="110"	initialValue="-0.0522416" />
+	<Parameters maxTorque = "10"	Gain="90"	initialValue="0.0692209" />
+	<Parameters maxTorque = "6"	Gain="40"	initialValue="-1.5223" />
+	<Parameters maxTorque = "6"	Gain="50"	initialValue="0.0630562" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="0.0630006" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.0353889" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.147231" />
+	<Parameters maxTorque = "12"	Gain="110"	initialValue="0.0811668" />
+	<Parameters maxTorque = "10"	Gain="90"	initialValue="0.0617235" />
+	<Parameters maxTorque = "6"	Gain="40"	initialValue="1.6287" />
+	<Parameters maxTorque = "6"	Gain="50"	initialValue="0.0670254" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="0.0533979" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="0.114098" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="0.518685" />
+	-->
+</EncoderCobot1>
+
+
+<EncoderCobot2 name="jointEncoder">
+	 <!-- Left Arm	 -->
+	<Parameters maxTorque = "12.0" Gain="110"  initialValue="-0.02088" />
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0.06828" />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="-1.49779" />
+	<Parameters maxTorque = "6.0"  Gain="50"  initialValue="0.08776" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.02778" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="-0.01435" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="-0.18472" />
+	
+	<!-- Right Arm	 -->
+	<Parameters maxTorque = "12.0" Gain="110"  initialValue="0.08339" />
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0.05249" />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="1.66120" />
+	<Parameters maxTorque = "6.0"  Gain="50"  initialValue="0.06745" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.13278" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.13165" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.53267" />
+</EncoderCobot2>
+
+
+<EncoderCobot3 name="jointEncoder">
+	 <!-- Left Arm	 -->
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0" />
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0" />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="0" />
+	<Parameters maxTorque = "6.0"  Gain="50"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+	
+	<!-- Right Arm	 -->
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0" />
+	<Parameters maxTorque = "10.0" Gain="90"  initialValue="0." />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="0" />
+	<Parameters maxTorque = "6.0"  Gain="50"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0" />
+</EncoderCobot3>
+                
+
+
+<EncoderCobot4 name="jointEncoder">
+	 <!-- Left Arm	 -->
+<!--	<Parameters maxTorque = "12.0" Gain="140"  initialValue="-0.00712" />
+	<Parameters maxTorque = "12.0" Gain="120"  initialValue="0.20532" />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="-1.53036" />
+	<Parameters maxTorque = "7.0"  Gain="60"  initialValue="0.02684" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.22297" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="-0.00996" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="-0.15119" />
+-->
+	
+	<Parameters maxTorque = "12"	Gain="140"	initialValue="-0.0363266" />
+	<Parameters maxTorque = "12"	Gain="120"	initialValue="0.210951" />
+	<Parameters maxTorque = "6"	Gain="40"	initialValue="-2.57585" />
+	<Parameters maxTorque = "7"	Gain="60"	initialValue="0.0334216" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="3.22211" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.0218592" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.00808408" />
+
+	<!-- Right Arm	 -->
+	<Parameters maxTorque = "12.0" Gain="140"  initialValue="0.12469" />
+	<Parameters maxTorque = "12.0" Gain="120"  initialValue="0.05553" />
+	<Parameters maxTorque = "6.0"  Gain="40"  initialValue="1.78604" />
+	<Parameters maxTorque = "7.0"  Gain="60"  initialValue="0.07130" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.05613" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.12260" />
+	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="0.33640" />
+</EncoderCobot4>
+
+
+
+<DigitalInput name="DigitalInput">
+	<!-- 	 Left Arm-->
+	<Channel board="2" channel="35" />
+	<Channel board="2" channel="34" />
+	<Channel board="2" channel="33" />
+	<Channel board="2" channel="32" />
+	<Channel board="3" channel="35" />
+	<Channel board="3" channel="34" />
+	<Channel board="3" channel="33" />
+	<!-- 	 Right Arm-->
+	<Channel board="0" channel="35" />
+	<Channel board="0" channel="34" />
+	<Channel board="0" channel="33" />
+	<Channel board="0" channel="32" />
+	<Channel board="1" channel="35" />
+	<Channel board="1" channel="34" />
+	<Channel board="1" channel="33" />
+</DigitalInput>
+		
+
+<Motor name="MotorAll">
+	<!-- 	 Left Arm-->
+	<Channel board="2" channel="0" gain="-0.051824"/>
+	<Channel board="2" channel="1" gain="-0.051824"/>
+	<Channel board="2" channel="2" gain="-0.051824"/>
+	<Channel board="2" channel="3" gain="-0.051824"/>
+	<Channel board="3" channel="0" gain="-0.138198"/>
+	<Channel board="3" channel="1" gain="-0.138198"/>
+	<Channel board="3" channel="2" gain="-0.138198"/>	
+	<!-- 	 Right Arm-->
+	<Channel board="0" channel="0" gain="-0.051824"/>
+	<Channel board="0" channel="1" gain="-0.051824"/>
+	<Channel board="0" channel="2" gain="-0.051824"/>
+	<Channel board="0" channel="3" gain="-0.051824"/>
+	<Channel board="1" channel="0" gain="-0.138198"/>
+	<Channel board="1" channel="1" gain="-0.138198"/>
+	<Channel board="1" channel="2" gain="-0.138198"/>
+</Motor>
