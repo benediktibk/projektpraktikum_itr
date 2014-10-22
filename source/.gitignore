@@ -13,3 +13,4 @@ slprj/
 *.autosave
 **/*_prt/
 *.mat
+*.dat
