@@ -43,20 +43,6 @@
 		 stoporder="1"
 	/>
 	<application 
-		name="ArmDriverRight" 
-		rtdbobj="rightArm" 
-		startcmd="ArmDriver arm_right.xml"
-		startorder="1"
-		stoporder="1"
-	/>
-	<application 
-		name="ArmDriverLeft" 
-		rtdbobj="leftArm" 
-		startcmd="ArmDriver arm_left.xml"
-		startorder="2"
-		stoporder="2"
-	/>
-	<application 
 		name="IceServerArmRight" 
 		rtdbobj="rightArmIceServer" 
 		startcmd="IceServerManipulation -n iceServerArmRight -p 10003 -r rightArmIceServer -c rightArmCommand -d rightArmData"
