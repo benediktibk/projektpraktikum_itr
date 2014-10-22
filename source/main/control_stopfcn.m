@@ -10,9 +10,9 @@ while(exist(['~/ppData/',date,'/Measurement_',num2str(i)],'dir') ~= 0)
 end
 mkdir(['~/ppData/',date,'/Measurement_',num2str(i)]);   
 !scp robot1Platform:pp_ident/workspace/*.dat ./
-%copyfile('Data_Analysis.m',['~/ppData/',date,'/Measurement_',num2str(i)])
+copyfile('Data_Analysis.m',['~/ppData/',date,'/Measurement_',num2str(i)])
 copyfile('*.dat',['~/ppData/',date,'/Measurement_',num2str(i)])
-%copyfile('Kuka_Pendel_INIT.m',['~/ppData/',date,'/Measurement_',num2str(i)])
+copyfile('control_initfcn.m',['~/ppData/',date,'/Measurement_',num2str(i)])
 copyfile('control.slx',['~/ppData/',date,'/Measurement_',num2str(i)])
 
 delete('*.dat')
