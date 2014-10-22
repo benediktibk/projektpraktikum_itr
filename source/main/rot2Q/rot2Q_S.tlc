@@ -1,0 +1,115 @@
+%%/*****************************************************************************/
+%%/*                                                                           */
+%%/* Collaborative Research Centre of the DFG:                                 */
+%%/*                                                                           */
+%%/*   SFB453 High-Fidelity Telepresence and Teleaction                        */
+%%/*                                                                           */
+%%/*   Project I1: Integrated Mobile and Bimanual Multi-User Telepresence and  */
+%%/*               Teleaction Systems with Haptic Feedback                     */
+%%/*                                                                           */
+%%/*                                                                           */
+%%/*****************************************************************************/
+%%/*                                                                           */
+%%/* Transformation of rotation matrix to Quaternion                           */
+%%/*                                                                           */
+%%/* Organization: Institute of Automatic Control Engineering (LSR)            */
+%%/* Authors:      Angelika Peer					       */
+%%/*               Kwang Kyu Lee                                               */  
+%%/* Contact:      mailto: Angelika.Peer@tum.de                                */
+%%/*                                                                           */
+%%/*                                                                           */
+%%/* Date:         4.1.2005                                                    */
+%%/*                                                                           */
+%%/* (C) 2002 - 2007, Technische Universitaet Muenchen. All rights reserved.   */
+%%/*                                                                           */
+%%/*****************************************************************************/
+%%
+
+
+%implements "rot2Q_S" "C"
+
+%% Function: Outputs ===========================================================
+%%
+%function Outputs(block, system) Output
+  /* %<Type> Block: %<Name> */
+{
+  #include <math.h> 
+  #define INDEX(i,j) (3*(j-1)+i-1)
+  real_T  ROT[9],Q[4];
+  real_T TR,KX,KX1,KY,KY1,KZ,KZ1,NM,TLS;
+  real_T ADD,QS,QV[3];
+
+  %foreach i = 9
+    ROT[%<i>] = %<LibBlockInputSignal(0, "", "", i)>;
+  %endforeach
+
+  TR=ROT[INDEX(1,1)]+ROT[INDEX(2,2)]+ROT[INDEX(3,3)];
+
+  QS = sqrt(TR+1)/2.0;
+  KX = ROT[INDEX(3,2)] - ROT[INDEX(2,3)];   %% Sz - Ay
+  KY = ROT[INDEX(1,3)] - ROT[INDEX(3,1)];   %% Ax - Nz
+  KZ = ROT[INDEX(2,1)] - ROT[INDEX(1,2)];   %% Ny - Sx
+
+  if ((ROT[INDEX(1,1)]>=ROT[INDEX(2,2)]) & (ROT[INDEX(1,1)]>=ROT[INDEX(3,3)]))
+    {
+    KX1 = ROT[INDEX(1,1)] - ROT[INDEX(2,2)] - ROT[INDEX(3,3)] + 1;//Nx - Sy - Az + 1
+    KY1 = ROT[INDEX(2,1)] + ROT[INDEX(1,2)];              %%Ny+ Sx
+    KZ1 = ROT[INDEX(3,1)] + ROT[INDEX(1,3)];              %%Nz + Ax
+    ADD = (KX >= 0);
+    }
+  else if (ROT[INDEX(2,2)] >= ROT[INDEX(3,3)])
+    {
+    KX1 = ROT[INDEX(2,1)] + ROT[INDEX(1,2)];            %% Ny + Sx
+    KY1 = ROT[INDEX(2,2)] - ROT[INDEX(1,1)] - ROT[INDEX(3,3)] + 1;  %% Sy - Nx - Az + 1
+    KZ1 = ROT[INDEX(3,2)] + ROT[INDEX(2,3)];            %% Sz + Ay
+    ADD = (KY >= 0);
+    }
+  else{
+    KX1 = ROT[INDEX(3,1)] + ROT[INDEX(1,3)];            %% Nz + Ax
+    KY1 = ROT[INDEX(3,2)] + ROT[INDEX(2,3)];            %% Sz + Ay
+    KZ1 = ROT[INDEX(3,3)] - ROT[INDEX(1,1)] - ROT[INDEX(2,2)] + 1;  %% Az - Nx - Sy + 1
+    ADD = (KZ >= 0);
+    }
+
+  if (ADD)
+  {
+    KX = KX + KX1;
+    KY = KY + KY1;
+    KZ = KZ + KZ1;
+  }
+  else
+  {
+    KX = KX - KX1;
+    KY = KY - KY1;
+    KZ = KZ - KZ1;
+  }
+  NM = sqrt(KX*KX+KY*KY+KZ*KZ);
+  if (NM ==0) {
+    Q[0] = 1;
+    Q[1] = 0;
+    Q[2] = 0;
+    Q[3] = 0;
+  }
+  else
+  {
+    TLS  = sqrt(1 - pow(QS,2)) / NM;
+    QV[0] = TLS*KX;
+    QV[1] = TLS*KY;
+    QV[2] = TLS*KZ;
+    Q[0] = QS;
+    Q[1] = QV[0];
+    Q[2] = QV[1];
+    Q[3] = QV[2];
+  }
+  %foreach i = 4
+    %<LibBlockOutputSignal(0, "", "", i)> = Q[%<i>];
+  %endforeach
+
+  #undef INDEX
+ }
+
+
+
+%endfunction
+
+%% [EOF] rot2Q_S.tlc
