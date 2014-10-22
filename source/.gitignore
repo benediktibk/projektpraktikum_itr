@@ -12,3 +12,4 @@
 slprj/
 *.autosave
 **/*_prt/
+*.mat
