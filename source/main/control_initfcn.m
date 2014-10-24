@@ -8,7 +8,7 @@ Ts = 0.001;
 initPoseRightArm = [6 .7 -.23 .9 1 0 0 0  0 10 zeros(1,13)];
 
 %% Velocity Stream ID
-% Can be found in one of the headders of the sfunction
+% Can be found in one of the headders of the s-functions
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
 dx = 0;
