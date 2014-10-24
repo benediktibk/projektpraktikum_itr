@@ -15,6 +15,15 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 % Velocity Stream ID    vector:[102,dx,dy,dz,wx,wy,wz,elbow,zeros(1,15)]
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
+%% Actuator Limits
+vxMax = 0.01;
+vyMax = 0.01;
+vzMax = 0.01;
+wxMax = 0.01;
+wyMax = 0.01;
+wzMax = 0.01;
+
+
 dx = 0;
 dy = 0.005;
 dz = 0;
