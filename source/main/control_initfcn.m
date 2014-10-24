@@ -23,6 +23,16 @@ wxMax = 0.01;
 wyMax = 0.01;
 wzMax = 0.01;
 
+offsetx = 0.7;
+offsety = -0.23;
+offsetz = 0.9;
+
+xMin = -0.1 + offsetx;  
+xMax = 0.5 + offsetx;
+yMin = -0.5 + offsety;
+yMax = 0.5 + offsety;
+zMin = -0.5 + offsetz;
+zMax = 0.5 + offsetz;
 
 dx = 0;
 dy = 0.005;
@@ -31,6 +41,9 @@ ox = 0;
 oy = 0;
 oz = 0;
 elbow = 0;
+
+minTime = 0.1;
+maxTime = 10;
 
 testVelocity = [MANIPULATION_CMD_CONFIGURATION_VELOCITY dx dy dz ox oy oz elbow zeros(1,15)];
 
