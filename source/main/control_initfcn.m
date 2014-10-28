@@ -44,4 +44,4 @@ maxTime = 10;
 
 %% Initial Position
 initPositionRightArm = [0.7 -0.23 0.9];
-stopVelocity = [0 0 0 0 0 0];
+
