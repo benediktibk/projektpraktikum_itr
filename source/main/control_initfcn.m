@@ -37,6 +37,13 @@ yMax = 0.5 + offsety;
 zMin = -0.5 + offsetz;
 zMax = 0.5 + offsetz;
 
+FxMax = 1;
+FyMax = 1;
+FzMax = 1;
+TxMax = 1;
+TyMax = 1;
+TzMax = 1;
+
 minTime = 0.1;
 maxTime = 10;
 
