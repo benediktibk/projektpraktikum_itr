@@ -1,4 +1,4 @@
 #!/bin/bash
 rtdb-stop
 rtdb-start
-IceServerStarter & GuiStarter
+IceServerStarter & GuiStarter & GuiGripper
