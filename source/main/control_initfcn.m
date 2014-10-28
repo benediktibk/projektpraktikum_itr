@@ -15,9 +15,6 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 % Velocity Stream ID    vector:[102,dx,dy,dz,wx,wy,wz,elbow,zeros(1,15)]
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
-% Force Stream ID    vector:[11,Fx,Fy,Fz,Tx,Ty,Tz,zeros(1,16)]
-MANIPULATION_CMD_FORCE = 11;
-
 %% Actuator Limits
 vxMax = 0.01;
 vyMax = 0.01;
@@ -46,8 +43,6 @@ TzMax = 1;
 
 minTime = 0.1;
 maxTime = 10;
-
-
 
 %% Initial Values
 initPositionRightArm = [0.7 -0.23 0.9];
