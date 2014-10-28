@@ -15,7 +15,7 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 % Velocity Stream ID    vector:[102,dx,dy,dz,wx,wy,wz,elbow,zeros(1,15)]
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
-% Force Stream ID vector:[11,Fx,Fy,Fz,Mx,My,Mz]
+% Force Stream ID    vector:[11,Fx,Fy,Fz,Tx,Ty,Tz,zeros(1,16)]
 MANIPULATION_CMD_FORCE = 11;
 
 %% Actuator Limits
@@ -37,6 +37,13 @@ yMax = 0.5 + offsety;
 zMin = -0.5 + offsetz;
 zMax = 0.5 + offsetz;
 
+FxMax = 1;
+FyMax = 1;
+FzMax = 1;
+TxMax = 1;
+TyMax = 1;
+TzMax = 1;
+
 minTime = 0.1;
 maxTime = 10;
 
@@ -44,4 +51,4 @@ maxTime = 10;
 
 %% Initial Position
 initPositionRightArm = [0.7 -0.23 0.9];
-stopVelocity = [0 0 0 0 0 0];
+
