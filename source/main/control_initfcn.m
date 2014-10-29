@@ -4,7 +4,10 @@ addpath('rot2Q/')
 %% Sampling Time Ts 
 Ts = 0.001;
 
-
+%% Data Logging
+dataLoggerStartTime = 1;
+dataLoggerSoptTime = 100;
+ 
 %% Stream IDs
 % To be found in wearhap/src/arch/rtdbobjects/ManipulationCommand.h
 % Vectotr indices can be derived from respective entriers in wearhap/src/arch/rtdbobjects/ManipulationCommand.cpp
