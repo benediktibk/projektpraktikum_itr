@@ -4,7 +4,10 @@ addpath('rot2Q/')
 %% Sampling Time Ts 
 Ts = 0.001;
 
-
+%% Data Logging
+dataLoggerStartTime = 1;
+dataLoggerStopTime = 100;
+ 
 %% Stream IDs
 % To be found in wearhap/src/arch/rtdbobjects/ManipulationCommand.h
 % Vectotr indices can be derived from respective entriers in wearhap/src/arch/rtdbobjects/ManipulationCommand.cpp
@@ -16,12 +19,12 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
 %% Actuator Limits
-vxMax = 0.01;
-vyMax = 0.01;
-vzMax = 0.01;
-wxMax = 0.01;
-wyMax = 0.01;
-wzMax = 0.01;
+vxMax = 0.04;
+vyMax = 0.04;
+vzMax = 0.04;
+wxMax = 0.04;
+wyMax = 0.04;
+wzMax = 0.04;
 
 offsetx = 0.7;
 offsety = -0.23;
@@ -50,3 +53,5 @@ initLoadMass = 1;
 initLoadCenterOfGravity = [0 0 0];
 initLoadInertia = [10 10 10 0 0 0]; % Ixx Iyy Izz Ixy Ixz Iyz
 
+%% Filter Properties
+derivativeCutOffFrequ = 50;
