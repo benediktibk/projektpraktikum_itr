@@ -19,12 +19,12 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
 %% Actuator Limits
-vxMax = 0.01;
-vyMax = 0.01;
-vzMax = 0.01;
-wxMax = 0.01;
-wyMax = 0.01;
-wzMax = 0.01;
+vxMax = 0.04;
+vyMax = 0.04;
+vzMax = 0.04;
+wxMax = 0.04;
+wyMax = 0.04;
+wzMax = 0.04;
 
 offsetx = 0.7;
 offsety = -0.23;
