@@ -6,7 +6,7 @@ Ts = 0.001;
 
 %% Data Logging
 dataLoggerStartTime = 1;
-dataLoggerSoptTime = 100;
+dataLoggerStopTime = 100;
  
 %% Stream IDs
 % To be found in wearhap/src/arch/rtdbobjects/ManipulationCommand.h
