@@ -2,6 +2,8 @@
 close all
 clearvars -EXCEPT p theta_hat c
 clc
+
+figure(1)
 plot3(p(:,1),p(:,2),p(:,3))
 hold on
 q = p +repmat(c',size(p,1),1);
@@ -17,3 +19,9 @@ grid on
 xlabel('x')
 ylabel('y')
 zlabel('z')
+legend('p','q')
+
+figure(2)
+plot(theta_hat.time,theta_hat.signals.values)
+ylim([-15,15])
+legend('m','mc_x','mc_y','mc_z','I_{p,xx}','I_{p,xy}','I_{p,xz}','I_{p,yy}','I_{p,yz}','I_{p,zz}')
