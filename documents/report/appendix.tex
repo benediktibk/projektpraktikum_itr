@@ -5,3 +5,21 @@
 \addcontentsline{toc}{chapter}{Appendix} 
 \label{appendix}
 \vspace{1cm}
+
+\section{Notations}
+\begin{equation}
+	[\omega \times] = [\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \times] := 
+	\begin{bmatrix}
+		0			& -\omega_z	& \omega_y \\
+		\omega_z	& 0			& -\omega_x \\
+		-\omega_y	& \omega_x	& 0
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	[. \omega] = [. \begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix}] :=
+	\begin{bmatrix}
+		\omega_x	& \omega_y	& \omega_z	& 0			& 0			& 0 \\
+		0			& \omega_x	& 0			& \omega_y	& \omega_z	& 0 \\
+		0			& 0			& \omega_x	& 0			& \omega_y	& \omega_z
+	\end{bmatrix}
+\end{equation}
