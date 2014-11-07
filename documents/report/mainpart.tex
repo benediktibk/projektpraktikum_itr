@@ -50,28 +50,28 @@ with
 \begin{equation}
 	\vec{\Phi}(k) = 
 	\begin{bmatrix}
-		\ddot p - g	& [\dot \omega \times] + [\omega \times] [\omega \times]	& 0 \\
-		0			& [(g - \ddot p) \times]									& [. \dot \omega] + [\omega \times] [. \omega]
+		\vec{\ddot p} - \vec{g}	& [\vec{\dot \omega} \times] + [\vec{\omega}\times] [\vec{\omega} \times]	& 0 \\
+		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
 	\end{bmatrix}
 \end{equation}
 
 Initialization of Recursive Least Squares
 \begin{equation}
-	P(k_0) = \left( \vec{\Phi}^T(k_0) \vec{\Phi}(k_0) \right)^{-1}
+	\vec{P}(k_0) = \left( \vec{\Phi}^\scr{T}(k_0) \vec{\Phi}(k_0) \right)^{-1}
 \end{equation}
 \begin{equation}
-	\vec{\hat \Theta} (k_0) = P(k_0) \vec{\Phi}^T(k_0) h(k_0)
+	\vec{\hat \Theta} (k_0) = \vec{P}(k_0) \vec{\Phi}^\scr{T}(k_0) \vec{h}(k_0)
 \end{equation}
 
 Recursive Least Squares
 \begin{equation}
-	K(t) = P(k-1) \vec{\Phi}^T(t) (I + \vec{\Phi}(k) P(k - 1) \vec{\Phi}^T(k))^{-1}
+	\vec{K}(k) = \vec{P}(k-1) \vec{\Phi}^\scr{T}(k) (\vec{I} + \vec{\Phi}(k) \vec{P}(k - 1) \vec{\Phi}^\scr{T}(k))^{-1}
 \end{equation}
 \begin{equation}
-	P(t) = (I - \vec{K}(k) \vec{\Phi}(k)) P(k - 1)
+	\vec{P}(k) = (\vec{I} - \vec{K}(k) \vec{\Phi}(k)) \vec{P}(k - 1)
 \end{equation}
 \begin{equation}
-	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \hat \Theta(k - 1))
+	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \vec{\hat \Theta}(k - 1))
 \end{equation}
 
 \chapter{Modelling and Verification of Embedded Systems}
