@@ -34,21 +34,21 @@ Angular velocity of the object
 \end{equation}
 Input vector filled with forces and torques at the grasping point
 \begin{equation}
-	h = [F_\scr{x}, F_\scr{y}, F_\scr{z}, M_\scr{x}, M_\scr{y}, M_\scr{z}]^\scr{T}
+	\vec{h} = [F_\scr{x}, F_\scr{y}, F_\scr{z}, M_\scr{x}, M_\scr{y}, M_\scr{z}]^\scr{T}
 \end{equation}
 System parameter vector
 \begin{equation}
-	\Theta = [m, m c_x, m c_y, m c_z, I_{xx}, I_{xy}, I_{xz}, I_{yy}, I_{yz}, I_{zz}]^T
+	\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}
 \end{equation}
-System parameter estimation vector $\hat \Theta$
+System parameter estimation vector $\vec{\hat \Theta}$
 
-Relation between $\Theta$ and $h$
+Relation between $\vec{\Theta}$ and $\vec{h}$
 \begin{equation}
-	h(t) = \Phi(t) \Theta(t)
+	h(k) = \Phi(k) \Theta(k)
 \end{equation}
 with
 \begin{equation}
-	\Phi(t) = 
+	\Phi(k) = 
 	\begin{bmatrix}
 		\ddot p - g	& [\dot \omega \times] + [\omega \times] [\omega \times]	& 0 \\
 		0			& [(g - \ddot p) \times]									& [. \dot \omega] + [\omega \times] [. \omega]
@@ -57,21 +57,21 @@ with
 
 Initialization of Recursive Least Squares
 \begin{equation}
-	P(t_0) = \left( \Phi^T(t_0) \Phi(t_0) \right)^{-1}
+	P(k_0) = \left( \Phi^T(k_0) \Phi(k_0) \right)^{-1}
 \end{equation}
 \begin{equation}
-	\hat \Theta (t_0) = P(t_0) \Phi^T(t_0) h(t_0)
+	\hat \Theta (k_0) = P(k_0) \Phi^T(k_0) h(k_0)
 \end{equation}
 
 Recursive Least Squares
 \begin{equation}
-	K(t) = P(t-1) \Phi^T(t) (I + \Phi(t) P(t - 1) \Phi^T(t))^{-1}
+	K(t) = P(k-1) \Phi^T(t) (I + \Phi(k) P(k - 1) \Phi^T(k))^{-1}
 \end{equation}
 \begin{equation}
-	P(t) = (I - K(t) \Phi(t)) P(t - 1)
+	P(t) = (I - K(k) \Phi(k)) P(k - 1)
 \end{equation}
 \begin{equation}
-	\hat \Theta(t) = \hat \Theta(t - 1) + K(t) (h(t) - \Phi(t) \hat \Theta(t - 1))
+	\hat \Theta(k) = \hat \Theta(k - 1) + K(k) (h(k) - \Phi(k) \hat \Theta(k - 1))
 \end{equation}
 
 \chapter{Modelling and Verification of Embedded Systems}
