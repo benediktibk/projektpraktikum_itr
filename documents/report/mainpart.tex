@@ -44,11 +44,11 @@ System parameter estimation vector $\vec{\hat \Theta}$
 
 Relation between $\vec{\Theta}$ and $\vec{h}$
 \begin{equation}
-	h(k) = \Phi(k) \Theta(k)
+	\vec{h}(k) = \vec{\Phi(k)} \vec{\Theta(k)}
 \end{equation}
 with
 \begin{equation}
-	\Phi(k) = 
+	\vec{\Phi}(k) = 
 	\begin{bmatrix}
 		\ddot p - g	& [\dot \omega \times] + [\omega \times] [\omega \times]	& 0 \\
 		0			& [(g - \ddot p) \times]									& [. \dot \omega] + [\omega \times] [. \omega]
@@ -57,21 +57,21 @@ with
 
 Initialization of Recursive Least Squares
 \begin{equation}
-	P(k_0) = \left( \Phi^T(k_0) \Phi(k_0) \right)^{-1}
+	P(k_0) = \left( \vec{\Phi}^T(k_0) \vec{\Phi}(k_0) \right)^{-1}
 \end{equation}
 \begin{equation}
-	\hat \Theta (k_0) = P(k_0) \Phi^T(k_0) h(k_0)
+	\vec{\hat \Theta} (k_0) = P(k_0) \vec{\Phi}^T(k_0) h(k_0)
 \end{equation}
 
 Recursive Least Squares
 \begin{equation}
-	K(t) = P(k-1) \Phi^T(t) (I + \Phi(k) P(k - 1) \Phi^T(k))^{-1}
+	K(t) = P(k-1) \vec{\Phi}^T(t) (I + \vec{\Phi}(k) P(k - 1) \vec{\Phi}^T(k))^{-1}
 \end{equation}
 \begin{equation}
-	P(t) = (I - K(k) \Phi(k)) P(k - 1)
+	P(t) = (I - \vec{K}(k) \vec{\Phi}(k)) P(k - 1)
 \end{equation}
 \begin{equation}
-	\hat \Theta(k) = \hat \Theta(k - 1) + K(k) (h(k) - \Phi(k) \hat \Theta(k - 1))
+	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \hat \Theta(k - 1))
 \end{equation}
 
 \chapter{Modelling and Verification of Embedded Systems}
