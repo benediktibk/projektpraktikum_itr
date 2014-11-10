@@ -48,29 +48,90 @@
 \begin{frame}
 	%Florian
 	\frametitle{Task}
-	\begin{flushleft}
-	\begin{overpic}[width=0.6\textwidth, grid, tics=10]{stateoftheart.eps}
-					\put(60,40){\color{red}{\small $\vec{c}$}}
-					\put(70,20){\small $\vec{p}$}
-					\put(25,-2){\small $\scr{W}$}
-    \end{overpic}
-	\end{flushleft}	
+	\begin{block}{Goal}
+			Human-Robot cooperative estimation of load uncertainties.
+	\end{block}
+	\vspace{2mm}
+	\begin{block}{Key-Questions}
+			\begin{itemize}
+				\item Which sensor feedback is required from agents?
+				\item How to exchange information between agents?
+				\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
+			\end{itemize}	   
+	\end{block}	
 \end{frame}
 
 \section{Load Identification}
 \begin{frame}
 	\frametitle{Load Identification - State of the Art}
+
+	\begin{columns}
+		\centering
+		 	\begin{column}{0.5\textwidth}
+				\begin{overpic}[width=0.8\textwidth]{stateoftheart.eps}
+								\put(60,40){\color{red}{\small $\vec{c}$}}
+								\put(70,20){\small $\vec{p}$}
+								\put(25,-3){\small $\scr{W}$}
+								\put(10,45){\small $\scr{CoM}$, $\vec{q}$}
+			    \end{overpic}
+		 	\end{column}
+		 		
+		 	\begin{column}{0.5\textwidth}
+			Model:\\ \cite{literaturstelle2}\\
+			\vspace{0.1cm}
+			$\vec{F} = f\left(\vec{\ddot{p}},\vec{\omega},\vec{\dot{\omega}},\vec{c},m\right)$\\
+			$\vec{\tau} = f\left(\vec{\ddot{p}},\vec{\omega},\vec{\dot{\omega}},\vec{c},\vec{I},m\right)$\\
+			\vspace{0.4cm}
+			$m$ Object mass\\
+			$\vec{I}$  Object inertia tensor
+		 	\end{column}
+	\end{columns}
+	 		\vspace{0.5cm}
+			Estimation-Parameters: \\
+			$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
+		\vspace{0.3cm}
+			RLS-Regressor: \\
+	$\vec{\Phi}(k) = 
+	\begin{bmatrix}
+		\vec{\ddot p} - \vec{g}	& [\vec{\dot \omega} \times] + [\vec{\omega}\times] [\vec{\omega} \times]	& 0 \\
+		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
+	\end{bmatrix}$
+	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Load Identification with Human}
+		\begin{columns}
+		\centering
+		 	\begin{column}{0.5\textwidth}
+	\begin{overpic}[width=0.8\textwidth]{humanident.eps}
+		\put(60,40){\color{red}{\small $\vec{c}$}}
+		\put(70,20){\small $\vec{p}$}
+		\put(25,-3){\small $\scr{W}$}
+		\put(20,35){\small $\scr{CoM}$, $\vec{q}$}
+		\put(-5,55){\color{green}{\small H}}
+		\put(-5,52){\small $\vec{h}$}
+    \end{overpic}
+		 	\end{column}	 		
+		 	\begin{column}{0.5\textwidth}
+			Model:\\
+			\vspace{0.1cm}
+			$\sum\vec{F} = f\left(\vec{\ddot{p}},\vec{\ddot{h}},\vec{\omega},\vec{\dot{\omega}},\vec{c},m\right)$\\
+			$\sum\vec{\tau} = f\left(\vec{\ddot{p}},\vec{\ddot{h}},\vec{\omega},\vec{\dot{\omega}},\vec{c},\vec{I},m\right)$\\
+			\vspace{0.4cm}
+			$m$ Object mass\\
+			$\vec{I}$  Object inertia tensor
+		 	\end{column}
+	\end{columns}
+	\vspace{1cm}
+	\begin{itemize}
+		\item Redefine regressor $\vec{\Phi}(k)$.
+		\item Replace recursive least-squares (RLS) with recursive total least-squares (RTLS) to handle errors
+		noise and disturbances affecting the acceleration and angular velocity signals.\\ \cite{literaturstelle1}
+	\end{itemize}
 \end{frame}
 
 \section{Excitation}
-\begin{frame}
-	\frametitle{Persistent Excitation}
-\end{frame}
-
 \begin{frame}
 	%Benedikt
 	\frametitle{Cooperative Excitation}
