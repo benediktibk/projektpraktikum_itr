@@ -9,11 +9,11 @@
 \usepackage[percent]{overpic}
 \usepackage{subcaption}
 \usepackage{units}
-\title{Experimental Validation of Controllers For Human-Robot Cooperative Swinging of Complex Pendulum-Like Objects}
+\title{Object exploration using visual/haptic information by a human-robot team}
 \presenter{Florian Wirnshofer, Benedikt Schmidt}
 
-\supervisor{Philine Donner}
-\typeofpres{Forschungspraxis}
+\supervisor{Denis Cehajic}
+\typeofpres{Project Laboratory Cognitive Robotics and Control}
 
 
 \newcommand*\MyBlue{%
@@ -41,8 +41,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Content}
+	\tableofcontents
 \end{frame}
 
+\section{Task}
 \begin{frame}
 	%Florian
 	\frametitle{Task}
@@ -55,39 +57,63 @@
 	\end{flushleft}	
 \end{frame}
 
+\section{Load Identification}
 \begin{frame}
-	%Florian
 	\frametitle{Load Identification - State of the Art}
 \end{frame}
 
 \begin{frame}
-	%Florian
 	\frametitle{Load Identification with Human}
 \end{frame}
 
+\section{Excitation}
 \begin{frame}
-	%Florian
 	\frametitle{Persistent Excitation}
 \end{frame}
 
 \begin{frame}
 	%Benedikt
 	\frametitle{Cooperative Excitation}
+	\begin{itemize}
+		\setlength\itemsep{0.5em}
+		\item Robot can give orders to the human through a wrist band
+		\item Target: Get more information about the load
+		\item Problem: How will a human react to a certain stimulus?
+	\end{itemize}
 \end{frame}
 
+\section{Tools}
 \begin{frame}
-	%Benedikt
 	\frametitle{Tools}
+	\begin{itemize}
+		\setlength\itemsep{0.5em}
+		\item Cobot: Two arms with seven joints each
+		\item Force and torque sensors at the endeffector and the grapsing points of the human
+		\item Motiontracking system for positions
+		\item Video cameras at the robot for visual input
+		\item Implementation in Matlab Simulink
+	\end{itemize}
+\end{frame}
+
+\section{Time Schedule}
+\begin{frame}
+	\frametitle{Milestones}
+	\begin{enumerate}
+		\item Get familiar with the system
+		\item Implement load identification with one grasping point
+		\item Implement load identification with more than one grasping point
+		\item Trigger additional exciation by the human through the wrist band
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
-	%Benedikt
-	\frametitle{Time Schedule I}
-\end{frame}
-
-\begin{frame}
-	%Benedikt
-	\frametitle{Time Schedule II}
+	\frametitle{Time Schedule}
+	\begin{enumerate}
+		\item Get familiar with the system: 19.11.2014
+		\item Implement load identification with one grasping point: 5.12.2014
+		\item Implement load identification with more than one grasping point:  19.12.2014
+		\item Trigger additional exciation by the human through the wrist band: 16.01.2015
+	\end{enumerate}
 \end{frame}
 
 \appendix
