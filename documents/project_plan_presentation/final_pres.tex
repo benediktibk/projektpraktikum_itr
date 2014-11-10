@@ -22,6 +22,9 @@
   \item[\color{red}\scalebox{0.9}{\textbullet}]}
 %\nocite{*}
 
+\renewcommand{\vec}[1]{\boldsymbol{#1}} 
+% Alle indizes in Normalschrift ausser Läuferindizeszs
+\newcommand{\scr}[1]{\mathrm{#1}} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,6 +46,13 @@
 \begin{frame}
 	%Florian
 	\frametitle{Task}
+	\begin{flushleft}
+	\begin{overpic}[width=0.6\textwidth, grid, tics=10]{stateoftheart.eps}
+					\put(60,40){\color{red}{\small $\vec{c}$}}
+					\put(70,20){\small $\vec{p}$}
+					\put(25,-2){\small $\scr{W}$}
+    \end{overpic}
+	\end{flushleft}	
 \end{frame}
 
 \begin{frame}
