@@ -136,51 +136,43 @@
 \begin{frame}
 	%Benedikt
 	\frametitle{Cooperative Excitation}	
-	\begin{block}{Problem}
-			Excitation only by the robot may not be optimal to receive a good and fast estimation of the load kinematics.
-	\end{block}
-	\begin{block}{Solution}
-		\begin{itemize}
-			\item Robot can give orders to the human through a wrist band
-			\item How will a human react to a certain stimulus?		
-		\end{itemize}
-	\end{block}
+	\begin{itemize}
+		\item Problem: Excitation only by the robot may not be optimal to receive a good and fast estimation of the load kinematics.
+		\item Solution: Robot can give orders to the human through a wrist band
+		\item How will a human react to a certain stimulus?		
+	\end{itemize}
 \end{frame}
 
 \section{Tools}
 \begin{frame}
 	\frametitle{Tools}
-	\begin{block}{Hardware}
-		\begin{itemize}
-			\item Cobot: Two arms with seven joints each
-			\item Force and torque sensors at the endeffector and the grapsing points of the human
-			\item Motiontracking system for positions
-			\item Video cameras at the robot for visual input
-		\end{itemize}
-	\end{block}
-	\begin{block}{Implementation}
-		\begin{itemize}
-			\item Matlab Simulink
-			\item Sensor input through SFBReceive-Blocks
-			\item Actuation through SFBSend-Blocks
-		\end{itemize}
-	\end{block}
+	Hardware:
+	\begin{itemize}
+		\item Cobot: Two arms with seven joints each
+		\item Force and torque sensors at the endeffector and the grapsing points of the human
+		\item Motiontracking system for positions
+		\item Video cameras at the robot for visual input
+	\end{itemize}
+	Implementation:
+	\begin{itemize}
+		\item Matlab Simulink
+		\item Sensor input through SFBReceive-Blocks
+		\item Actuation through SFBSend-Blocks
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Noise on Sensors}
-	\begin{block}{Noisy sensors}
-		\begin{itemize}
-			\item Force and torque sensors
-			\item Pose acquired by motion tracking system 
-		\end{itemize}
-	\end{block}
-	\begin{block}{Solution}
-		\begin{itemize}
-			\item RLS to circumvent noise in forces and torques
-			\item RTLS to consider noise in poses and velocities
-		\end{itemize}
-	\end{block}
+	Noisy sensors:
+	\begin{itemize}
+		\item Force and torque sensors
+		\item Pose acquired by motion tracking system 
+	\end{itemize}
+	Solution:
+	\begin{itemize}
+		\item RLS to circumvent noise in forces and torques
+		\item RTLS to consider noise in poses and velocities
+	\end{itemize}
 \end{frame}
 
 \section{Time Schedule}
