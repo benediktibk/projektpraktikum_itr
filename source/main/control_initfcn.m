@@ -53,5 +53,5 @@ initLoadMass = 1;
 initLoadCenterOfGravity = [0 0 0];
 initLoadInertia = [10 10 10 0 0 0]; % Ixx Iyy Izz Ixy Ixz Iyz
 
-%% Filter Properties
+%% Filter Properties [rad/s]
 derivativeCutOffFrequ = 20;
