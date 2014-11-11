@@ -5,6 +5,7 @@
 \usepackage{verbatim} 
 \usepackage[english, ngerman]{babel}
 \usepackage{lipsum}
+\usepackage{mathtools}
 %%% Stand 14.09.2007
 %%% erstellt von Marion Sobotka
 %%% marion.sobotka@tum.de
@@ -40,6 +41,10 @@
 \setlength{\parindent}{0pt} % Kein Einrücken beim Absatz!!
 %___________________________________________
 
+% Vectoren & Matrizen
+\renewcommand{\vec}[1]{\boldsymbol{#1}} 
+% Alle indizes in Normalschrift ausser Läuferindizeszs
+\newcommand{\scr}[1]{\mathrm{#1}} 
 % New Abstract Environment
 \newenvironment{abstractpage}
   {\vspace*{\fill}\thispagestyle{empty}}
