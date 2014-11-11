@@ -9,6 +9,7 @@
 \usepackage[percent]{overpic}
 \usepackage{subcaption}
 \usepackage{units}
+\usepackage{tikz}
 \title{Object exploration using visual/haptic information by a human-robot team}
 \presenter{Florian Wirnshofer, Benedikt Schmidt}
 
@@ -149,7 +150,7 @@
 \section{Tools}
 \begin{frame}
 	\frametitle{Tools}
-	\begin{block}{Sensors}
+	\begin{block}{Hardware}
 		\begin{itemize}
 			\item Cobot: Two arms with seven joints each
 			\item Force and torque sensors at the endeffector and the grapsing points of the human
@@ -162,6 +163,22 @@
 			\item Matlab Simulink
 			\item Sensor input through SFBReceive-Blocks
 			\item Actuation through SFBSend-Blocks
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Noise on Sensors}
+	\begin{block}{Noisy sensors}
+		\begin{itemize}
+			\item Force and torque sensors
+			\item Pose acquired by motion tracking system 
+		\end{itemize}
+	\end{block}
+	\begin{block}{Solution}
+		\begin{itemize}
+			\item RLS to circumvent noise in forces and torques
+			\item RTLS to consider noise in poses and velocities
 		\end{itemize}
 	\end{block}
 \end{frame}
