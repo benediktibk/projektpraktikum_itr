@@ -54,4 +54,4 @@ initLoadCenterOfGravity = [0 0 0];
 initLoadInertia = [10 10 10 0 0 0]; % Ixx Iyy Izz Ixy Ixz Iyz
 
 %% Filter Properties
-derivativeCutOffFrequ = 50;
+derivativeCutOffFrequ = 20;
