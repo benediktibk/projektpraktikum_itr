@@ -10,6 +10,7 @@
 \usepackage{subcaption}
 \usepackage{units}
 \usepackage{tikz}
+\usetikzlibrary{positioning}
 \title{Object exploration using visual/haptic information by a human-robot team}
 \presenter{Florian Wirnshofer, Benedikt Schmidt}
 
@@ -178,22 +179,36 @@
 \section{Time Schedule}
 \begin{frame}
 	\frametitle{Milestones}
-	\begin{enumerate}
-		\item Get familiar with the system
-		\item Implement load identification with one grasping point
-		\item Implement load identification with more than one grasping point
-		\item Trigger additional exciation by the human through the wrist band
-	\end{enumerate}
+	\begin{tikzpicture}[node distance=0.2cm]
+		\node [shape=circle,fill=tum_blue] (A) at (0, 0) {};
+		\node [right=of A.east,anchor=west] {Get familiar with the topic and the hardware};
+		\node [shape=circle,fill=tum_blue] (B) at (0, -1) {};
+		\node [right=of B.east,anchor=west] {Implement load identification with one grasping point};
+		\node [shape=circle,fill=tum_blue] (C) at (0, -2) {};
+		\node [right=of C.east,anchor=west] {Implement load identification with more than one grasping point};
+		\node [shape=circle,fill=tum_blue] (D) at (0, -3) {};
+		\node [right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
+		\draw[tum_blue,very thick] (0, 0) -- (0, -3);
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Time Schedule}
-	\begin{enumerate}
-		\item Get familiar with the system: 19.11.2014
-		\item Implement load identification with one grasping point: 5.12.2014
-		\item Implement load identification with more than one grasping point:  19.12.2014
-		\item Trigger additional exciation by the human through the wrist band: 16.01.2015
-	\end{enumerate}
+	\begin{tikzpicture}[node distance=0.2cm]
+		\node[shape=circle,fill=tum_blue] (A) at (0, 0) {};
+		\node[right=of A.east,anchor=west] {Get familiar with the topic and the hardware};
+		\node[anchor=west] at (0.2, -0.4) {19.11.2014};
+		\node[shape=circle,fill=tum_blue] (B) at (0, -1) {};
+		\node[right=of B.east,anchor=west] {Implement load identification with one grasping point};
+		\node[anchor=west] at (0.2, -1.4) {5.12.2014};
+		\node[shape=circle,fill=tum_blue] (C) at (0, -2) {};
+		\node[right=of C.east,anchor=west] {Implement load identification with more than one grasping point};
+		\node[anchor=west] at (0.2, -2.4) {19.12.2014};
+		\node[shape=circle,fill=tum_blue] (D) at (0, -3) {};
+		\node[right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
+		\node[anchor=west] at (0.2, -3.4) {16.01.2015};
+		\draw[tum_blue,very thick] (0, 0) -- (0, -3);
+	\end{tikzpicture}
 \end{frame}
 
 \appendix
