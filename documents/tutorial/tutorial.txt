@@ -41,7 +41,7 @@ through the user "marvinTUM" with the password "blub"
 	manipulate-manually.sh
 
 a good initial position for the right arm is:
-x: 0.7, y: -0.23, z: 0.9, qw: 1, qx: 0, qy: 0, qz: 0
+x: 0.7, y: -0.23, z: 0.9, qw: 0, qx: 1, qy: 0, qz: 0
 a good initial position for the left arm is:
 x: 0.7, y: 0.23, z: 0.9, qw: 1, qx: 0, qy: 0, qz: 0
 
