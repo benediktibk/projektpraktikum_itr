@@ -56,3 +56,6 @@ Remember: First you have to connect to the arm, then you have to press Pose!
 	manipulate-control.sh
 5. run on the machine for the platform the model
 	identification-control.sh
+
+########### Motion Tracker Password
+mt2012ccrl
