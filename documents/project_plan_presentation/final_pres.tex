@@ -135,6 +135,23 @@
 
 \section{Excitation}
 \begin{frame}
+	\frametitle{Persistent Excitation}
+	\simpleblock{
+	\begin{small}
+		\begin{center}
+			RLS / TRLS convergence prerequisites
+		\end{center}
+	\end{small}
+	}
+	\vspace{1cm}	
+	\begin{itemize}
+		\item Reference trajectory must be persistently exciting(PE)
+		\item Non-zero acceleration of EEF in 6-DoF \cite{literaturstelle3}
+	\end{itemize}
+	\vspace{1cm}
+	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
+\end{frame}
+\begin{frame}
 	%Benedikt
 	\frametitle{Cooperative Excitation}	
 	\begin{itemize}
@@ -154,6 +171,7 @@
 		\item Motiontracking system for positions
 		\item Video cameras at the robot for visual input
 	\end{itemize}
+	\vspace{0.5cm}
 	Implementation:
 	\begin{itemize}
 		\item Matlab Simulink
@@ -169,6 +187,7 @@
 		\item Force and torque sensors
 		\item Pose acquired by motion tracking system 
 	\end{itemize}
+	\vspace{1cm}
 	Solution:
 	\begin{itemize}
 		\item RLS to circumvent noise in forces and torques
