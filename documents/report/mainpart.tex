@@ -9,50 +9,66 @@
 
 \subsection{System Identification}
 \label{subsec:system_identification}
+The target of the system identification is to estimate the kinematics of the object, which are:
+\begin{enumerate}
+	\item mass $m$
+	\item center of gravity, represented through the offset $\vec c_\scr{i}$ from the grasping point $i$ to the center of gravity
+	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of gravity
+\end{enumerate}
+
+For simplicity we will first discuss the problem of the identification of the object kinematics with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
 
 \subsubsection{One Grasping Point}
+
 \begin{figure}
 	\centering
 	\include{tikz/load_one_grasping_point}
 	\caption{Load with one grasping point}
+	\label{fig:load_one_grasping_point}
 \end{figure}
 
-Inertia of the system in the grasping Point P
+The system behaviour of a model like \ref{fig:load_one_grasping_point} can be described through 
 \begin{equation}
-	\vec{I_0} = 
-	\begin{bmatrix}	
-		I_\scr{xx}	& I_\scr{xy}	& I_\scr{xz} \\
-		I_\scr{xy}	& I_\scr{yy}	& I_\scr{yz} \\
-		I_\scr{xz}	& I_\scr{yz}	& I_\scr{zz}
-	\end{bmatrix}
+	\vec{^LF} = m \vec{^W\ddot{p}} + m \vec{^Lg} + \vec{^L\dot{\omega}} \times m \vec c + \vec{^L\omega} \times (\vec{^L\omega} \times m \vec c),
+	\label{eq:force}
 \end{equation}
-Vector from grasping point P to the center of gravity Q (or the other way round?)
+which is derived from the conservation of momentum, and
 \begin{equation}
-	\vec{c} = [c_\scr{x}, c_\scr{y}, c_\scr{z}]^\scr{T}
+	\vec{^LN} = I_\scr{p} \vec{^L\dot{\omega}} + \vec{^L\omega} \times (\vec I_\scr{p} \vec{^L\omega}) + m \vec c \times \vec{^W\ddot{p}} + m \vec c \times \vec{^Lg},
+	\label{eq:torque}
 \end{equation}
-Position of center of gravity
+which comes from the conservation of angular momentum. Both formulas are taken from \ref{MISSING}, but are used here with a different definition of the gravity vector. Throughoutt this paper we assume that in the world coordinate frame $\vec g$ only has a component in the $z$-direction, with a negative value. The inertia matrix $\vec I_\scr{p}$ in these formulas represents the inertia of the object transformed into the grasping point through the parallel axis theorem
 \begin{equation}
-	\vec{p} = [p_\scr{x}, p_\scr{y}, p_\scr{z}]^\scr{T}
+	\vec I_\scr{p} = \vec I_\scr{q} + m \left( (\vec c^\scr{T} \vec c) \vec 1 - (\vec c \vec c^\scr{T}) \right).
 \end{equation}
-Angular velocity of the object
-\begin{equation}
-	\vec{\omega} = [\omega_\scr{x}, \omega_\scr{y}, \omega_\scr{z}]^\scr{T}
-\end{equation}
-Input vector filled with forces and torques at the grasping point
-\begin{equation}
-	\vec{h} = [F_\scr{x}, F_\scr{y}, F_\scr{z}, M_\scr{x}, M_\scr{y}, M_\scr{z}]^\scr{T}
-\end{equation}
-System parameter vector
-\begin{equation}
-	\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}
-\end{equation}
-System parameter estimation vector $\vec{\hat \Theta}$
+All values, besides the position of the object $\vec p$, are represented in the load frame.
 
-Relation between $\vec{\Theta}$ and $\vec{h}$
+In the case of only one grasping point we then have in total ten unknowns:
+\begin{enumerate}
+	\item mass $m$
+	\item grasping point offset from the center of gravity $\vec c = [c_\scr{x}, c_\scr{y}, c_\scr{z}]^\scr{T}$ with three unknowns
+	\item inertia matrix with six unknowns, as this matrix is by definition symmetri
+	\begin{equation}
+		\vec{I} = 
+		\begin{bmatrix}	
+			I_\scr{xx}	& I_\scr{xy}	& I_\scr{xz} \\
+			I_\scr{xy}	& I_\scr{yy}	& I_\scr{yz} \\
+			I_\scr{xz}	& I_\scr{yz}	& I_\scr{zz}
+		\end{bmatrix}
+	\end{equation}
+\end{enumerate}
+
+These values are combined to the system parameter vector
 \begin{equation}
-	\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)
+	\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T},
 \end{equation}
-with
+where in practice we do not know the correct values, but instead only the estimation $\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)$.
+
+For the estimator as input information we have a vector filled with the forces and torques at the grasping point
+\begin{equation}
+	\vec{h} = [F_\scr{x}, F_\scr{y}, F_\scr{z}, M_\scr{x}, M_\scr{y}, M_\scr{z}]^\scr{T},
+\end{equation}
+the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need now the linear relation
 \begin{equation}
 	\vec{\Phi}(k) = 
 	\begin{bmatrix}
@@ -60,6 +76,7 @@ with
 		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
 	\end{bmatrix}
 \end{equation}
+between $\vec{\Theta}$ and $\vec{h}$ which was derived in \ref{MISSING}.
 
 Initialization of Recursive Least Squares
 \begin{equation}
