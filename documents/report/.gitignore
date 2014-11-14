@@ -9,4 +9,5 @@
 *.toc
 *.synctex.gz
 *.ps
+*.lof
 report.pdf
