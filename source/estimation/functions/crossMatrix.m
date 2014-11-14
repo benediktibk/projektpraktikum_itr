@@ -1,4 +1,4 @@
-function [ Matrix ] = crossMatrix( vector )
+function [Matrix] = crossMatrix(vector)
 x = vector(1);
 y = vector(2);
 z = vector(3);
