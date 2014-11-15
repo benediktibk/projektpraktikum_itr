@@ -29,25 +29,33 @@ For simplicity we will first discuss the problem of the identification of the ob
 
 The system behaviour of a model like \ref{fig:load_one_grasping_point} can be described through 
 \begin{equation}
-	\vec{^LF} = m \vec{^W\ddot{p}} + m \vec{^Lg} + \vec{^L\dot{\omega}} \times m \vec c + \vec{^L\omega} \times (\vec{^L\omega} \times m \vec c),
+	\vec{^LF} = m \vec{^W\ddot{p}} + m \vec{^Lg} + \vec{^L\dot{\omega}} \times m \vec{^Lc} + \vec{^L\omega} \times (\vec{^L\omega} \times m \vec{^Lc}),
 	\label{eq:force}
 \end{equation}
 which is derived from the conservation of momentum, and
 \begin{equation}
-	\vec{^LN} = I_\scr{p} \vec{^L\dot{\omega}} + \vec{^L\omega} \times (\vec I_\scr{p} \vec{^L\omega}) + m \vec c \times \vec{^W\ddot{p}} + m \vec c \times \vec{^Lg},
+	\vec{^LN} = \vec{^LI_\scr{p}} \vec{^L\dot{\omega}} + \vec{^L\omega} \times (\vec{^LI_\scr{p}} \vec{^L\omega}) + m \vec{^Lc} \times \vec{^W\ddot{p}} + m \vec{^Lc} \times \vec{^Lg},
 	\label{eq:torque}
 \end{equation}
 which comes from the conservation of angular momentum. Both formulas are taken from \ref{MISSING}, but are used here with a different definition of the gravity vector. Throughoutt this paper we assume that in the world coordinate frame $\vec g$ only has a component in the $z$-direction, with a negative value. The inertia matrix $\vec I_\scr{p}$ in these formulas represents the inertia of the object transformed into the grasping point through the parallel axis theorem
 \begin{equation}
 	\vec I_\scr{p} = \vec I_\scr{q} + m \left( (\vec c^\scr{T} \vec c) \vec 1 - (\vec c \vec c^\scr{T}) \right).
 \end{equation}
-All values, besides the position of the object $\vec p$, are represented in the load frame.
+All values, besides the position of the object $\vec p$, are represented in the load frame, as for instance the angular velocity $\vec \omega$ of the endeffector. This value can be calculated as the derivative with respect to time of the orientation $^W\vec{\varphi}$ of the load coordinate frame in the world coordinate frame:
+\begin{equation}
+	\vec{^W\omega} = \frac{\partial \vec{^W\varphi}}{\partial t}
+\end{equation}
+For use in the estimator this value needs to be transformed into the load coordinate frame, which means that the rotation
+\begin{equation}
+	\vec{^L\omega} = \vec{R}(\vec{^W\varphi}) \vec{^W\omega}
+\end{equation}
+must be applied. For the graviation, which changes its direction in the load coordinate frame with the rotation of the object, the same rotation is necessary.
 
 In the case of only one grasping point we then have in total ten unknowns:
 \begin{enumerate}
 	\item mass $m$
 	\item grasping point offset from the center of gravity $\vec c = [c_\scr{x}, c_\scr{y}, c_\scr{z}]^\scr{T}$ with three unknowns
-	\item inertia matrix with six unknowns, as this matrix is by definition symmetri
+	\item inertia matrix with six unknowns, as this matrix is by definition symmetric
 	\begin{equation}
 		\vec{I} = 
 		\begin{bmatrix}	
@@ -62,7 +70,7 @@ These values are combined to the system parameter vector
 \begin{equation}
 	\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T},
 \end{equation}
-where in practice we do not know the correct values, but instead only the estimation $\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)$.
+where in practice we do not know the correct values, but instead only the estimation $\vec{\hat \Theta}$.
 
 For the estimator as input information we have a vector filled with the forces and torques at the grasping point
 \begin{equation}
@@ -70,23 +78,19 @@ For the estimator as input information we have a vector filled with the forces a
 \end{equation}
 the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need now the linear relation
 \begin{equation}
+	\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)
+\end{equation}
+between $\vec{\Theta}$ and $\vec{h}$ with
+\begin{equation}
 	\vec{\Phi}(k) = 
 	\begin{bmatrix}
 		\vec{\ddot p} - \vec{g}	& [\vec{\dot \omega} \times] + [\vec{\omega}\times] [\vec{\omega} \times]	& 0 \\
 		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
-	\end{bmatrix}
+	\end{bmatrix},
 \end{equation}
-between $\vec{\Theta}$ and $\vec{h}$ which was derived in \ref{MISSING}.
+which was derived in \ref{MISSING}.
 
-Initialization of Recursive Least Squares
-\begin{equation}
-	\vec{P}(k_0) = \left( \vec{\Phi}^\scr{T}(k_0) \vec{\Phi}(k_0) \right)^{-1}
-\end{equation}
-\begin{equation}
-	\vec{\hat \Theta} (k_0) = \vec{P}(k_0) \vec{\Phi}^\scr{T}(k_0) \vec{h}(k_0)
-\end{equation}
-
-Recursive Least Squares
+The recursive least squares is then an iterative improvement of the estimation, where for every sampling step the formulas
 \begin{equation}
 	\vec{K}(k) = \vec{P}(k-1) \vec{\Phi}^\scr{T}(k) (\vec{I} + \vec{\Phi}(k) \vec{P}(k - 1) \vec{\Phi}^\scr{T}(k))^{-1}
 \end{equation}
@@ -95,6 +99,14 @@ Recursive Least Squares
 \end{equation}
 \begin{equation}
 	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \vec{\hat \Theta}(k - 1))
+\end{equation}
+are applied \ref{MISSING}. The initialization of the algorithm can be done through
+\begin{equation}
+	\vec{P}(k_0) = \left( \vec{\Phi}^\scr{T}(k_0) \vec{\Phi}(k_0) \right)^{-1}
+\end{equation}
+and
+\begin{equation}
+	\vec{\hat \Theta} (k_0) = \vec{P}(k_0) \vec{\Phi}^\scr{T}(k_0) \vec{h}(k_0).
 \end{equation}
 
 \chapter{Modelling and Verification of Embedded Systems}
