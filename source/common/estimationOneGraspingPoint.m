@@ -1,7 +1,11 @@
-function thetaHat = estimationOneGraspingPoint(F,N,omega,domega,ddp,g,forgettingFactor)
+function thetaHat = estimationOneGraspingPoint(F,N,omega,domega,ddp,g,forgettingFactor,reinitialize)
     persistent thetaHatPrevious PPrevious initializationNecessary;
 
     if isempty(initializationNecessary)
+        initializationNecessary = 1;
+    end
+    
+    if reinitialize == 1
         initializationNecessary = 1;
     end
 
