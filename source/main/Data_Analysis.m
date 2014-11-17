@@ -11,6 +11,18 @@ for i=1:length(files)
 end
 
 %% plot some useful graphs
+Ts = 0.001;
+start = 25/Ts;
+stop = 80/Ts;
+t = (start:stop)*Ts;
+forces = FWrtLoad(start:stop,:);
+gravitation = gWrtLoad(start:stop,:);
+plot(t, forces);
+legend('fx','fy','fz');
+figure;
+plot(t, gravitation);
+legend('gx', 'gy', 'gz');
+
 % start = 1;
 % stop = 50000;
 % 
