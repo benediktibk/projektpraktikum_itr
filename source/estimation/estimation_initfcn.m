@@ -1,4 +1,4 @@
-addpath('functions/');
+addpath('../common/');
 
 %% Sampling Time Ts 
 Ts = 0.001;
