@@ -10,10 +10,26 @@ for i=1:length(files)
     eval(['load ' files(i).name ' -ascii']);
 end
 
-%% plot some useful graphs
+%% determine stop time
+runTimeStart = -1;
+stop = -1;
+for i = 1:length(runTime)
+    if runTime(i) > 0
+        runTimeStart = i;
+    end    
+    if runTime(i) == 0 && runTimeStart > 0 && stop < 0
+        stop = i-1;
+    end
+end
+
+if stop < 0
+    display('could not find stop time');
+    stop = 50/Ts;
+end    
+
+%% plot input data
 Ts = 0.001;
 start = 25/Ts;
-stop = 47/Ts;
 t = (start:stop)*Ts;
 forces = FWrtLoad(start:stop,:);
 gravitation = gWrtLoad(start:stop,:);
@@ -36,6 +52,8 @@ subplot(2, 2, 4);
 plot(t, rotation);
 legend('phix', 'phiy', 'phiz');
 title('rotation in world coordinates');
+
+%% plot estimated kinematics
 figure;
 mass = estimation(start:stop, 1);
 centerOfGravity = estimation(start:stop, 2:4);
@@ -52,6 +70,7 @@ plot(t, inertia);
 title('inertia');
 legend('I_{xx}', 'I_{yy}', 'I_{zz}', 'I_{xy}', 'I_{xz}', 'I_{yz}');
 
+%% plot filtered data
 % start = 1;
 % stop = 50000;
 % 
