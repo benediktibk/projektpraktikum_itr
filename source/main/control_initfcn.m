@@ -1,5 +1,9 @@
 %% Includes
 addpath('rot2Q/')
+addpath('../common/')
+
+%% General Constants
+g = [0 0 -9.81]';
 
 %% Sampling Time Ts 
 Ts = 0.001;
@@ -51,9 +55,6 @@ maxTime = 10;
 initPositionRightArm = [0.7 -0.23 0.9];
 initOrientationRightArmOne = [0 1 0 0];
 initOrientationRightArmTwo = [1 0 0 0];
-initLoadMass = 1;
-initLoadCenterOfGravity = [0 0 0];
-initLoadInertia = [10 10 10 0 0 0]; % Ixx Iyy Izz Ixy Ixz Iyz
 
 %% Filter Properties [rad/s]
 derivativeCutOffFrequ = 20;
