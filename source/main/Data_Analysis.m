@@ -92,3 +92,8 @@ title('velocity perfect filtered');
 subplot(2, 2, 2);
 plot(t, velFilt(start:stop, :));
 title('velocity filtered');
+
+figure;
+plot(t, accFilt(start:stop,:));
+title('acceleration filtered');
+legend('x', 'y', 'z');
