@@ -1,7 +1,9 @@
 %% clean up from previous runs
 clc
 close all
-clearvars -EXCEPT Ts initPoseRightArm dataLoggerStartTime dataLoggerStopTime
+clearvars -EXCEPT Ts initPoseRightArm dataLoggerStartTime dataLoggerStopTime Ts
+
+control_initfcn
 
 %% load all files
 files = dir('*.dat');
@@ -11,7 +13,7 @@ for i=1:length(files)
 end
 
 %% determine start and stop time
-Ts = 0.001;
+
 start = 25/Ts;
 
 runTimeStart = -1;
