@@ -6,7 +6,7 @@ addpath('../common/')
 g = [0 0 -9.81]';
 
 %% Sampling Time Ts 
-Ts = 0.001;
+Ts = 0.01;
 
 %% Data Logging
 dataLoggerStartTime = 1;
