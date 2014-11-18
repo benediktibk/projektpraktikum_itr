@@ -10,7 +10,10 @@ for i=1:length(files)
     eval(['load ' files(i).name ' -ascii']);
 end
 
-%% determine stop time
+%% determine start and stop time
+Ts = 0.001;
+start = 25/Ts;
+
 runTimeStart = -1;
 stop = -1;
 for i = 1:length(runTime)
@@ -27,10 +30,9 @@ if stop < 0
     stop = 50/Ts;
 end    
 
-%% plot input data
-Ts = 0.001;
-start = 25/Ts;
 t = (start:stop)*Ts;
+
+%% plot input data
 forces = FWrtLoad(start:stop,:);
 gravitation = gWrtLoad(start:stop,:);
 position = objectPosWC(start:stop,:);
@@ -71,20 +73,22 @@ title('inertia');
 legend('I_{xx}', 'I_{yy}', 'I_{zz}', 'I_{xy}', 'I_{xz}', 'I_{yz}');
 
 %% plot filtered data
-% start = 1;
-% stop = 50000;
-% 
-% L = length(theta_star);
-% t= 0:0.001:(L-1)*0.001;
-% y = objectPosWC(start:stop,1);
-% L = length(y);
-% t= 0:0.001:(L-1)*0.001;
-% ysm = smooth(y,0.01,'loess');
-% dv= diff(ysm);
-% dt =diff(t)';
-% vel = dv./dt;
-% plot(vel)
-% hold on
-% 
-% plot(filt2(start:stop,1),'r')
-% plot(filt5(start:stop,1),'g')
+positionRaw = objectPosWC(start:stop, :);
+positionPerfectFiltered = [smooth(positionRaw(:, 1),0.01,'loess'), smooth(positionRaw(:, 2),0.01,'loess'), smooth(positionRaw(:, 3),0.01,'loess')];
+dv = [diff(positionPerfectFiltered(:, 1)), diff(positionPerfectFiltered(:, 2)), diff(positionPerfectFiltered(:, 3))];
+dt = diff(t)';
+velocityPerfectFiltered = [dv(:, 1)./dt, dv(:, 2)./dt, dv(:, 3)./dt];
+
+figure;
+subplot(2, 2, 1);
+plot(t, positionRaw);
+title('position unfiltered');
+subplot(2, 2, 3);
+plot(t, positionPerfectFiltered);
+title('position perfect filtered');
+subplot(2, 2, 4);
+plot(t(1:end-1), velocityPerfectFiltered);
+title('velocity perfect filtered');
+subplot(2, 2, 2);
+plot(t, velFilt(start:stop, :));
+title('velocity filtered');
