@@ -35,7 +35,7 @@ end
 t = (start:stop)*Ts;
 
 %% plot input data
-forces = FWrtLoad(start:stop,:);
+forces = EEFForBase(start:stop,:);
 gravitation = gWrtLoad(start:stop,:);
 position = objectPosWC(start:stop,:);
 rotation = objectRotWC(start:stop,:);
