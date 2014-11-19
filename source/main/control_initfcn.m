@@ -2,6 +2,9 @@
 addpath('rot2Q/')
 addpath('../common/')
 
+%% ArmSide (right:0  left:1)
+armSide = 0;
+
 %% General Constants
 g = [0 0 -9.81]';
 
@@ -55,6 +58,9 @@ maxTime = 10;
 initPositionRightArm = [0.7 -0.23 0.9];
 initOrientationRightArmOne = [0 1 0 0];
 initOrientationRightArmTwo = [1 0 0 0];
+initPositionLeftArm = [0.7 0.23 0.9];
+initOrientationLeftArmOne = [0 1 0 0];
+initOrientationLeftArmTwo = [1 0 0 0];
 
 %% Filter Properties [rad/s]
 derivativeCutOffFrequ = 20;
