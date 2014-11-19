@@ -63,4 +63,4 @@ initOrientationLeftArmOne = [0 1 0 0];
 initOrientationLeftArmTwo = [1 0 0 0];
 
 %% Filter Properties [rad/s]
-derivativeCutOffFrequ = 20;
+cutOffFrequ = 20;
