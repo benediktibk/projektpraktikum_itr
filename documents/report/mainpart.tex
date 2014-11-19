@@ -2,8 +2,8 @@
 %_________Mainpart__________________________________
 
 \chapter{System Identification}
+\label{chap:system_identification}
 
-\label{subsec:system_identification}
 The target of the system identification is to estimate the kinematics of the object, which are:
 \begin{enumerate}
 	\item mass $m$
@@ -14,6 +14,7 @@ The target of the system identification is to estimate the kinematics of the obj
 For simplicity we will first discuss the problem of the identification of the object kinematics with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
 
 \section{One Grasping Point}
+\label{sec:one_grasping_point}
 
 \begin{figure}
 	\centering
@@ -114,3 +115,26 @@ and
 	\caption{Load with multiple grasping points}
 	\label{fig:load_multiple_grasping_points}
 \end{figure}
+
+Of course a load can also be hold by multiple manipulators, or arms in case of a human. As long as on every grasping point a force and torque sensor is mounted the basic principle of the previous section can be reused for the load estimation. In this case the forces and torques are distributed over all grippers, whereas the distribution depends on the reactive forces of the manipulators. Therefore, the only difference in the physics is that $n$ forces and torques are combined on the left hand sides of
+\begin{equation}
+	\sum_{i = 1}^n \vec{^LF_\scr{i}} = m \vec{^W\ddot{p}} + m \vec{^Lg} + \vec{^L\dot{\omega}} \times m \vec{^Lc} + \vec{^L\omega} \times (\vec{^L\omega} \times m \vec{^Lc})
+	\label{eq:force_multiple}	
+\end{equation}
+and
+\begin{equation}
+	\sum_{i = 1}^n \vec{^LN_\scr{i}} + \sum_{i = 2}^n \vec{^Lr_\scr{i}} \times \vec{^LF_\scr{i}} = \vec{^LI_\scr{p}} \vec{^L\dot{\omega}} + \vec{^L\omega} \times (\vec{^LI_\scr{p}} \vec{^L\omega}) + m \vec{^Lc} \times \vec{^W\ddot{p}} + m \vec{^Lc} \times \vec{^Lg}.
+	\label{eq:torque_multiple}	
+\end{equation}
+The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets $\vec{^Lr_\scr{i}}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
+
+At this point nearly the same iterative steps can be applied to estimate the load kinematics. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
+\begin{equation}
+	\vec{h} = 
+	\begin{bmatrix}
+		\sum_{i = 1}^n \vec{^LF_\scr{i}} \\
+		\sum_{i = 1}^n \vec{^LN_\scr{i}} + \sum_{i = 2}^n \vec{^Lr_\scr{i}} \times \vec{^LF_\scr{i}}
+	\end{bmatrix}
+\end{equation}
+
+The rest of the recursive least squares is than the same as in \ref{chap:system_identification}.
