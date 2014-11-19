@@ -12,7 +12,7 @@
 The target of the system identification is to estimate the kinematics of the object, which are:
 \begin{enumerate}
 	\item mass $m$
-	\item center of gravity, represented through the offset $\vec c_\scr{i}$ from the grasping point $i$ to the center of gravity
+	\item center of gravity, represented through the offset $\vec c$ from the grasping point to the center of gravity
 	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of gravity
 \end{enumerate}
 
@@ -37,7 +37,9 @@ which is derived from the conservation of momentum, and
 	\vec{^LN} = \vec{^LI_\scr{p}} \vec{^L\dot{\omega}} + \vec{^L\omega} \times (\vec{^LI_\scr{p}} \vec{^L\omega}) + m \vec{^Lc} \times \vec{^W\ddot{p}} + m \vec{^Lc} \times \vec{^Lg},
 	\label{eq:torque}
 \end{equation}
-which comes from the conservation of angular momentum. Both formulas are taken from \ref{MISSING}, but are used here with a different definition of the gravity vector. Throughoutt this paper we assume that in the world coordinate frame $\vec g$ only has a component in the $z$-direction, with a negative value. The inertia matrix $\vec I_\scr{p}$ in these formulas represents the inertia of the object transformed into the grasping point through the parallel axis theorem
+which comes from the conservation of angular momentum. Both formulas are taken from \ref{MISSING}, but are used here with a different definition of the gravity vector. Throughout this paper we assume that in the world coordinate frame $\vec g$ only has a component in the $z$-direction, with a negative value.
+
+The inertia matrix $\vec I_\scr{p}$ in these formulas represents the inertia of the object transformed into the grasping point through the parallel axis theorem
 \begin{equation}
 	\vec I_\scr{p} = \vec I_\scr{q} + m \left( (\vec c^\scr{T} \vec c) \vec 1 - (\vec c \vec c^\scr{T}) \right).
 \end{equation}
@@ -49,7 +51,7 @@ For use in the estimator this value needs to be transformed into the load coordi
 \begin{equation}
 	\vec{^L\omega} = \vec{R}(\vec{^W\varphi}) \vec{^W\omega}
 \end{equation}
-must be applied. For the graviation, which changes its direction in the load coordinate frame with the rotation of the object, the same rotation is necessary.
+must be applied. For the graviation, which changes its direction in the load coordinate frame with the rotation of the object, the same rotation is necessary. For the sake of legibility we will not denote the coordinate frames anymore during the rest of this section.
 
 In the case of only one grasping point we then have in total ten unknowns:
 \begin{enumerate}
@@ -57,7 +59,7 @@ In the case of only one grasping point we then have in total ten unknowns:
 	\item grasping point offset from the center of gravity $\vec c = [c_\scr{x}, c_\scr{y}, c_\scr{z}]^\scr{T}$ with three unknowns
 	\item inertia matrix with six unknowns, as this matrix is by definition symmetric
 	\begin{equation}
-		\vec{I} = 
+		\vec{I_\scr{p}} = 
 		\begin{bmatrix}	
 			I_\scr{xx}	& I_\scr{xy}	& I_\scr{xz} \\
 			I_\scr{xy}	& I_\scr{yy}	& I_\scr{yz} \\
