@@ -1,8 +1,4 @@
-function Phi = estimationOneGraspingPointPhi(inputs)
-    ddp = inputs(1:3);
-    omega = inputs(4:6);
-    domega = inputs(7:9);
-    g = inputs(10:12);
+function Phi = estimationOneGraspingPointPhi(omega, domega, ddp, g)
     omegaCross = crossMatrix(omega);
     domegaCross = crossMatrix(domega);
     omegaDot = dotMatrix(omega);

@@ -1,4 +1,4 @@
-function thetaHat = recursiveLeastSquares(measurements, inputs, linearRelation, forgettingFactor, reinitialize)
+function thetaHat = recursiveLeastSquares(measurements, Phi, forgettingFactor, reinitialize)
     persistent thetaHatPrevious PPrevious initializationNecessary;
 
     if isempty(initializationNecessary)
@@ -7,10 +7,7 @@ function thetaHat = recursiveLeastSquares(measurements, inputs, linearRelation, 
     
     if reinitialize == 1
         initializationNecessary = 1;
-    end
-
-    % calculate linear relation Phi between the estimates and the input
-    Phi = linearRelation(inputs);    
+    end    
 
     % intialize persisent variables
     if initializationNecessary == 1 || isempty(PPrevious)
