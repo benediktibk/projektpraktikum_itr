@@ -138,3 +138,41 @@ At this point nearly the same iterative steps can be applied to estimate the loa
 \end{equation}
 
 The rest of the recursive least squares is than the same as in \ref{chap:system_identification}.
+
+\chapter{Simulation}
+\label{chap:simulation}
+
+
+\chapter{Experimental Evaluation}
+\label{chap:experimental_evaluation}
+
+\section{Experimental Setup}
+\subsection{Framework}
+\begin{itemize}
+	\item TUM Robots 7 Joints + FT Sensor
+	\item \textsc{Qualisys} Motion Tracking System
+	\item Number of rigid bodies and their alignment
+	\item Handles for humans equipped with FT sensor
+	\item Vebrotactile bands 
+\end{itemize}
+
+\subsection{Data Acquisition}
+\begin{itemize}
+	\item \textsc{JR3}
+	\item \textsc{Qualisys}
+	\item Real-Time Operating System, SfBComm
+	\item (Robot Joint Encoders -> EEF Position)
+	\item Utilization of Feedfoward Signals (assumption of a very stiff, precise control)
+\end{itemize}
+
+\subsection{Data Processing}
+\begin{itemize}
+	\item \textsc{Qualisys} Real-Time sampling frequency
+	\item \textsc{JR3} Sampling
+	\item Filtering noisy signals -- phaselag
+	\item Boundary sampling frequencies for Recursive Least Squares (Lower Bound = Convergence ???, UpperBound = Computational Cost -- Real Time capability)
+\end{itemize}
+
+\section{Results}
+\subsection{Load Identification: Robot}
+\subsection{Load Identification: Human-Robot Cooperation}
