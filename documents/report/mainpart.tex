@@ -30,7 +30,7 @@ The system behaviour of a model like \ref{fig:load_one_grasping_point} can be de
 \end{equation}
 which is derived from the conservation of momentum, and
 \begin{equation}
-	^\scr{L}\vec{N} = ^\scr{L}\vec{I_\scr{p}} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I_\scr{p}} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g},
+	^\scr{L}\vec{N} = ^\scr{L}\vec{I}_\scr{p} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I}_\scr{p} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g},
 	\label{eq:torque}
 \end{equation}
 which comes from the conservation of angular momentum. Both formulas are taken from \ref{MISSING}, but are used here with a different definition of the gravity vector. Throughout this paper we assume that in the world coordinate frame $\vec g$ only has a component in the $z$-direction, with a negative value.
@@ -55,7 +55,7 @@ In the case of only one grasping point we then have in total ten unknowns:
 	\item grasping point offset from the center of gravity $\vec c = [c_x, c_y, c_z]^\scr{T}$ with three unknowns
 	\item inertia matrix with six unknowns, as this matrix is by definition symmetric
 	\begin{equation}
-		\vec{I_\scr{p}} = 
+		\vec{I}_\scr{p} = 
 		\begin{bmatrix}	
 			I_{xx}	& I_{xy}	& I_{xz} \\
 			I_{xy}	& I_{yy}	& I_{yz} \\
@@ -123,7 +123,7 @@ Of course a load can also be hold by multiple manipulators, or arms in case of a
 \end{equation}
 and
 \begin{equation}
-	\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{i} \times {^\scr{L}}\vec{F}_{i} = {^\scr{L}}\vec{I_\scr{p}} {^\scr{L}}\vec{\dot{\omega}} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{I_\scr{p}} {^\scr{L}}\vec{\omega}) + m {^\scr{L}}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{c} \times {^\scr{L}}\vec{g}.
+	\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{i} \times {^\scr{L}}\vec{F}_{i} = {^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\dot{\omega}} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\omega}) + m {^\scr{L}}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{c} \times {^\scr{L}}\vec{g}.
 	\label{eq:torque_multiple}	
 \end{equation}
 The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets ${^\scr{L}}\vec{r}_{i}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
