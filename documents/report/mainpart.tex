@@ -149,14 +149,9 @@ The rest of the recursive least squares is than the same as in \ref{chap:system_
 \section{Experimental Setup}
 \subsection{Framework}
 %% Florian
-\begin{itemize}
-	\item TUM Robots 7 Joints + FT Sensor
-	\item \textsc{Qualisys} Motion Tracking System
-	\item Number of rigid bodies and their alignment
-	\item Handles for humans equipped with FT sensor
-	\item Vebrotactile bands 
-\end{itemize}
+All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor.
 
+!!! $\longrightarrow$ vibrotactile wrist bands !!!
 \subsection{Data Acquisition}
 %% Florian
 \begin{itemize}
