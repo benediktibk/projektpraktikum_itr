@@ -108,7 +108,7 @@ and
 \end{equation}
 
 \section{Multiple Grasping Points}
-
+\label{sec:multiple_grasping_points}
 \begin{figure}
 	\centering
 	\include{tikz/load_multiple_grasping_points}
@@ -154,18 +154,20 @@ All experiments were carried out at the multi-robot lab located at the \textit{C
 !!! $\longrightarrow$ vibrotactile wrist bands !!!
 \subsection{Data Acquisition}
 %% Florian
-The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed-into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model forwards all actuator commands to the relevant robot manipulator.
+The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
+
+!!! $\longrightarrow$ vibrotactile wrist bands !!!
 
 \subsection{Data Processing}
 %% Florian
-Due to the nature of our estimation task it is sufficient to acquire and process all data at a reduced sampling-rate of \unit[100]{Hz}. 
-\begin{itemize}
-	\item \textsc{Qualisys} Derrivatives of motion signals
-	\item \textsc{JR3} Sampling
-	\item Alignment of Frames
-	\item Filtering noisy signals -- phaselag
-	\item Boundary sampling frequencies for Recursive Least Squares (Lower Bound = Convergence ???, UpperBound = Computational Cost -- Real Time capability)
-\end{itemize}
+The estimation task derived in Section \ref{sec:multiple_grasping_points} requires information on the EEF position, acceleration, angular velocity and angular acceleration. Furthermore all forces and torques acting at the grasping points have to be expressed with respect to the EEF coordinate frame before being fed into the estimator and thus require an euclidean transform from the force-torque sensor measurement frame.
+
+Initial tests with all data being processed at \unit[1]{kHz}, led to a number of issues. As a consequence of its significantly lower sampling-rate, the processing model has to hold each value received from the motion-capture system for number of samples.  The consecutive identical samples again result in very error prone first
+and second derivatives.
+
+Due to the nature of our estimation task it is however sufficient to acquire and process all data at a reduced sampling-rate of \unit[100]{Hz}, avoiding consecutive values in position and orientation data. In addition to the lower sampling-rate, all signals are filtered with a Butterworth low-pass (Order: 3, $\omega_\scr{c} = $\unit[30]{Hz}). The introduced phase-lag has no effect on the estimation task, as all signals experience the identical delay.
+
+!!! $\longrightarrow$ vibrotactile wrist bands !!!
 
 \section{Results}
 \subsection{Load Identification: Robot}
