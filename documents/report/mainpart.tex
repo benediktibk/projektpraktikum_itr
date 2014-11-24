@@ -141,31 +141,44 @@ The rest of the recursive least squares is than the same as in \ref{chap:system_
 
 \chapter{Simulation}
 \label{chap:simulation}
+For the purpose of a faster evaluation of our system identification algorithms we developed a simulation environment in \textsc{Matlab} Simulink. The model of the load object was implemented through \ref{eq:force} and \ref{eq:torque} in the case of one grasping point and through \ref{eq:force_multiple} and \ref{eq:torque_multiple} for multiple grasping points. In the second case we also had to distribute the forces and torques among the grasping points. In reality, this distribution is deterimed by the strength of the manipulators, but in the simulation it was sufficient to split the forces and torques up by an arbitrary choice. For a more realistic model we changed this distribution over time with sinusoidal functions. The excitation in terms of position and rotation was achieved through sinusoidal waves with different frequencies and phase shifts, which results in the necessary acceleration of the object.
 
-\begin{figure}[H]
-\centering
-\sf
-\psfrag{xaxis}[tr][br]{$\theta_0 \left[\mathrm{rad}\right]$}
-\psfrag{yaxis}[br][tr]{$\frac{\omega}{\omega_0}$}
-\psfrag{one}[c][Br]{$0$}
-\psfrag{two}[c][Br]{$\frac{\pi}{4}$}
-\psfrag{thr}[c][Br]{$\frac{\pi}{2}$}
-\psfrag{fou}[c][Br]{$\frac{3\pi}{4}$}
-\psfrag{fiv}[c][Br]{$\pi$}
-\psfrag{lllllllll}[Br][Bl]{$0.2\  $}
-\psfrag{llllllill}[Br][Bl]{$0.4\  $}
-\psfrag{lllllilll}[Br][Bl]{$0.6\  $}
-\psfrag{llllliill}[Br][Bl]{$0.8\  $}
-\psfrag{llllillll}[br][Bl]{$1.0\  $}
-\psfrag{asss}[bc][cl]{$\omega_{\mathrm{n}}$}
-\psfrag{bsss}[bc][cl]{$\tilde{\omega}_{\mathrm{n}} $}
+As in reality the force and torques sensors typically have some noise on them we also ran our system identification algorithms on a model version, which had Gaussian white noise on the forces and torques. The deviation of the direct forces and the disturbed ones can be seen in \ref{fig:force_noisy}. Of course, the same noise level, but stochastically independent, was added to all forces and torques.
 
-\includegraphics[width=0.8\textwidth]{untitled}
-\vspace{0.2cm}
-\caption[Natural frequency of simple pendulum.]{Natural frequency of simple pendulum}
-\label{FIG:abb8}
+\begin{figure}
+	\centering
+	\includegraphics[scale=.7]{figures/force_noisy.eps}
+	\caption{Force with Gaussian white noise}
+	\label{fig:force_noisy}
 \end{figure}
 
+To test the system identification with one grasping point we simulated the identification of an object with $m = $\unit[2]{kg}, $c = \begin{bmatrix} \text{\unit[0.5]{m}} & \text{\unit[0.1]{m}} & \text{\unit[0.03]{m}} \end{bmatrix}^T$ and 
+\begin{equation*}
+	I = \begin{bmatrix} \text{\unit[0.0018]{$kg/m^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$kg/m^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$kg/m^2$}} \end{bmatrix}.
+\end{equation*}
+
+In the simulation the recursive least squares converges in this case within seconds, as it can be seen in \ref{fig:mass_error}, \ref{fig:grasping_offset_error} and \ref{fig:inertia_error}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.7]{figures/mass_error.eps}
+	\caption{Error in mass estimation}
+	\label{fig:mass_error}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.7]{figures/grasping_offset_error.eps}
+	\caption{Error in grasping offset estimation}
+	\label{fig:grasping_offset_error}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.7]{figures/inertia_error.eps}
+	\caption{Error in inertia estimation}
+	\label{fig:inertia_error}
+\end{figure}
 
 \chapter{Experimental Evaluation}
 \label{chap:experimental_evaluation}

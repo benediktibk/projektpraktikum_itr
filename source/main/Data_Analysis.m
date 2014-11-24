@@ -13,8 +13,18 @@ for i=1:length(files)
 end
 
 %% determine start and stop time
+estStart = -1;
+start = -1;
+for i = 1:length(estTime)
+    if estTime(i) > 0
+        estStart = i;
+    end    
+end
 
-start = 25/Ts;
+if start < 0
+    display('could not find start time');
+    start = 25/Ts;
+end 
 
 runTimeStart = -1;
 stop = -1;

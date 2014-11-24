@@ -11,3 +11,4 @@
 *.ps
 *.lof
 report.pdf
+figures/*-eps-converted-to.pdf
