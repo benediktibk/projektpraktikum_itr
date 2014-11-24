@@ -39,17 +39,51 @@ inertiaErrorReduced = abs(inertiaError(startIndex:endIndex, 2:7));
 figure;
 subplot(2,1,1)
 semilogy(t, mErrorReduced);
-legend('m error');
-xlabel('t/[s]');
-ylabel('m/[kg]');
+
+set(gca,'YTick',[10^-6 10^-4 10^-2 10^0])
+set(gca,'XTick',[startTime, 1:1:endTime])
+set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
+set(gca,'XTickLabel',{})
+ylabel('y1')
+
+ylabh = get(gca,'YLabel');
+set(ylabh,'Position',get(ylabh,'Position') - [0.1 0 0])
 subplot(2,1,2)
 semilogy(t, cErrorReduced);
-legend('c_x error', 'c_y error', 'c_z error');
-xlabel('t/[s]');
-ylabel('c error/[m]');
+legend('cerror1', 'cerror2', 'cerror3');
+
+set(gca,'YTick',[10^-10 10^-5 10^0])
+set(gca,'YTickLabel',{'llllllill','llllllili','lllllliil'})
+
+set(gca,'XTick',[startTime, 1:1:endTime])
+set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
+xlabel('x')
+
+ylabh = get(gca,'YLabel');
+set(ylabh,'Position',get(ylabh,'Position') - [0.1 0 0])
+ylabel('y2')
+%print(gcf,'../../documents/report/figures/mass','-depsc' );
+
+
+
 figure;
 semilogy(t, inertiaErrorReduced);
-legend('I_{xx} error', 'I_{yy} error', 'I_{zz} error', 'I_{xy} error', 'I_{xz} error', 'I_{yz} error');
-xlabel('t/[s]');
-ylabel('inertia error/[kg/m^2]');
-box off
+legend('Ierror1', 'Ierror2','Ierror3','Ierror4','Ierror5','Ierror6');
+
+xlabel('xaxis')
+ylabel('yaxis')
+ylim([10^-10 10^2])
+set(gca,'YTick',[10.^(-10:2:2)])
+set(gca,'YTickLabel',{'lllllllll','','lllllllli','','lllllllil','','lllllllii'})
+set(gca,'XTick',[startTime, 1:1:endTime])
+set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
+
+ylabh = get(gca,'YLabel');
+set(ylabh,'Position',get(ylabh,'Position') - [0.2 0 0])
+
+set(gcf,'Position',[400 100 600 300])
+set(gcf, 'PaperPositionMode', 'auto');
+box on
+
+
+print(gcf,'../../documents/report/figures/inertia','-depsc' );
