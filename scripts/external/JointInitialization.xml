@@ -85,13 +85,13 @@
         <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.0161682" />
         <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.167235" />
         <!-- Right Arm -->
-        <Parameters maxTorque = "12"    Gain="110"      initialValue="0.007706261" />
-        <Parameters maxTorque = "10"    Gain="90"       initialValue="0.05199214" />
-        <Parameters maxTorque = "6"     Gain="40"       initialValue="1.632929" />
-        <Parameters maxTorque = "6"     Gain="50"       initialValue="0.06405764" />
-        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.06820573" />
-        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.08269216" />
-        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.5199325" />
+        <Parameters maxTorque = "12"    Gain="110"      initialValue="0.0147492" />
+        <Parameters maxTorque = "10"    Gain="90"       initialValue="0.0965913" />
+        <Parameters maxTorque = "6"     Gain="40"       initialValue="1.6849" />
+        <Parameters maxTorque = "6"     Gain="50"       initialValue="0.0431397" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.0085089" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="-0.019807" />
+        <Parameters maxTorque = "4"     Gain="30"       initialValue="0.513583" />
 	<!--
 	<Parameters maxTorque = "12"	Gain="110"	initialValue="-0.0522416" />
 	<Parameters maxTorque = "10"	Gain="90"	initialValue="0.0692209" />
@@ -165,13 +165,13 @@
 	<Parameters maxTorque = "4.0"  Gain="30"  initialValue="-0.15119" />
 -->
 	
-	<Parameters maxTorque = "12"	Gain="140"	initialValue="-0.0363266" />
-	<Parameters maxTorque = "12"	Gain="120"	initialValue="0.210951" />
-	<Parameters maxTorque = "6"	Gain="40"	initialValue="-2.57585" />
-	<Parameters maxTorque = "7"	Gain="60"	initialValue="0.0334216" />
-	<Parameters maxTorque = "4"	Gain="30"	initialValue="3.22211" />
-	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.0218592" />
-	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.00808408" />
+	<Parameters maxTorque = "12"	Gain="140"	initialValue="-0.0693266" />
+	<Parameters maxTorque = "12"	Gain="120"	initialValue="0.19280951" />
+	<Parameters maxTorque = "6"	Gain="40"	initialValue="-2.57985" />
+	<Parameters maxTorque = "7"	Gain="60"	initialValue="0.040862" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="3.22856811" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="0.0198592" />
+	<Parameters maxTorque = "4"	Gain="30"	initialValue="-0.16408408" />
 
 	<!-- Right Arm	 -->
 	<Parameters maxTorque = "12.0" Gain="140"  initialValue="0.12469" />

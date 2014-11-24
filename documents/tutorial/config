@@ -13,6 +13,18 @@ Host robot1Platform
         ForwardX11 yes
         ForwardX11Trusted yes
 
+Host robot4Manipulator
+	HostName cobot4a
+	User murola
+	ForwardX11 yes
+	ForwardX11Trusted yes
+
+Host robot4Platform
+	HostName cobot4b
+	User murola
+        ForwardX11 yes
+        ForwardX11Trusted yes
+
 Host robotControl
 	HostName ecrins
 	User murola
