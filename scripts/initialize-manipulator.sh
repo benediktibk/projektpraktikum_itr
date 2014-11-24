@@ -1,5 +1,8 @@
 #!/bin/bash
-cd ~/pp_ident/repository/scripts/external
-./newInitialization
+cd ~/wearhap/src/actuators/manipulation/accrea/armInitialization 
+./newInitialization JointInitialization.xml
+cd ~/wearhap/src/actuators/manipulation/accrea/FTSInitialization
 ./new_goto_qa
-~/wearhap/src/actuators/manipulation/accrea/FTSInitialization/FTS_dual_Initialization
+./FTS_dual_Initialization
+cd
+
