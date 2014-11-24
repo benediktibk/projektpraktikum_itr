@@ -146,15 +146,29 @@ For the purpose of a faster evaluation of our system identification algorithms w
 As in reality the force and torques sensors typically have some noise on them we also ran our system identification algorithms on a model version, which had Gaussian white noise on the forces and torques. The deviation of the direct forces and the disturbed ones can be seen in \ref{fig:force_noisy}. Of course, the same noise level, but stochastically independent, was added to all forces and torques.
 
 \begin{figure}
-	\centering
-	\includegraphics[scale=.7]{figures/force_noisy.eps}
-	\caption{Force with Gaussian white noise}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[br][tr]{$F\left[\scr{N}\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$-100\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-50\  $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$50\  $}
+	\psfrag{llllllill}[br][Bl]{$100\  $}
+	\includegraphics[width=0.8\textwidth]{figures/forces.eps}
+	\vspace{0.2cm}
+	\caption{Force without (red) and with Gaussian white noise (blue)}
 	\label{fig:force_noisy}
 \end{figure}
 
 To test the system identification with one grasping point we simulated the identification of an object with $m = $\unit[2]{kg}, $c = \begin{bmatrix} \text{\unit[0.5]{m}} & \text{\unit[0.1]{m}} & \text{\unit[0.03]{m}} \end{bmatrix}^T$ and 
 \begin{equation*}
-	I = \begin{bmatrix} \text{\unit[0.0018]{$kg/m^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$kg/m^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$kg/m^2$}} \end{bmatrix}.
+	I = \begin{bmatrix} \text{\unit[0.0018]{$\scr{kg}/\scr{m}^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$\scr{kg}/\scr{m}^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$\scr{kg}/\scr{m}^2$}} \end{bmatrix}.
 \end{equation*}
 
 In the simulation the recursive least squares converges in this case within seconds, as it can be seen in \ref{fig:mass_error}, \ref{fig:grasping_offset_error} and \ref{fig:inertia_error}
