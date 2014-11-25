@@ -22,7 +22,7 @@ end
 
 if start < 0
     display('could not find start time');
-    start = 25/Ts;
+    start = initializationTime/Ts;
 end 
 
 stop = -1;

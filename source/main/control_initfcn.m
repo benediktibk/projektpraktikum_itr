@@ -25,6 +25,8 @@ MANIPULATION_CMD_CONFIGURATION = 6;
 % Velocity Stream ID    vector:[102,dx,dy,dz,wx,wy,wz,elbow,zeros(1,15)]
 MANIPULATION_CMD_CONFIGURATION_VELOCITY = 102;
 
+timeForMovement = 5;
+
 %% Actuator Limits
 vxMax = 0.04;
 vyMax = 0.04;
@@ -61,6 +63,7 @@ initOrientationRightArmTwo = [1 0 0 0];
 initPositionLeftArm = [0.7 0.23 0.9];
 initOrientationLeftArmOne = [0 1 0 0];
 initOrientationLeftArmTwo = [1 0 0 0];
+initializationTime = timeForMovement + 1;
 
 %% Filter Properties [rad/s]
 cutOffFrequ = 20;
