@@ -13,11 +13,10 @@ for i=1:length(files)
 end
 
 %% determine start and stop time
-estStart = -1;
 start = -1;
 for i = 1:length(estTime)
-    if estTime(i) > 0
-        estStart = i;
+    if estTime(i) > 0 && start < 0
+        start = i;
     end    
 end
 
@@ -26,13 +25,9 @@ if start < 0
     start = 25/Ts;
 end 
 
-runTimeStart = -1;
 stop = -1;
-for i = 1:length(runTime)
-    if runTime(i) > 0
-        runTimeStart = i;
-    end    
-    if runTime(i) == 0 && runTimeStart > 0 && stop < 0
+for i = start:length(estTime)
+    if estTime(i) == 0 && stop < 0
         stop = i-1;
     end
 end
