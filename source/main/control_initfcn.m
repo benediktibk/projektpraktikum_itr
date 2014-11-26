@@ -67,3 +67,6 @@ initializationTime = timeForMovement + 1;
 
 %% Filter Properties [rad/s]
 cutOffFrequ = 20;
+
+%% Geometry
+offsetEndeffectorSensorGraspingPoint = [0 0.18 0];
