@@ -68,8 +68,17 @@ initializationTime = timeForMovement + 1;
 %% Filter Properties [rad/s]
 cutOffFrequ = 20;
 
-%% Geometry
+%% Compensation
 offsetEndeffectorSensorGraspingPoint = [0 0.18 0];
 gripperMass = 1.68;
 gripperCenterOfGravity = [0 0.185 0.002]';
 gripperInertiaInGraspingPoint = diag([0.0613 0.0015 0.082]);
+clutchMass = 0.125;
+clutchHeight = 0.02;
+clutchCenterOfGravity = [0 clutchHeight/2 0]';
+clutchInnerRadius = 0.01;
+clutchOuterRadius = 0.025;
+clutchInertiaInCenterOfGravity = diag([1/12*clutchMass*(3*(clutchInnerRadius^2+clutchOuterRadius^2) + clutchHeight^2) 1/2*clutchMass*(clutchInnerRadius^2+clutchOuterRadius^2) 1/12*clutchMass*(3*(clutchInnerRadius^2+clutchOuterRadius^2) + clutchHeight^2)]);
+%%clutchInertiaInGraspingPoint = (clutchInertiaInCenterOfGravity+clutchMass*(clutchCenterOfGravity'*clutchCenterOfGravity*eye(3)-clutchCenterOfGravity*clutchCenterOfGravity'));
+clutchInertiaInGraspingPoint=zeros(3);
+endEffectorForceOffsetAfterInitialization = clutchMass*9.81;
