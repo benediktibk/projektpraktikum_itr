@@ -63,7 +63,7 @@ initOrientationRightArmTwo = [1 0 0 0];
 initPositionLeftArm = [0.7 0.23 0.9];
 initOrientationLeftArmOne = [0 1 0 0];
 initOrientationLeftArmTwo = [1 0 0 0];
-initializationTime = timeForMovement + 1;
+initializationTime = timeForMovement + 4;
 
 %% Filter Properties [rad/s]
 cutOffFrequ = 20;
@@ -79,6 +79,5 @@ clutchCenterOfGravity = [0 clutchHeight/2 0]';
 clutchInnerRadius = 0.01;
 clutchOuterRadius = 0.025;
 clutchInertiaInCenterOfGravity = diag([1/12*clutchMass*(3*(clutchInnerRadius^2+clutchOuterRadius^2) + clutchHeight^2) 1/2*clutchMass*(clutchInnerRadius^2+clutchOuterRadius^2) 1/12*clutchMass*(3*(clutchInnerRadius^2+clutchOuterRadius^2) + clutchHeight^2)]);
-%%clutchInertiaInGraspingPoint = (clutchInertiaInCenterOfGravity+clutchMass*(clutchCenterOfGravity'*clutchCenterOfGravity*eye(3)-clutchCenterOfGravity*clutchCenterOfGravity'));
-clutchInertiaInGraspingPoint=zeros(3);
+clutchInertiaInGraspingPoint = (clutchInertiaInCenterOfGravity+clutchMass*(clutchCenterOfGravity'*clutchCenterOfGravity*eye(3)-clutchCenterOfGravity*clutchCenterOfGravity'));
 endEffectorForceOffsetAfterInitialization = clutchMass*9.81;
