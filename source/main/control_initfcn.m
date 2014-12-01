@@ -70,3 +70,6 @@ cutOffFrequ = 20;
 
 %% Geometry
 offsetEndeffectorSensorGraspingPoint = [0 0.18 0];
+gripperMass = 1.68;
+gripperCenterOfGravity = [0 0.185 0.002]';
+gripperInertiaInGraspingPoint = diag([0.0613 0.0015 0.082]);
