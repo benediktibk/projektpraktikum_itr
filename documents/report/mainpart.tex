@@ -189,7 +189,7 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
 	\includegraphics[width=0.8\textwidth]{figures/mass.eps}
 	\vspace{0.2cm}
-	\caption{Estimation of mass $m$ and center of mass $\vec{c}$}
+	\caption{Estimation error of mass $m \left[\mathrm{kg}\right]$ and center of mass $\vec{c}$ with one grasping point}
 	\label{fig:estim_mass}
 \end{figure}
 
@@ -215,8 +215,165 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
 	\includegraphics[width=0.8\textwidth]{figures/inertia.eps}
 	\vspace{0.2cm}
-	\caption{Inertia Tensor error}
+	\caption{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with one grasping point}
 	\label{fig:estim_inertia}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+	\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
+	\psfrag{llllllill}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{llllllili}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllliil}[Br][Bl]{$10^{2}\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/mass_noise.eps}
+	\vspace{0.2cm}
+	\caption{Estimation error of mass $m \left[\mathrm{kg}\right]$ and center of mass $\vec{c}$ with one grasping point and noise on $\vec F$ and $\vec M$}
+	\label{fig:estim_mass_noise}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^2\  $}
+	\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
+	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
+	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
+	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
+	\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/inertia_noise.eps}
+	\vspace{0.2cm}
+	\caption{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with one grasping point and noise on $\vec F$ and $\vec M$}
+	\label{fig:estim_inertia_noise}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+	\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
+	\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
+	\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
+	\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/mass_multi.eps}
+	\vspace{0.2cm}
+	\caption{Estimation error of mass $m \left[\mathrm{kg}\right]$ and center of mass $\vec{c}$ with three grasping points}
+	\label{fig:estim_mass_multi}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
+	\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
+	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
+	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
+	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
+	\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/inertia_multi.eps}
+	\vspace{0.2cm}
+	\caption{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with three grasping points}
+	\label{fig:estim_inertia_multi}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+	\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
+	\psfrag{llllllill}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{llllllili}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllliil}[Br][Bl]{$10^{2}\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/mass_multi_noise.eps}
+	\vspace{0.2cm}
+	\caption{Estimation of mass $m$ and center of mass $\vec{c}$ with three grasping points and noise on $\vec F$ and $\vec M$}
+	\label{fig:estim_mass_multi_noise}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+	\psfrag{lllllllli}[Br][Bl]{$10^{-2}\  $}
+	\psfrag{lllllllil}[Br][Bl]{$10^2\  $}
+	\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
+	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
+	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
+	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
+	\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/inertia_multi_noise.eps}
+	\vspace{0.2cm}
+	\caption{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with three grasping points and noise on $\vec F$ and $\vec M$}
+	\label{fig:estim_inertia_multi_noise}
 \end{figure}
 
 To test the system identification with one grasping point we simulated the identification of an object with $m = $\unit[2]{kg}, $c = \begin{bmatrix} \text{\unit[0.5]{m}} & \text{\unit[0.1]{m}} & \text{\unit[0.03]{m}} \end{bmatrix}^T$ and 
@@ -224,7 +381,7 @@ To test the system identification with one grasping point we simulated the ident
 	I = \begin{bmatrix} \text{\unit[0.0018]{$\scr{kg}/\scr{m}^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$\scr{kg}/\scr{m}^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$\scr{kg}/\scr{m}^2$}} \end{bmatrix}.
 \end{equation*}
 
-In the simulation the recursive least squares converges in this case within seconds, as it can be seen in \ref{fig:mass_error}, \ref{fig:grasping_offset_error} and \ref{fig:inertia_error}
+In the simulation the recursive least squares converges in this case within seconds for one grasping point, as it can be seen in \ref{fig:mass_error}, \ref{fig:grasping_offset_error} and \ref{fig:inertia_error}
 
 \chapter{Experimental Evaluation}
 \label{chap:experimental_evaluation}

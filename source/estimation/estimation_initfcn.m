@@ -18,5 +18,5 @@ r12 = [1 0.5 -0.05]'; % grasping offset from first to second point
 r13 = [1 -0.2 0.05]'; % grasping offset from first to third point
 
 %% noise
-powerNoise = 0.1;
+powerNoise = 0.05;
 
