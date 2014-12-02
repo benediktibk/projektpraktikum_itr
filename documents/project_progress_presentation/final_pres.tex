@@ -1,0 +1,152 @@
+\documentclass[student,noshadow]{ITRslides}
+\usepackage{multimedia}
+
+\usepackage[absolute,overlay]{textpos}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\addbibresource{ref.bib}
+\graphicspath{{pics/}{logos/}}
+\usepackage{psfrag}
+\usepackage[percent]{overpic}
+\usepackage{subcaption}
+\usepackage{units}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes}
+\title{Object exploration using visual/haptic information by a human-robot team}
+\presenter{Florian Wirnshofer, Benedikt Schmidt}
+
+\supervisor{Denis Cehajic}
+\typeofpres{Project Laboratory Cognitive Robotics and Control}
+
+
+\newcommand*\MyBlue{%
+  \item[\color{blue}\scalebox{0.9}{\textbullet}]}
+\newcommand*\MyRed{%
+  \item[\color{red}\scalebox{0.9}{\textbullet}]}
+%\nocite{*}
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}} 
+% Alle indizes in Normalschrift ausser Läuferindizeszs
+\newcommand{\scr}[1]{\mathrm{#1}} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%INTRODUCTION , MOTIVATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Content}
+	\tableofcontents
+\end{frame}
+
+\section{Online Load Estimation}
+\begin{frame}
+	%Benedikt
+	\frametitle{Task}
+	\begin{block}{Goal}
+			Human-Robot cooperative estimation of load uncertainties.
+	\end{block}
+	\vspace{2mm}
+	\begin{block}{Key-Questions}
+			\begin{itemize}
+				\item Which sensor feedback is required from agents?
+				\item How to exchange information between agents?
+				\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
+			\end{itemize}	   
+	\end{block}	
+\end{frame}
+
+\begin{frame}
+	%Florian
+	\frametitle{Online Load Estimation}
+\end{frame}
+
+\begin{frame}
+	%Florian
+	\frametitle{Cooperative Online Load Estimation}
+\end{frame}
+
+\begin{frame}
+	%Florian
+	\frametitle{Persistent Excitation}
+	\simpleblock{
+	\begin{small}
+		\begin{center}
+			RLS convergence prerequisites
+		\end{center}
+	\end{small}
+	}
+	\vspace{1cm}	
+	\begin{itemize}
+		\item Reference trajectory must be persistently exciting(PE)
+		\item Non-zero acceleration of EEF in 6-DoF \cite{literaturstelle3}
+	\end{itemize}
+	\vspace{1cm}
+	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
+\end{frame}
+
+\section{Signal Processing}
+\begin{frame}
+	%Florian
+	\frametitle{Acquisition}
+\end{frame}
+
+\begin{frame}
+	%Florian
+	\frametitle{Processing}
+\end{frame}
+
+\section{Simulation Results}
+\begin{frame}
+	%Benedikt
+	\frametitle{Estimation Results without Noise}
+\end{frame}
+
+\begin{frame}
+	%Benedikt
+	\frametitle{Estimation Results with Noise}
+\end{frame}
+
+\section{Outlook}
+\begin{frame}
+	%Benedikt
+	\frametitle{Remaining Issues}
+\end{frame}
+\begin{frame}
+	%Benedikt
+	\frametitle{Time Schedule}
+	\begin{tikzpicture}[node distance=0.2cm]
+		\node[shape=circle,fill=tum_blue] (A) at (0, 0) {};
+		\node[right=of A.east,anchor=west] {Get familiar with the topic and the hardware};
+		\node[anchor=west] (DateA) at (0.2, -0.4) {19.11.2014};
+		\draw[tum_blue,thick] (DateA) -- (A);
+		\node[shape=circle,fill=tum_blue] (B) at (0, -1) {};
+		\node[right=of B.east,anchor=west] {Implement load identification with one grasping point};
+		\node[anchor=west] (DateB) at (0.2, -1.4) {5.12.2014};
+		\draw[tum_blue,thick] (DateB) -- (B);
+		\node[shape=circle,fill=tum_blue] (C) at (0, -2) {};
+		\node[right=of C.east,anchor=west] {Implement load identification with more than one grasping point};
+		\node[anchor=west] (DateC) at (0.2, -2.4) {19.12.2014};
+		\draw[tum_blue,thick] (DateC) -- (C);
+		\node[shape=circle,fill=tum_blue] (D) at (0, -3) {};
+		\node[right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
+		\node[anchor=west] (DateD) at (0.2, -3.4) {16.01.2015};
+		\draw[tum_blue,thick] (DateD) -- (D);
+		\draw[tum_blue,very thick] (0, 0) -- (0, -3);
+	\end{tikzpicture}
+\end{frame}
+
+\appendix
+\begin{frame}
+	\frametitle{References}
+	\printbibliography
+\end{frame}
+
+\end{document}
