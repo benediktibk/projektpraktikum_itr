@@ -381,7 +381,7 @@ To test the system identification with one grasping point we simulated the ident
 	I = \begin{bmatrix} \text{\unit[0.0018]{$\scr{kg}/\scr{m}^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$\scr{kg}/\scr{m}^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$\scr{kg}/\scr{m}^2$}} \end{bmatrix}.
 \end{equation*}
 
-In the simulation the recursive least squares converges in this case within seconds for one grasping point, as it can be seen in \ref{fig:mass_error}, \ref{fig:grasping_offset_error} and \ref{fig:inertia_error}
+In the simulation the recursive least squares converges in this case within seconds for one grasping point, as it can be seen in \ref{fig:estim_mass} and \ref{fig:estim_inertia}. This works as well with noise on $\vec F$ and $\vec M$ (\ref{fig:estim_mass_noise} and \ref{fig:estim_inertia_noise}), with three grasping points (\ref{fig:estim_mass_multi} and \ref{fig:estim_inertia_multi}) and with three grasping points and noise on $\vec F$ and $\vec M$ (\ref{fig:estim_mass_multi_noise} and \ref{fig:estim_inertia_multi_noise}).
 
 \chapter{Experimental Evaluation}
 \label{chap:experimental_evaluation}
