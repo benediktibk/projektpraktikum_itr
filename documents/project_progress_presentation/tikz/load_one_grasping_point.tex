@@ -1,0 +1,32 @@
+\resizebox{3cm}{!}{
+\begin{tikzpicture}
+	% world frame
+	\draw[arrows=->,line width=0.8pt] (0, 0) -- (0.5, 0);
+	\draw[arrows=->,line width=0.8pt] (0, 0) -- (0.35, 0.35);
+	\draw[arrows=->,line width=0.8pt] (0, 0) -- (0, 0.5);
+	\node at (0.8, 0) {\scriptsize{$^\mathrm{W}x$}};
+	\node at (0.5, 0.5) {\scriptsize{$^\mathrm{W}y$}};
+	\node at (-0.1, 0.8) {\scriptsize{$^\mathrm{W}z$}};
+	\node at (-0.1, -0.3) {W};	
+	
+	 load
+	\draw[fill,light-gray,draw=black]plot[smooth, tension=1.3] coordinates {(1, 2) (2, 4) (3, 3) (3, 2) (2, 0.5) (1, 0.2) (1,2)};
+	
+			% load frame
+	\draw[draw=blue,arrows=->,line width=0.8pt] (2, 3.8) -- (2.35, 3.45);
+	\draw[draw=blue,arrows=->,line width=0.8pt] (2, 3.8) -- (1.45, 3.65);
+	\draw[draw=blue,arrows=->,line width=0.8pt] (2, 3.8) -- (2.1, 4.2);
+	\node[text=blue] at (2.55, 3.25) {\scriptsize{$^\mathrm{L}x$}};
+	\node[text=blue] at (1.25, 3.9) {\scriptsize{$^\mathrm{L}y$}};
+	\node[text=blue] at (2.1, 4.4) {\scriptsize{$^\mathrm{L}z$}};
+	\node[text=blue] at (1.9, 3.3) {L};
+	
+	% gripper
+	\draw[draw=black,line width=2pt] (2.1, 4) -- (2.45, 3.65);
+	\draw[draw=black,line width=2pt] (1.7, 3.9) -- (2.05, 3.55);
+	\draw[draw=black,line width=2pt] (2.1, 4) -- (1.7, 3.9);
+	\draw[draw=black,line width=2pt] (1.6, 4.3) -- (1.95, 3.95);
+	
+	
+\end{tikzpicture} 
+}

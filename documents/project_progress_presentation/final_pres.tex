@@ -17,6 +17,7 @@
 \supervisor{Denis Cehajic}
 \typeofpres{Project Laboratory Cognitive Robotics and Control}
 
+\definecolor{light-gray}{gray}{0.95}
 
 \newcommand*\MyBlue{%
   \item[\color{blue}\scalebox{0.9}{\textbullet}]}
@@ -130,11 +131,51 @@
 \begin{frame}
 	%Florian
 	\frametitle{Online Load Estimation}
+
+	\begin{columns}
+		\centering
+		 	\begin{column}{0.25\textwidth}
+			\begin{figure}
+			\centering
+				\include{tikz/load_one_grasping_point}
+			\end{figure}
+		 	\end{column}
+		 		
+		 	\begin{column}{0.75\textwidth}
+			Model:\\ \cite{literaturstelle2}\\
+			%\vspace{0.1cm}
+			\[^\scr{L}\vec{F} = m {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{g} + ^\scr{L}\vec{\dot{\omega}} \times m ^\scr{L}\vec{c} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{\omega} \times m ^\scr{L}\vec{c})\]
+			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
+			
+			\vspace{0.1cm}
+			$\vec{\ddot{p}}$ EEF acceleration\\
+			$m$ Object mass\\
+			$\vec{I}$  Object inertia tensor
+		 	\end{column}
+	\end{columns}
+	 		\vspace{0.2cm}
+			RLS Estimation-Parameters: \\
+			$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
 \end{frame}
 
 \begin{frame}
 	%Florian
 	\frametitle{Cooperative Online Load Estimation}
+	\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}
+					\centering
+					\include{tikz/load_multiple_grasping_points}
+				\end{figure}	
+		 	\end{column}
+		 	\begin{column}{0.5\textwidth}
+		 	\end{column}
+	\end{columns}
+
+\begin{align*} 
+\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i} &=  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right) \\ 
+\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{i} \times {^\scr{L}}\vec{F}_{i} &= f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right)
+\end{align*}
 \end{frame}
 
 \begin{frame}
