@@ -10,7 +10,7 @@
 \usepackage{subcaption}
 \usepackage{units}
 \usepackage{tikz}
-\usetikzlibrary{positioning,shapes}
+\usetikzlibrary{positioning,shapes,fadings,decorations.pathmorphing,arrows}
 \title{Object exploration using visual/haptic information by a human-robot team}
 \presenter{Florian Wirnshofer, Benedikt Schmidt}
 
@@ -28,6 +28,70 @@
 % Alle indizes in Normalschrift ausser Läuferindizes
 \newcommand{\scr}[1]{\mathrm{#1}} 
 
+\makeatletter
+\newif\iftikz@shading@path
+
+\tikzset{
+    % There are three circumstances in which the fading sep is needed:
+    % 1. Arrows which do not update the bounding box (which is most of them).
+    % 2. Line caps/joins and mitres that extend outside the natural bounding 
+    %    box of the path (these are not calculated by PGF).
+    % 3. Other reasons that haven't been anticipated.
+    fading xsep/.store in=\pgfpathfadingxsep,
+    fading ysep/.store in=\pgfpathfadingysep,
+    fading sep/.style={fading xsep=#1, fading ysep=#1},
+    fading sep=0.0cm,
+    shading path/.code={%
+        % Prevent this stuff happning recursively.
+        \iftikz@shading@path%
+        \else%
+            \tikz@shading@pathtrue%
+            % \tikz@addmode installs the `modes' (e.g., fill, draw, shade) 
+            % to be applied to the path. It isn't usualy for doing more
+            % changes to the path's construction.
+            \tikz@addmode{%
+                \pgfgetpath\pgf@currentfadingpath%
+                % Get the boudning box of the current path size including the fading sep
+                \pgfextract@process\pgf@fadingpath@southwest{\pgfpointadd{\pgfqpoint{\pgf@pathminx}{\pgf@pathminy}}%
+                    {\pgfpoint{-\pgfpathfadingxsep}{-\pgfpathfadingysep}}}%%
+                \pgfextract@process\pgf@fadingpath@northeast{\pgfpointadd{\pgfqpoint{\pgf@pathmaxx}{\pgf@pathmaxy}}%
+                    {\pgfpoint{\pgfpathfadingxsep}{\pgfpathfadingysep}}}%
+                % Clear the path
+                \pgfsetpath\pgfutil@empty%                          
+                % Interrupt the path and picture to create a fading.
+                \pgfinterruptpath%
+                \pgfinterruptpicture%
+                    \begin{tikzfadingfrompicture}[name=.]
+                        \path [shade=none,fill=none, #1] \pgfextra{%
+                            % Set the softpath. Any transformations in #1 will have no effect.
+                            % This will *not* update the bounding box...
+                            \pgfsetpath\pgf@currentfadingpath%
+                            % ...so it is done manually.
+                            \pgf@fadingpath@southwest
+                            \expandafter\pgf@protocolsizes{\the\pgf@x}{\the\pgf@y}%
+                            \pgf@fadingpath@northeast%
+                            \expandafter\pgf@protocolsizes{\the\pgf@x}{\the\pgf@y}%
+                        };
+                        % Now get the bounding of the picture.
+                        \xdef\pgf@fadingboundingbox@southwest{\noexpand\pgfqpoint{\the\pgf@picminx}{\the\pgf@picminy}}%
+                        \xdef\pgf@fadingboundingbox@northeast{\noexpand\pgfqpoint{\the\pgf@picmaxx}{\the\pgf@picmaxy}}%
+                        %
+                    \end{tikzfadingfrompicture}%
+                \endpgfinterruptpicture%
+                \endpgfinterruptpath%
+                % Install a rectangle that covers the shaded/faded path picture.                                
+                \pgfpathrectanglecorners{\pgf@fadingboundingbox@southwest}{\pgf@fadingboundingbox@northeast}%
+                % Make the fading happen.
+                \def\tikz@path@fading{.}%
+                \tikz@mode@fade@pathtrue%
+                \tikz@fade@adjustfalse%10pt
+                % Shift the fading to the mid point of the rectangle
+                \pgfpointscale{0.5}{\pgfpointadd{\pgf@fadingboundingbox@southwest}{\pgf@fadingboundingbox@northeast}}%
+                \edef\tikz@fade@transform{shift={(\the\pgf@x,\the\pgf@y)}}%
+            }%
+        \fi%
+    }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -258,7 +322,7 @@
 		\node[right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
 		\node[anchor=west] (DateD) at (0.2, -3.4) {16.01.2015};
 		\draw[tum_blue,thick] (DateD) -- (D);
-		\draw[tum_blue,very thick] (A.south) -- (B.north);
+		\path[top color=green, bottom color=tum_blue, shading path={draw=transparent!0, very thick}] (A.south) -- (B.north);
 		\draw[tum_blue,very thick] (B.south) -- (C.north);
 		\draw[tum_blue,very thick] (C.south) -- (D.north);
 	\end{tikzpicture}
