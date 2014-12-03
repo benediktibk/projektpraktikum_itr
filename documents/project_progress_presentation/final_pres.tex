@@ -25,7 +25,7 @@
 %\nocite{*}
 
 \renewcommand{\vec}[1]{\boldsymbol{#1}} 
-% Alle indizes in Normalschrift ausser Läuferindizeszs
+% Alle indizes in Normalschrift ausser Läuferindizes
 \newcommand{\scr}[1]{\mathrm{#1}} 
 
 
@@ -56,9 +56,9 @@
 	\vspace{2mm}
 	\begin{block}{Key-Questions}
 			\begin{itemize}
-				\item Which sensor feedback is required from agents?
-				\item How to exchange information between agents?
 				\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
+				\item How should the agents excite the load?
+				\item How to exchange information between agents?
 			\end{itemize}	   
 	\end{block}	
 \end{frame}
@@ -107,26 +107,145 @@
 \begin{frame}
 	%Benedikt
 	\frametitle{Estimation Results without Noise}
+	
+	\begin{columns}
+		\centering
+		\begin{column}{0.5\textwidth}
+			\centering
+			Error of mass $m \left[\mathrm{kg}\right]$
+			\begin{figure}
+				\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+				\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+				\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+				\psfrag{one}[c][Br]{$0$}
+				\psfrag{two}[c][Br]{$1$}
+				\psfrag{thr}[c][Br]{$2$}
+				\psfrag{fou}[c][Br]{$3$}
+				\psfrag{fiv}[c][Br]{$4$}
+				\psfrag{six}[c][Br]{$5$}
+				\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+				\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
+				\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+				\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
+				\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
+				\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
+				\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
+				\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+				\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+				\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+				\includegraphics[width=\textwidth]{fig/mass_multi.eps}
+				\label{fig:estim_mass_multi}
+			\end{figure}
+			Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{figure}
+				\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+				\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+				\psfrag{one}[c][Br]{$0$}
+				\psfrag{two}[c][Br]{$1$}
+				\psfrag{thr}[c][Br]{$2$}
+				\psfrag{fou}[c][Br]{$3$}
+				\psfrag{fiv}[c][Br]{$4$}
+				\psfrag{six}[c][Br]{$5$}
+				\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
+				\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
+				\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+				\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
+				\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
+				\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
+				\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
+				\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
+				\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+				\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+				\includegraphics[width=\textwidth]{fig/inertia_multi.eps}
+				\label{fig:estim_inertia_multi}
+			\end{figure}
+			Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	%Benedikt
-	\frametitle{Estimation Results with Noise}
+	\frametitle{Estimation Results with Noise ($P = \unit[0.05]{W}$)}
+	\begin{columns}
+		\centering
+		\begin{column}{0.5\textwidth}
+			\centering
+			Error of mass $m \left[\mathrm{kg}\right]$
+			\begin{figure}
+				\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+				\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+				\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+				\psfrag{one}[c][Br]{$0$}
+				\psfrag{two}[c][Br]{$1$}
+				\psfrag{thr}[c][Br]{$2$}
+				\psfrag{fou}[c][Br]{$3$}
+				\psfrag{fiv}[c][Br]{$4$}
+				\psfrag{six}[c][Br]{$5$}
+				\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
+				\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
+				\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+				\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
+				\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
+				\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
+				\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
+				\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+				\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+				\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+				\includegraphics[width=\textwidth]{fig/mass_multi_noise.eps}
+			\end{figure}
+			Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{figure}
+				\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+				\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+				\psfrag{one}[c][Br]{$0$}
+				\psfrag{two}[c][Br]{$1$}
+				\psfrag{thr}[c][Br]{$2$}
+				\psfrag{fou}[c][Br]{$3$}
+				\psfrag{fiv}[c][Br]{$4$}
+				\psfrag{six}[c][Br]{$5$}
+				\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
+				\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
+				\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
+				\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
+				\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
+				\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
+				\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
+				\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
+				\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+				\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+				\includegraphics[width=\textwidth]{fig/inertia_multi_noise.eps}
+			\end{figure}
+			Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Outlook}
 \begin{frame}
 	%Benedikt
 	\frametitle{Remaining Issues}
+	\begin{itemize}
+		\setlength{\itemsep}{10pt}
+		\item Check if input values for the estimator are correct
+		\item Find a good excitation pattern
+		\item Incorporate human into the identification
+	\end{itemize}
 \end{frame}
 \begin{frame}
 	%Benedikt
 	\frametitle{Time Schedule}
 	\begin{tikzpicture}[node distance=0.2cm]
-		\node[shape=circle,fill=tum_blue] (A) at (0, 0) {};
+		\node[shape=circle,fill=green] (A) at (0, 0) {};
 		\node[right=of A.east,anchor=west] {Get familiar with the topic and the hardware};
 		\node[anchor=west] (DateA) at (0.2, -0.4) {19.11.2014};
-		\draw[tum_blue,thick] (DateA) -- (A);
+		\draw[green,thick] (DateA) -- (A);
 		\node[shape=circle,fill=tum_blue] (B) at (0, -1) {};
 		\node[right=of B.east,anchor=west] {Implement load identification with one grasping point};
 		\node[anchor=west] (DateB) at (0.2, -1.4) {5.12.2014};
@@ -139,7 +258,9 @@
 		\node[right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
 		\node[anchor=west] (DateD) at (0.2, -3.4) {16.01.2015};
 		\draw[tum_blue,thick] (DateD) -- (D);
-		\draw[tum_blue,very thick] (0, 0) -- (0, -3);
+		\draw[tum_blue,very thick] (A.south) -- (B.north);
+		\draw[tum_blue,very thick] (B.south) -- (C.north);
+		\draw[tum_blue,very thick] (C.south) -- (D.north);
 	\end{tikzpicture}
 \end{frame}
 
