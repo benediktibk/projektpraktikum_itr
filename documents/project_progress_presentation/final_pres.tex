@@ -10,6 +10,8 @@
 \usepackage{subcaption}
 \usepackage{units}
 \usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{pgfplots}
 \usetikzlibrary{positioning,shapes,fadings,decorations.pathmorphing,arrows}
 \title{Object exploration using visual/haptic information by a human-robot team}
 \presenter{Florian Wirnshofer, Benedikt Schmidt}
@@ -203,6 +205,29 @@
 \begin{frame}
 	%Florian
 	\frametitle{Acquisition}
+	\begin{columns}
+	\begin{column}{0.35\textwidth}
+				\begin{figure}
+					\centering
+					\input{tikz/load_multiple_grasping_points}
+				\end{figure}	
+		 	\end{column}
+		 	\begin{column}{0.65\textwidth}
+		 	\begin{tabular}{llr}
+				\toprule
+				Information    & Tool & Frame Rate $\left[\mathrm{Hz}\right]$ \\
+				\midrule
+				${^\scr{L}}\vec{F}_{i},{^\scr{L}}\vec{N}_{i}$      & \textsc{JR3}    & 8000 $\rightarrow$ 100      \\
+				          & \textsc{Qualisys}        & 100       \\
+				$^\scr{L}\vec{\omega}$       & \textsc{Qualisys}     & 100      \\
+				$^\scr{W}\vec{p}$       & \textsc{Qualisys}     & 100      \\
+				$^\scr{L}\vec{r}_{1i}$ & \textsc{Qualisys}      & 100       \\
+				\bottomrule
+			\end{tabular}
+		 	%${^\scr{L}}\vec{F}_{i}$: Force measured at $i$-th grasping point w.r.t. the EEF frame L.\\ \vspace{0.3cm}
+		 	%${^\scr{L}}\vec{N}_{i}$: Torque measured at $i$-th grasping point w.r.t. the EEF frame L.
+		 	\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
