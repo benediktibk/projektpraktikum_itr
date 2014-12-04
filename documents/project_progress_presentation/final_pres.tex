@@ -10,6 +10,7 @@
 \usepackage{subcaption}
 \usepackage{units}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{booktabs}
 \usetikzlibrary{positioning,shapes,fadings,decorations.pathmorphing,arrows}
 \title{Object exploration using visual/haptic information by a human-robot team}
@@ -232,6 +233,13 @@
 \begin{frame}
 	%Florian
 	\frametitle{Processing}
+	
+	\textsc{Main Issue}: Noise prone first and second derivatives\\
+	\textsc{Solution}: Butterworth lowpass filter (Order:3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
+	\begin{figure}
+		\centering
+		\include{tikz/bodePlot}
+	\end{figure}	
 \end{frame}
 
 \section{Simulation Results}
