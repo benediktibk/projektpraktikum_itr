@@ -383,8 +383,7 @@
 	\frametitle{Remaining Issues}
 	\begin{itemize}
 		\setlength{\itemsep}{10pt}
-		\item Check if input values for the estimator are correct
-		\item Find a good excitation pattern
+		\item Improve the excitation pattern
 		\item Incorporate human into the identification
 	\end{itemize}
 \end{frame}
@@ -396,10 +395,10 @@
 		\node[right=of A.east,anchor=west] {Get familiar with the topic and the hardware};
 		\node[anchor=west] (DateA) at (0.2, -0.4) {19.11.2014};
 		\draw[green,thick] (DateA) -- (A);
-		\node[shape=circle,fill=tum_blue] (B) at (0, -1) {};
+		\node[shape=circle,fill=green] (B) at (0, -1) {};
 		\node[right=of B.east,anchor=west] {Implement load identification with one grasping point};
 		\node[anchor=west] (DateB) at (0.2, -1.4) {5.12.2014};
-		\draw[tum_blue,thick] (DateB) -- (B);
+		\draw[green,thick] (DateB) -- (B);
 		\node[shape=circle,fill=tum_blue] (C) at (0, -2) {};
 		\node[right=of C.east,anchor=west] {Implement load identification with more than one grasping point};
 		\node[anchor=west] (DateC) at (0.2, -2.4) {19.12.2014};
@@ -408,9 +407,9 @@
 		\node[right=of D.east,anchor=west] {Trigger additional excitation by the human through the wrist band};
 		\node[anchor=west] (DateD) at (0.2, -3.4) {16.01.2015};
 		\draw[tum_blue,thick] (DateD) -- (D);
-		\path[top color=green, bottom color=tum_blue, shading path={draw=transparent!0, very thick}] (A.south) -- (B.north);
-		\draw[tum_blue,very thick] (B.south) -- (C.north);
-		\draw[tum_blue,very thick] (C.south) -- (D.north);
+		\path[top color=green, bottom color=green, shading path={draw=transparent!0, very thick}] (A.south) -- (B.north);
+		\path[top color=green, bottom color=tum_blue, shading path={draw=transparent!0, very thick}] (B.south) -- (C.north);
+		\path[top color=tum_blue, bottom color=tum_blue, shading path={draw=transparent!0, very thick}] (C.south) -- (D.north);
 	\end{tikzpicture}
 \end{frame}
 
