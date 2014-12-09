@@ -411,4 +411,188 @@ Due to the nature of our estimation task it is however sufficient to acquire and
 
 \section{Results}
 \subsection{Load Identification: Robot}
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
+	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
+	\psfrag{llllllill}[Br][Bl]{$0.3\  $}
+	\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
+	\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
+	\psfrag{illllllil}[Br][Bl]{$0\  $}
+	\psfrag{illllllii}[Br][Bl]{$0.1\  $}
+	\psfrag{illlllill}[Br][Bl]{$0.2\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_no_movement_mass_and_cog.eps}
+	\vspace{0.2cm}
+	\caption[Mass error, one grasping point, no excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and no excitation}
+	\label{fig:estim_mass_one_no_movement}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.1\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-0.05\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$0.05\  $}
+	\psfrag{llllllill}[Br][Bl]{$0.1\  $}
+	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
+	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
+	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
+	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
+	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_no_movement_inertias.eps}
+	\vspace{0.2cm}
+	\caption[Inertia errors, one grasping point, no excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and no excitation}
+	\label{fig:estim_inertia_one_no_movement}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
+	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.1\  $}
+	\psfrag{lllllllli}[Br][Bl]{$0\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0.1\  $}
+	\psfrag{illllllll}[Br][Bl]{$-0.1\  $}
+	\psfrag{illllllli}[Br][Bl]{$-0.05\ $}
+	\psfrag{illllllil}[Br][Bl]{$0\  $}
+	\psfrag{illllllii}[Br][Bl]{$0.05\  $}
+	\psfrag{illlllill}[Br][Bl]{$0.1\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_slow_mass_and_cog.eps}
+	\vspace{0.2cm}
+	\caption[Mass error, one grasping point, slow excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and slow excitation}
+	\label{fig:estim_mass_one_slow}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.01\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-0.005\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$0.005\  $}
+	\psfrag{llllllill}[Br][Bl]{$0.01\  $}
+	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
+	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
+	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
+	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
+	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_slow_inertias.eps}
+	\vspace{0.2cm}
+	\caption[Inertia errors, one grasping point, slow excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and slow excitation}
+	\label{fig:estim_inertia_one_slow}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
+	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
+	\psfrag{llllllill}[Br][Bl]{$0.3\  $}
+	\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
+	\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
+	\psfrag{illllllil}[Br][Bl]{$0\  $}
+	\psfrag{illllllii}[Br][Bl]{$0.1\  $}
+	\psfrag{illlllill}[Br][Bl]{$0.2\  $}
+	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
+	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
+	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
+	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_fast_mass_and_cog.eps}
+	\vspace{0.2cm}
+	\caption[Mass error, one grasping point, fast excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and fast excitation}
+	\label{fig:estim_mass_one_fast}
+\end{figure}
+
+\begin{figure}
+	\centering	
+	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
+	\psfrag{one}[c][Br]{$0$}
+	\psfrag{two}[c][Br]{$1$}
+	\psfrag{thr}[c][Br]{$2$}
+	\psfrag{fou}[c][Br]{$3$}
+	\psfrag{fiv}[c][Br]{$4$}
+	\psfrag{six}[c][Br]{$5$}
+	\psfrag{sev}[c][Br]{$6$}
+	\psfrag{eig}[c][Br]{$7$}
+	\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
+	\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
+	\psfrag{lllllllil}[Br][Bl]{$0\  $}
+	\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
+	\psfrag{llllllill}[Br][Bl]{$0.02\  $}
+	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
+	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
+	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
+	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
+	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
+	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_fast_inertias.eps}
+	\vspace{0.2cm}
+	\caption[Inertia errors, one grasping point, fast excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and fast excitation}
+	\label{fig:estim_inertia_one_fast}
+\end{figure}
+
 \subsection{Load Identification: Human-Robot Cooperation}

@@ -43,7 +43,7 @@ xlim([0 30]);
 xlabel('xaxis')
 ylabel('yaxisc')
 set(gca,'YTick',-0.1:0.05:0.1)
-set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill'})
+set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill'})
 set(gca,'XTick',0:5:30)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six', 'sev'})
 legend('cerror1', 'cerror2', 'cerror3', 'Location', 'southeast');
@@ -80,7 +80,7 @@ xlim([0 7]);
 xlabel('xaxis')
 ylabel('yaxisc')
 set(gca,'YTick',-0.2:0.1:0.2)
-set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill'})
+set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill'})
 set(gca,'XTick',0:1:7)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six', 'sev', 'eig'})
 legend('cerror1', 'cerror2', 'cerror3', 'Location', 'southeast');
@@ -117,7 +117,7 @@ xlim([0 7]);
 xlabel('xaxis')
 ylabel('yaxisc')
 set(gca,'YTick',-0.2:0.1:0.2)
-set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill'})
+set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill'})
 set(gca,'XTick',0:1:7)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six', 'sev', 'eig'})
 legend('cerror1', 'cerror2', 'cerror3', 'Location', 'southeast');
