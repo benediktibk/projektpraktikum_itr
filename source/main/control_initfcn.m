@@ -69,8 +69,8 @@ initializationTime = timeForMovement + 4;
 cutOffFrequ = 20;
 
 %% Estimation Trajectory Properties
-translationAmplitude = [0.005;0.02;0.01];
-rotationAmplitude = [0.2;0.0329;0.1462];
+translationAmplitude = 0*[0.005;0.02;0.01];
+rotationAmplitude = [0.1;0.0329;0.1462];
 translationFrequency = [1.0472;0.6283;1.0472];
 rotationFrequency = [0.5;0.6283;1.0472];
 translationPhaseShift = [pi;0;0];
