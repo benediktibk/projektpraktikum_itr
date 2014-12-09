@@ -57,10 +57,10 @@ minTime = 0.1;
 maxTime = 10;
 
 %% Initial Values
-initPositionRightArm = [0.7 -0.23 0.9];
+initPositionRightArm = [0.7 -0.23 1];
 initOrientationRightArmOne = [0 1 0 0];
 initOrientationRightArmTwo = [1 0 0 0];
-initPositionLeftArm = [0.7 0.23 0.9];
+initPositionLeftArm = [0.7 0.23 1];
 initOrientationLeftArmOne = [0 1 0 0];
 initOrientationLeftArmTwo = [1 0 0 0];
 initializationTime = timeForMovement + 4;
@@ -70,7 +70,7 @@ cutOffFrequ = 20;
 
 %% Estimation Trajectory Properties
 translationAmplitude = 0*[0.005;0.02;0.01];
-rotationAmplitude = [0.1;0.0329;0.1462];
+rotationAmplitude = 0*[0.15;0;0.1462];
 translationFrequency = [1.0472;0.6283;1.0472];
 rotationFrequency = [0.5;0.6283;1.0472];
 translationPhaseShift = [pi;0;0];
