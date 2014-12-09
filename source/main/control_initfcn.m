@@ -70,10 +70,10 @@ cutOffFrequ = 20;
 
 %% Estimation Trajectory Properties
 translationAmplitude = 0*[0.005;0.02;0.01];
-rotationAmplitude = 0*[0.15;0;0.1462];
+rotationAmplitude = [pi/20;0;0];
 translationFrequency = [1.0472;0.6283;1.0472];
-rotationFrequency = [0.5;0.6283;1.0472];
-translationPhaseShift = [pi;0;0];
+rotationFrequency = [0.2;0.6283;1.0472];
+translationPhaseShift = [0;0;0];
 rotationPhaseShift =[pi;0;0];
 rampTime = 2;
 
