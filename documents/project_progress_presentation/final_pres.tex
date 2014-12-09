@@ -242,73 +242,10 @@
 	\end{figure}	
 \end{frame}
 
-\section{Simulation Results}
+\section{Experimental Results}
 \begin{frame}
 	%Benedikt
-	\frametitle{Estimation Results without Noise}
-	\begin{center}
-		Error of mass $m \left[\mathrm{kg}\right]$
-		\begin{figure}
-			\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
-			\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
-			\psfrag{one}[c][bc]{$0$}
-			\psfrag{two}[c][bc]{$1$}
-			\psfrag{thr}[c][bc]{$2$}
-			\psfrag{fou}[c][bc]{$3$}
-			\psfrag{fiv}[c][bc]{$4$}
-			\psfrag{six}[c][bc]{$5$}
-			\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
-			\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
-			\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
-			\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
-			\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
-			\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
-			\psfrag{cerror1}[][]{\tiny $c_{x}$}
-			\psfrag{cerror2}[][]{\tiny $c_{y}$}
-			\psfrag{cerror3}[][]{\tiny $c_{z}$}
-			\includegraphics[width=0.6\textwidth]{fig/mass_multi.eps}
-			\label{fig:estim_mass_multi}
-		\end{figure}
-		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	%Benedikt
-	\frametitle{Estimation Results without Noise}	
-	\begin{center}
-		\begin{figure}
-			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
-			\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
-			\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
-			\psfrag{Ierror1}[][]{\tiny \  $I_{xx}$}
-			\psfrag{Ierror2}[][]{\tiny \  $I_{yy}$}
-			\psfrag{Ierror3}[][]{\tiny \  $I_{zz}$}
-			\psfrag{Ierror4}[][]{\tiny \  $I_{xy}$}
-			\psfrag{Ierror5}[][]{\tiny \  $I_{xz}$}
-			\psfrag{Ierror6}[][]{\tiny \  $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/inertia_multi.eps}
-			\label{fig:estim_inertia_multi}
-		\end{figure}
-		\vspace{0.2 cm}
-		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	%Benedikt
-	\frametitle{Estimation Results with Noise ($P = \unit[0.05]{W}$)}
+	\frametitle{Simulation Results with Noise ($P = \unit[0.05]{W}$)}
 	\begin{center}
 		Error of mass $m \left[\mathrm{kg}\right]$
 		\begin{figure}
@@ -339,18 +276,18 @@
 
 \begin{frame}
 	%Benedikt
-	\frametitle{Estimation Results with Noise ($P = \unit[0.05]{W}$)}
+	\frametitle{Simulation Results with Noise ($P = \unit[0.05]{W}$)}
 	\begin{center}
 		\centering
 		\begin{figure}
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
 			\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
-			\psfrag{one}[c][Br]{$0$}
-			\psfrag{two}[c][Br]{$1$}
-			\psfrag{thr}[c][Br]{$2$}
-			\psfrag{fou}[c][Br]{$3$}
-			\psfrag{fiv}[c][Br]{$4$}
-			\psfrag{six}[c][Br]{$5$}
+			\psfrag{one}[c][Bc]{$0$}
+			\psfrag{two}[c][Bc]{$1$}
+			\psfrag{thr}[c][Bc]{$2$}
+			\psfrag{fou}[c][Bc]{$3$}
+			\psfrag{fiv}[c][Bc]{$4$}
+			\psfrag{six}[c][Bc]{$5$}
 			\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
 			\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
 			\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
@@ -364,6 +301,78 @@
 			\includegraphics[width=0.6\textwidth]{fig/inertia_multi_noise.eps}
 		\end{figure}
 		\vspace{0.5cm}
+		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	%Benedikt
+	\frametitle{Estimation Results}
+	\begin{center}
+		Error of mass $m \left[\mathrm{kg}\right]$
+		\begin{figure}
+			\centering	
+			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+			\psfrag{yaxism}[bc][tr]{}
+			\psfrag{yaxisc}[bc][tr]{}
+			\psfrag{one}[c][Bc]{$0$}
+			\psfrag{two}[c][Bc]{$1$}
+			\psfrag{thr}[c][Bc]{$2$}
+			\psfrag{fou}[c][Bc]{$3$}
+			\psfrag{fiv}[c][Bc]{$4$}
+			\psfrag{six}[c][Bc]{$5$}
+			\psfrag{sev}[c][Bc]{$6$}
+			\psfrag{eig}[c][Bc]{$7$}
+			\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
+			\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
+			\psfrag{lllllllil}[Br][Bl]{$0\  $}
+			\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
+			\psfrag{llllllill}[Br][Bl]{$0.3\  $}
+			\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
+			\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
+			\psfrag{illllllil}[Br][Bl]{$0\  $}
+			\psfrag{illllllii}[Br][Bl]{$0.1\  $}
+			\psfrag{illlllill}[Br][Bl]{$0.2\  $}
+			\psfrag{cerror1}[][]{\tiny $c_{x}$}
+			\psfrag{cerror2}[][]{\tiny $c_{y}$}
+			\psfrag{cerror3}[][]{\tiny $c_{z}$}
+			\psfrag{merror}[][]{\tiny $m$}
+			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_mass_and_cog.eps}
+		\end{figure}
+		\vspace{0.2cm}
+		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	%Benedikt
+	\frametitle{Estimation Results}
+	\begin{center}
+		\begin{figure}
+			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+			\psfrag{yaxis}[bc][tr]{}
+			\psfrag{one}[c][Bc]{$0$}
+			\psfrag{two}[c][Bc]{$1$}
+			\psfrag{thr}[c][Bc]{$2$}
+			\psfrag{fou}[c][Bc]{$3$}
+			\psfrag{fiv}[c][Bc]{$4$}
+			\psfrag{six}[c][Bc]{$5$}
+			\psfrag{sev}[c][Bc]{$6$}
+			\psfrag{eig}[c][Bc]{$7$}
+			\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
+			\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
+			\psfrag{lllllllil}[Br][Bl]{$0\  $}
+			\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
+			\psfrag{llllllill}[Br][Bl]{$0.02\  $}
+			\psfrag{Ixxerror}[][]{\tiny $I_{xx}$}
+			\psfrag{Iyyerror}[][]{\tiny $I_{yy}$}
+			\psfrag{Izzerror}[][]{\tiny $I_{zz}$}
+			\psfrag{Ixyerror}[][]{\tiny $I_{xy}$}
+			\psfrag{Ixzerror}[][]{\tiny $I_{xz}$}
+			\psfrag{Iyzerror}[][]{\tiny $I_{yz}$}
+			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_inertias.eps}
+		\end{figure}
+		\vspace{0.4cm}
 		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
 	\end{center}
 \end{frame}
