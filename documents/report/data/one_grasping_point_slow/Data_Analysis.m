@@ -71,7 +71,8 @@ axis([startTime stopTime, -pi/2, pi/2]);
 %% plot estimated kinematics
 figure;
 mass = estimation(start:stop, 1);
-centerOfGravity = estimation(start:stop, 2:4);
+mTimesC = estimation(start:stop, 2:4);
+centerOfGravity = [mTimesC(:, 1)./mass mTimesC(:, 2)./mass mTimesC(:, 3)./mass];
 inertia = estimation(start:stop, 5:10);
 subplot(1, 3, 1);
 plot(t, mass);
