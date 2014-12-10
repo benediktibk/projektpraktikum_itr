@@ -26,6 +26,7 @@ estimationNoMovement = load('one_grasping_point_no_movement/estimation.dat');
 estimationFast = load('one_grasping_point_fast/estimation.dat');
 
 %% slow movement
+figure;
 subplot(2, 1, 1);
 plotEstimationError(estimationSlow(:, 1), m, startSlow, stopSlow, Ts);
 ylim([-0.15 0.15]);
