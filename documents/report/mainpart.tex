@@ -596,3 +596,12 @@ Due to the nature of our estimation task it is however sufficient to acquire and
 \end{figure}
 
 \subsection{Load Identification: Human-Robot Cooperation}
+
+\chapter{Conclusion \& Outlook}
+
+$\left(...\right)$
+
+
+As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the 
+correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass. 
+% IMU instead of Tracking System   - Singularities, no need for a large Tracking System
