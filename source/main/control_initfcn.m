@@ -68,15 +68,14 @@ initializationTime = timeForMovement + 4;
 %% Filter Properties [rad/s]
 cutOffFrequ = 20;
 
-%% Estimation Trajectory Properties
+%% Estimation Trajectory Properties (robot coordinates)
 
 maximumRotation = pi/180*[45;10;20];
 
-translationAmplitude = 0*[0.005;0.02;0.01];
+translationAmplitude = [0.1;0;0];
 rotationAmplitude = [pi/10;pi/20;0];
 
-
-translationFrequency = [1.0472;0.6283;1.0472];
+translationFrequency = [1;0.6283;1.0472];
 rotationFrequency = rotationAmplitude./maximumRotation*2;
 translationPhaseShift = [0;0;0];
 rotationPhaseShift =[pi;0;0];

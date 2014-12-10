@@ -42,7 +42,7 @@ startTime = start*Ts;
 stopTime = stop*Ts;
 
 %% plot input data
-forces = EEFForBase(start:stop,:);
+forces = EEFForSens(start:stop,:);
 gravitation = gWrtLoad(start:stop,:);
 position = objectPosWC(start:stop,:);
 rotation = objectRotWC(start:stop,:);
