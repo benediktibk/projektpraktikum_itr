@@ -125,17 +125,27 @@ rotation = objectRotWC(start:stop,:);
 dw = [diff(rotation(:, 1)), diff(rotation(:, 2)), diff(rotation(:, 3))];
 dt = diff(t)';
 angularVelocity = [dw(:, 1)./dt, dw(:, 2)./dt, dw(:, 3)./dt];
+angularVelocitySet = [-actContCmd(start:stop,6),actContCmd(start:stop,5),actContCmd(start:stop,7)];
 
 figure;
-subplot(2, 1, 1);
-plot(t(1:end-1), angularVelocity);
-title('angular velocity, measured and perfect filtered');
-legend('wx', 'wy', 'wz');
+subplot(3, 1, 1);
+plot(t(1:end-1), angularVelocity(:,1));
+hold on
+plot(t, angularVelocitySet(:,1));
 axis([startTime stopTime -0.5 0.5]);
 
-angularVelocitySet = [-actContCmd(start:stop,6),actContCmd(start:stop,5),actContCmd(start:stop,7)];
-subplot(2, 1, 2);
-plot(t, angularVelocitySet);
-title('angular velocity, feed forward');
-legend('wx', 'wy', 'wz');
+
+subplot(3, 1, 2);
+plot(t(1:end-1), angularVelocity(:,2));
+hold on
+plot(t, angularVelocitySet(:,2));
 axis([startTime stopTime -0.5 0.5]);
+
+subplot(3, 1, 3);
+plot(t(1:end-1), angularVelocity(:,3));
+hold on
+plot(t, angularVelocitySet(:,3));
+axis([startTime stopTime -0.5 0.5]);
+
+
+title('angular velocity, measured and filtered x-y-z');
