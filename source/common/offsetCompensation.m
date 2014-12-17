@@ -52,6 +52,3 @@ function [Force_Out, Torque_Out, State] = offsetCompensation(trigger,Force,Torqu
     State = currentState;
 end
 
-
-end
-
