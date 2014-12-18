@@ -147,5 +147,16 @@ hold on
 plot(t, angularVelocitySet(:,3));
 axis([startTime stopTime -0.5 0.5]);
 
-
 title('angular velocity, measured and filtered x-y-z');
+figure
+subplot(4,1,1)
+plot(t,EEFForSens(start:stop,:));
+subplot(4,1,2)
+plot(t,HLForSens(start:stop,:));
+subplot(4,1,3)
+plot(t,HRForSens(start:stop,:));
+subplot(4,1,4)
+FSum = EEFForSens(start:stop,:)+HLForSens(start:stop,:)+HRForSens(start:stop,:);
+
+Norm = sqrt(sum(abs(FSum).^2,2));
+plot(t,Norm./norm(g));
