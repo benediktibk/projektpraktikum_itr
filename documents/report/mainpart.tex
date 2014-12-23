@@ -190,11 +190,11 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
 	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
 	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
-	\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Ierror5}[][]{\tiny \ $I_{xz,\scr{err}}$}
 	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
 	\includegraphics[width=0.8\textwidth]{figures/inertia_multi.eps}
 	\vspace{0.2cm}
-	\caption[Inertia Tensor error, three grasping points]{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with three grasping points}
+	\caption[Inertia Tensor error, three grasping points]{Inertia Tensor error $I \left[\mathrm{kg} \, \mathrm{m}^2\right]$ with three grasping points}
 	\label{fig:estim_inertia_multi}
 \end{figure}
 
@@ -242,15 +242,15 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
 	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
 	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
-	\psfrag{Ierror5}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
+	\psfrag{Ierror5}[][]{\tiny \  $I_{xz,\scr{err}}$}
 	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
 	\includegraphics[width=0.8\textwidth]{figures/inertia_multi_noise.eps}
 	\vspace{0.2cm}
-	\caption[Inertia Tensor error, three grasping points and noise]{Inertia Tensor error $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$ with three grasping points and noise on $\vec F$ and $\vec M$}
+	\caption[Inertia Tensor error, three grasping points and noise]{Inertia Tensor error $I \left[\mathrm{kg} \,\mathrm{m}^2\right]$ with three grasping points and noise on $\vec F$ and $\vec M$}
 	\label{fig:estim_inertia_multi_noise}
 \end{figure}
 
-To test the system identification with one grasping point we simulated the identification of an object with $m = $\unit[2]{kg}, $c = \begin{bmatrix} \text{\unit[0.5]{m}} & \text{\unit[0.1]{m}} & \text{\unit[0.03]{m}} \end{bmatrix}^T$ and 
+To test the system identification with one grasping point we simulated the identification of an object with $m =$ \unit[2]{kg}, $c = \begin{bmatrix} \text{\unit[0.5]{m}} & \text{\unit[0.1]{m}} & \text{\unit[0.03]{m}} \end{bmatrix}^T$ and 
 \begin{equation*}
 	I = \begin{bmatrix} \text{\unit[0.0018]{$\scr{kg}/\scr{m}^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$\scr{kg}/\scr{m}^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$\scr{kg}/\scr{m}^2$}} \end{bmatrix}.
 \end{equation*}
@@ -279,7 +279,7 @@ The estimation task derived in Section \ref{sec:multiple_grasping_points} requir
 Initial tests with all data being processed at \unit[1]{kHz}, led to a number of issues. As a consequence of its significantly lower sampling-rate, the processing model has to hold each value received from the motion-capture system for number of samples.  The consecutive identical samples again result in very error prone first
 and second derivatives.
 
-Due to the nature of our estimation task it is however sufficient to acquire and process all data at a reduced sampling-rate of \unit[100]{Hz}, avoiding consecutive values in position and orientation data. In addition to the lower sampling-rate, all signals are filtered with a Butterworth low-pass (Order: 3, $\omega_\scr{c} = $\unit[30]{Hz}). The introduced phase-lag has no effect on the estimation task, as all signals experience the identical delay.
+Due to the nature of our estimation task it is however sufficient to acquire and process all data at a reduced sampling-rate of \unit[100]{Hz}, avoiding consecutive values in position and orientation data. In addition to the lower sampling-rate, all signals are filtered with a Butterworth low-pass (Order: 3, $\omega_\scr{c} =$ \unit[30]{Hz}). The introduced phase-lag has no effect on the estimation task, as all signals experience the identical delay.
 
 The vibrotactile wrist bands carry four evenly spaced vibration motors. The motor commands are sent at a sampling-rate of \unit[100]{Hz}.
 
