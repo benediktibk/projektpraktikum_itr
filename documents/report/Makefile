@@ -9,6 +9,13 @@ $(TARGET).pdf: $(TARGET).tex
 	latex $(TARGET)
 	dvips $(TARGET).dvi
 	ps2pdf $(TARGET).ps $(TARGET).pdf
+nobib:  $(TARGET).tex
+	latex $(TARGET)
+	latex $(TARGET)
+	dvips $(TARGET).dvi
+	ps2pdf $(TARGET).ps $(TARGET).pdf
+
+		
 clean:
 	rm -rf *.dvi *.aux *.bbl *.blg *~ *.ps *.nav *.snm *.out *.toc
 
