@@ -395,8 +395,8 @@ All experiments were carried out at the multi-robot lab located at the \textit{C
 \subsection{Data Acquisition}
 %% Florian
 The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
+As mentioned before, feedback about the robot's upcoming actuation patterns is provided using vibrotactile wrist bands. The wrist bands can be accessed via \textsc{Bluetooth $^\text{\textregistered}$}. A high-level interface provides easy access from the main Simulink model.
 
-!!! $\longrightarrow$ vibrotactile wrist bands !!!
 
 \subsection{Data Processing}
 %% Florian
@@ -407,7 +407,7 @@ and second derivatives.
 
 Due to the nature of our estimation task it is however sufficient to acquire and process all data at a reduced sampling-rate of \unit[100]{Hz}, avoiding consecutive values in position and orientation data. In addition to the lower sampling-rate, all signals are filtered with a Butterworth low-pass (Order: 3, $\omega_\scr{c} = $\unit[30]{Hz}). The introduced phase-lag has no effect on the estimation task, as all signals experience the identical delay.
 
-!!! $\longrightarrow$ vibrotactile wrist bands !!!
+The vibrotactile wrist bands carry four evenly spaced vibration motors. The motor commands are sent at a sampling-rate of \unit[100]{Hz}.
 
 \section{Results}
 \subsection{Load Identification: Robot}
