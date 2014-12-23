@@ -123,17 +123,17 @@ Of course a load can also be hold by multiple manipulators, or arms in case of a
 \end{equation}
 and
 \begin{equation}
-	\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{i} \times {^\scr{L}}\vec{F}_{i} = {^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\dot{\omega}} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\omega}) + m {^\scr{L}}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{c} \times {^\scr{L}}\vec{g}.
+	\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} = {^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\dot{\omega}} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{I}_\scr{p} {^\scr{L}}\vec{\omega}) + m {^\scr{L}}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{c} \times {^\scr{L}}\vec{g}.
 	\label{eq:torque_multiple}	
 \end{equation}
-The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets ${^\scr{L}}\vec{r}_{i}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
+The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets ${^\scr{L}}\vec{r}_{1i}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
 
 At this point nearly the same iterative steps can be applied to estimate the load kinematics. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
 \begin{equation}
 	\vec{h} = 
 	\begin{bmatrix}
 		\sum_{i = 1}^n {^\scr{L}}\vec{F}_{i} \\
-		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{i} \times {^\scr{L}}\vec{F}_{i}
+		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i}
 	\end{bmatrix}
 \end{equation}
 
