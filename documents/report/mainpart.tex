@@ -599,9 +599,12 @@ The vibrotactile wrist bands carry four evenly spaced vibration motors. The moto
 
 \chapter{Conclusion \& Outlook}
 
-$\left(...\right)$
+$\left(...\right)$ Conclusion $\left(...\right)$
 
 
-As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the 
-correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$. 
-% IMU instead of Tracking System   - Singularities, no need for a large Tracking System
+As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
+
+Another advantageous adaptation to the presented data acquisition scheme could be the incorporation of inertial measurement units (IMUs). Firstly, the location of estimation experiment wouldn't be bound to a motion capture system. Secondly, the current motion-tracker cannot export quaternions and is thus affected by undesired singularities. Of course one has to take into account that the currently available IMU sensors are not able to provide sub-millimetre precision.
+
+
+The overall estimation procedure is mainly bound by the robot actuator limits. The robot can not follow trajectories that include complex or fast motions (rotation 3-DoF, translation 3-DoF + rotation). These complex motions are required in order to achieve a convergence of all parameters. The estimation procedure could however be adapted to a human-human estimation with only little effort.
