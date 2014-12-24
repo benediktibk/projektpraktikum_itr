@@ -160,66 +160,16 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
 	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
 	\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
-	\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
-	\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
-	\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
-	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
-	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
-	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/mass_multi.eps}
-	\vspace{0.2cm}
-	\caption[Mass error, three grasping points]{Estimation error of mass $m \left[\mathrm{kg}\right]$ and center of mass $\vec{c}$ with three grasping points}
-	\label{fig:estim_mass_multi}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
-	\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
-	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-	\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
-	\psfrag{Ierror1}[][]{\tiny \  $I_{xx,\scr{err}}$}
-	\psfrag{Ierror2}[][]{\tiny \  $I_{yy,\scr{err}}$}
-	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
-	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
-	\psfrag{Ierror5}[][]{\tiny \ $I_{xz,\scr{err}}$}
-	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/inertia_multi.eps}
-	\vspace{0.2cm}
-	\caption[Inertia Tensor error, three grasping points]{Inertia Tensor error $I \left[\mathrm{kg} \, \mathrm{m}^2\right]$ with three grasping points}
-	\label{fig:estim_inertia_multi}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
-	\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
-	\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
-	\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-	\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
 	\psfrag{llllllill}[Br][Bl]{$10^{-6}\  $}
 	\psfrag{llllllili}[Br][Bl]{$10^{-2}\  $}
 	\psfrag{lllllliil}[Br][Bl]{$10^{2}\  $}
 	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
 	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
 	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/mass_multi_noise.eps}
+	\begin{overpic}[width=0.8\textwidth]{figures/mass_multi_noise.eps}
+		\put(0,55){\rotatebox{90}{$\epsilon_m \left[ \mathrm{kg}\right]$}}
+		\put(0,11){\rotatebox{90}{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}}
+	\end{overpic}
 	\vspace{0.2cm}
 	\caption[Mass error, three grasping points and noise]{Estimation of mass $m$ and center of mass $\vec{c}$ with three grasping points and noise on $\vec F$ and $\vec M$}
 	\label{fig:estim_mass_multi_noise}
@@ -243,10 +193,12 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{Ierror3}[][]{\tiny \  $I_{zz,\scr{err}}$}
 	\psfrag{Ierror4}[][]{\tiny \  $I_{xy,\scr{err}}$}
 	\psfrag{Ierror5}[][]{\tiny \  $I_{xz,\scr{err}}$}
-	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/inertia_multi_noise.eps}
+	\psfrag{Ierror6}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}	
+	\begin{overpic}[width=0.8\textwidth]{figures/inertia_multi_noise.eps}
+		\put(0,19){\rotatebox{90}{$\epsilon_I\left[\mathrm{kg \, m^2}\right]$}}
+	\end{overpic}
 	\vspace{0.2cm}
-	\caption[Inertia Tensor error, three grasping points and noise]{Inertia Tensor error $I \left[\mathrm{kg} \,\mathrm{m}^2\right]$ with three grasping points and noise on $\vec F$ and $\vec M$}
+	\caption[Inertia Tensor error, three grasping points and noise]{Inertia Tensor error $I$ with three grasping points and noise on $\vec F$ and $\vec M$}
 	\label{fig:estim_inertia_multi_noise}
 \end{figure}
 
