@@ -235,6 +235,18 @@ Due to the nature of our estimation task it is however sufficient to acquire and
 
 The vibrotactile wrist bands carry four evenly spaced vibration motors. The motor commands are sent at a sampling-rate of \unit[100]{Hz}.
 
+\subsection{Reproduction}
+There are several preparations necessary to reproduce our results. First of all, the markers for \textsc{Qualisys} have to be mounted correctly. One set of markers has to be mounted on the robot itself, with the coordinate system aligned to the robot, but similar to the default \textsc{Qualisys} coordinate system in the lab. Additional markers have to be mounted on the gripper of the robot and the force and torque sensors of the human grasping points. All these coordinate systems have to be moved into the actual grasping points. These coordinate frames also have to be rotated so that in the initial position the coordinate system of the gripper is parallel to the one of the robot. As at this point presumably the order of objects in \textsc{Qualisys} is different to the one we had the receiver block in the \textsc{Simulink}-model has to be modified accordingly.
+
+The second step is then running the software, which is described detailed in the tutorial in the repository of the source code. Basically, there five are steps involved:
+\begin{enumerate}
+	\item connecting to cobotNa and cobotNb
+	\item starting the basic services on cobotNb
+	\item starting the control of the arm on cobotNa
+	\item starting the force and torque measurement on ???
+	\item starting the \textsc{Simulink}-model itself on cobotNb
+\end{enumerate}
+
 \section{Results}
 \subsection{Load Identification: Robot}
 \begin{figure}
