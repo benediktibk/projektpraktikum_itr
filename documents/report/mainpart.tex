@@ -143,7 +143,7 @@ The rest of the recursive least squares is than the same as in \ref{chap:system_
 \label{chap:simulation}
 For the purpose of a faster evaluation of our system identification algorithms we developed a simulation environment in \textsc{Matlab} Simulink. The model of the load object was implemented through \ref{eq:force} and \ref{eq:torque} in the case of one grasping point and through \ref{eq:force_multiple} and \ref{eq:torque_multiple} for multiple grasping points. In the second case we also had to distribute the forces and torques among the grasping points. In reality, this distribution is deterimed by the strength of the manipulators, but in the simulation it was sufficient to split the forces and torques up by an arbitrary choice. For a more realistic model we changed this distribution over time with sinusoidal functions. The excitation in terms of position and rotation was achieved through sinusoidal waves with different frequencies and phase shifts, which results in the necessary acceleration of the object.
 
-As in reality the force and torques sensors typically have some noise on them we also ran our system identification algorithms on a model version, which had Gaussian white noise on the forces and torques. The deviation of the direct forces and the disturbed ones can be seen in \ref{fig:force_noisy}. Of course, the same noise level, but stochastically independent, was added to all forces and torques.
+As in reality the force and torques sensors typically have some noise on them we also ran our system identification algorithms on a model version, which had Gaussian white noise on the forces and torques. Of course, the same noise level, but stochastically independent, was added to all forces and torques.
 
 \begin{figure}
 	\centering	
@@ -207,7 +207,7 @@ To test the system identification with one grasping point we simulated the ident
 	I = \begin{bmatrix} \text{\unit[0.0018]{$\scr{kg}/\scr{m}^2$}} & 0 & 0 \\ 0 & \text{\unit[0.0418]{$\scr{kg}/\scr{m}^2$}} & 0 \\ 0 & 0 & \text{\unit[0.0433]{$\scr{kg}/\scr{m}^2$}} \end{bmatrix}.
 \end{equation*}
 
-In the simulation the recursive least squares converges in this case within seconds for one grasping point, as it can be seen in \ref{fig:estim_mass} and \ref{fig:estim_inertia}. This works as well with noise on $\vec F$ and $\vec M$ (\ref{fig:estim_mass_noise} and \ref{fig:estim_inertia_noise}), with three grasping points (\ref{fig:estim_mass_multi} and \ref{fig:estim_inertia_multi}) and with three grasping points and noise on $\vec F$ and $\vec M$ (\ref{fig:estim_mass_multi_noise} and \ref{fig:estim_inertia_multi_noise}).
+In the simulation the recursive least squares converges in this case within seconds with three grasping points and noise on $\vec F$ and $\vec M$ (\ref{fig:estim_mass_multi_noise} and \ref{fig:estim_inertia_multi_noise}).
 
 \chapter{Experimental Evaluation}
 \label{chap:experimental_evaluation}
@@ -215,9 +215,7 @@ In the simulation the recursive least squares converges in this case within seco
 \section{Experimental Setup}
 \subsection{Framework}
 %% Florian
-All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor.
-
-!!! $\longrightarrow$ vibrotactile wrist bands !!!
+All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile wrist bands. The wristband vibrates with different patterns which again depend on the movements.
 \subsection{Data Acquisition}
 %% Florian
 The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
@@ -235,15 +233,15 @@ Due to the nature of our estimation task it is however sufficient to acquire and
 
 The vibrotactile wrist bands carry four evenly spaced vibration motors. The motor commands are sent at a sampling-rate of \unit[100]{Hz}.
 
-\subsection{Reproduction}
-There are several preparations necessary to reproduce our results. First of all, the markers for \textsc{Qualisys} have to be mounted correctly. One set of markers has to be mounted on the robot itself, with the coordinate system aligned to the robot, but similar to the default \textsc{Qualisys} coordinate system in the lab. Additional markers have to be mounted on the gripper of the robot and the force and torque sensors of the human grasping points. All these coordinate systems have to be moved into the actual grasping points. These coordinate frames also have to be rotated so that in the initial position the coordinate system of the gripper is parallel to the one of the robot. As at this point presumably the order of objects in \textsc{Qualisys} is different to the one we had the receiver block in the \textsc{Simulink}-model has to be modified accordingly.
+\subsection{Important Notes}
+There are several preparations necessary to reproduce our results. First of all, the markers for \textsc{Qualisys} have to be mounted correctly. One set of markers has to be mounted on the robot itself, with the coordinate system aligned to the robot, but similar to the default \textsc{Qualisys} coordinate system in the lab. Additional markers have to be mounted on the gripper of the robot and the force and torque sensors of the human grasping points. All these coordinate systems have to be moved into the actual grasping points. These coordinate frames also have to be rotated so that in the initial position the coordinate system of the gripper is parallel to the one of the robot. As at this point presumably the order of objects in \textsc{Qualisys} is different to the one we had the receiver block in the \textsc{Simulink}-model has to be modified accordingly. Another important setting concerns the euler angle convention of the \textsc{Qualisys} motion-capture system. The type of euler angle axis has to be set to \textit{Global (fixed) rotation axes} with rotation order \textit{XYZ} (Tools $\rightarrow$ Project Options $\rightarrow$ Processing $\rightarrow$ 6DOF Tracking $\rightarrow$ Euler Angles). 
 
-The second step is then running the software, which is described detailed in the tutorial in the repository of the source code. Basically, there five are steps involved:
+The second step is then running the software, which is described detailed in the tutorial in the repository of the source code (documents/tutorial/tutorial.txt). Basically, there are five steps involved:
 \begin{enumerate}
 	\item connecting to cobotNa and cobotNb
 	\item starting the basic services on cobotNb
 	\item starting the control of the arm on cobotNa
-	\item starting the force and torque measurement on ???
+	\item starting the force and torque measurement on matterhorn
 	\item starting the \textsc{Simulink}-model itself on cobotNb
 \end{enumerate}
 
