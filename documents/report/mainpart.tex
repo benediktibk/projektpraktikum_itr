@@ -235,7 +235,7 @@ Due to the nature of our estimation task it is however sufficient to acquire and
 
 The vibrotactile wrist bands carry four evenly spaced vibration motors. The motor commands are sent at a sampling-rate of \unit[100]{Hz}.
 
-\subsection{Reproduction}
+\subsection{Important Notes}
 There are several preparations necessary to reproduce our results. First of all, the markers for \textsc{Qualisys} have to be mounted correctly. One set of markers has to be mounted on the robot itself, with the coordinate system aligned to the robot, but similar to the default \textsc{Qualisys} coordinate system in the lab. Additional markers have to be mounted on the gripper of the robot and the force and torque sensors of the human grasping points. All these coordinate systems have to be moved into the actual grasping points. These coordinate frames also have to be rotated so that in the initial position the coordinate system of the gripper is parallel to the one of the robot. As at this point presumably the order of objects in \textsc{Qualisys} is different to the one we had the receiver block in the \textsc{Simulink}-model has to be modified accordingly. Another important setting concerns the euler angle convention of the \textsc{Qualisys} motion-capture system. The type of euler angle axis has to be set to \textit{Global (fixed) rotation axes} with rotation order \textit{XYZ} (Tools $\rightarrow$ Project Options $\rightarrow$ Processing $\rightarrow$ 6DOF Tracking $\rightarrow$ Euler Angles). 
 
 The second step is then running the software, which is described detailed in the tutorial in the repository of the source code. Basically, there five are steps involved:
