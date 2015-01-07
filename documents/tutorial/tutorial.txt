@@ -48,14 +48,26 @@ x: 0.7, y: 0.23, z: 0.9, qw: 1, qx: 0, qy: 0, qz: 0
 Remember: First you have to connect to the arm, then you have to press Pose!
 
 ########### Build, deploy and run our own model
-1. build the model with matlab
-2. change in a shell to the directory of the repository
-3. deploy the files
-	deploy.sh
-4. run on the machine for the manipulators the control
-	manipulate-control.sh
-5. run on the machine for the platform the model
+0. initialize everything (see above)
+
+1. in control.slx specify which cobot to be used in all sfbComm Blocks. Specify simulation target (mex Argument)
+
+2. start Tracking Systems. Make sure all rigid bodies are detected. Check order of Rigid Bodies and make sure they match the order in control.slx
+
+3. build the model (control.slx) with matlab
+
+3. move Sensors into an Init position (zero forces measured). Start forcetosbcomm/_two on the mattherhorn desktop pc.
+
+4. change in a shell to the directory of the repository and run deploy.sh (check content once to make sure it deploys to the correct cobot)
+
+5. run on the machine for the manipulators (cobotNa) the control interface model
+	manipulate-control-1/-4.sh
+6. run on the machine for the platform (cobotNb) the model
 	identification-control.sh
+
+7. wait 10 seconds (calibration routine robot FT-sensors) before grasping any object with the robot
+
+8. control identification process with respective  switches in control.slx
 
 ########### Motion Tracker Password
 mt2012ccrl
