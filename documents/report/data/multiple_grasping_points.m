@@ -23,7 +23,6 @@ set(gca,'YTick',3:1:6)
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
-legend('mest');
 subplot(2, 1, 2);
 plotValues(estimationRobot(:, 2:4)/m, startRobot, stopRobot, Ts);
 ylim([-0.4 0.4]);
@@ -49,7 +48,7 @@ set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
 print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
 
-%% robot
+%% human
 figure;
 subplot(2, 1, 1);
 plotValues(estimationHuman(:, 1), startHuman, stopHuman, Ts);
@@ -60,7 +59,6 @@ set(gca,'YTick',3:1:6)
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
-legend('mest');
 subplot(2, 1, 2);
 plotValues(estimationHuman(:, 2:4)/m, startHuman, stopHuman, Ts);
 ylim([-0.4 0.4]);
@@ -72,7 +70,7 @@ set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill
 set(gca,'XTick',0:5:25)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
-print(gcf,'../figures/multiple_grasping_points_robot_mass_and_cog','-depsc' );
+print(gcf,'../figures/multiple_grasping_points_human_mass_and_cog','-depsc' );
 figure;
 plotValues(estimationHuman(:, 5:10), startHuman, stopHuman, Ts);
 ylim([-0.1 0.1]);
@@ -84,4 +82,4 @@ set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill
 set(gca,'XTick',0:5:25)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
-print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
+print(gcf,'../figures/multiple_grasping_points_human_inertias','-depsc' );
