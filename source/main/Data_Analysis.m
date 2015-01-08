@@ -82,7 +82,7 @@ subplot(1, 3, 2);
 plot(t, centerOfGravity);
 title('center of gravity');
 legend('x', 'y', 'z');
-axis([startTime stopTime, -0.2, 0.2]);
+axis([startTime stopTime, -0.4, 0.4]);
 subplot(1, 3, 3);
 plot(t, inertia);
 title('inertia');
