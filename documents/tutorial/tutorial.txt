@@ -47,6 +47,19 @@ x: 0.7, y: 0.23, z: 0.9, qw: 1, qx: 0, qy: 0, qz: 0
 
 Remember: First you have to connect to the arm, then you have to press Pose!
 
+
+########### Impedance Parameters
+
+% Translational Impedance Equation
+Mp=4*10*diag([1 1 1]);             % 6*diag([1 1 1]);
+Dp=1.5*180*diag([1 1 1]);           % 200*diag([1 1 1]);
+Kp=1.5*300*diag([1 1 1]);           % 200*diag([1 1 1]);
+
+% Rotational Impedance Equation
+Mo=4*0.5*diag([1 1 1]);           % 0.2*diag([1 1 1]);
+Do=1.5*10*diag([1 1 1]);            % 10*diag([1 1 1]);  
+Ko=1.5*50*diag([1 1 1]);           % 100*diag([1 1 1]);   
+
 ########### Build, deploy and run our own model
 0. initialize everything (see above)
 
