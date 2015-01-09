@@ -5,8 +5,10 @@ m = 4.3545;
 
 startRobot = 2683;
 stopRobot = 4963;
+lengthRobot = stopRobot - startRobot + 1;
 startHuman = 3822;
 stopHuman = 6592;
+lengthHuman = stopHuman - startHuman + 1;
 
 close all;
 estimationRobot = load('multiple_grasping_points_robot/estimation.dat');
@@ -14,8 +16,12 @@ estimationHuman = load('multiple_grasping_points_human/estimation.dat');
 
 %% robot
 figure;
+t = Ts*(0:(stopRobot - startRobot));
 subplot(2, 1, 1);
-plotValues(estimationRobot(:, 1), startRobot, stopRobot, Ts);
+hold on;
+plot(t, estimationRobot(startRobot:stopRobot, 1));
+plot(t, ones(lengthRobot, 1)*m, '--');
+hold off;
 ylim([3 6]);
 xlim([0 22]);
 ylabel('yaxism')
@@ -24,7 +30,10 @@ set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
 subplot(2, 1, 2);
-plotValues(estimationRobot(:, 2:4)/m, startRobot, stopRobot, Ts);
+hold on;
+plot(t, estimationRobot(startRobot:stopRobot, 2:4)/m);
+plot(t, bsxfun(@times, ones(3, lengthRobot), c), '--');
+hold off;
 ylim([-0.4 0.4]);
 xlim([0 22]);
 xlabel('xaxis')
@@ -36,7 +45,9 @@ set(gca,'XTickLabel',{'one','two','thr','fou','fiv'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
 print(gcf,'../figures/multiple_grasping_points_robot_mass_and_cog','-depsc' );
 figure;
-plotValues(estimationRobot(:, 5:10), startRobot, stopRobot, Ts);
+hold on;
+plot(t, estimationRobot(startRobot:stopRobot, 5:10));
+hold off;
 ylim([-0.1 0.1]);
 xlim([0 22]);
 xlabel('xaxis')
@@ -50,8 +61,12 @@ print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
 
 %% human
 figure;
+t = Ts*(0:(stopHuman - startHuman));
 subplot(2, 1, 1);
-plotValues(estimationHuman(:, 1), startHuman, stopHuman, Ts);
+hold on;
+plot(t, estimationHuman(startHuman:stopHuman, 1));
+plot(t, ones(lengthHuman, 1)*m, '--');
+hold off;
 ylim([3 6]);
 xlim([0 27]);
 ylabel('yaxism')
@@ -60,7 +75,10 @@ set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
 subplot(2, 1, 2);
-plotValues(estimationHuman(:, 2:4)/m, startHuman, stopHuman, Ts);
+hold on;
+plot(t, estimationHuman(startHuman:stopHuman, 2:4)/m);
+plot(t, bsxfun(@times, ones(3, lengthHuman), c), '--');
+hold off;
 ylim([-0.4 0.4]);
 xlim([0 27]);
 xlabel('xaxis')
@@ -72,7 +90,9 @@ set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
 print(gcf,'../figures/multiple_grasping_points_human_mass_and_cog','-depsc' );
 figure;
-plotValues(estimationHuman(:, 5:10), startHuman, stopHuman, Ts);
+hold on;
+plot(t, estimationHuman(startHuman:stopHuman, 5:10));
+hold off;
 ylim([-0.1 0.1]);
 xlim([0 27]);
 xlabel('xaxis')
