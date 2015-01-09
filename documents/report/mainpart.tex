@@ -433,6 +433,10 @@ The second step is then running the software, which is described detailed in the
 
 \subsection{Load Identification: Human-Robot Cooperation}
 
+Our experiments regarding the human-robot cooperation were divided into two seperate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent.
+
+The result for the first scenario were a convergence of the mass and center of gravity \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of gravity did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of gravity.
+
 \begin{figure}
 	\centering	
 	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
@@ -487,6 +491,10 @@ The second step is then running the software, which is described detailed in the
 	\caption[Inertia errors, multiple grasping points, excitation by robot]{Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points and excitation by the robot}
 	\label{fig:estim_inertia_multi_robot}
 \end{figure}
+
+In the second scenario, where the human was responsible for the excitation, we expected similar results, as we do not distinguish between the robot and the human agent in the load estimation. Consequently, mass and center of gravity \ref{fig:estim_mass_multi_human} were again accurate, beside the z value of the center of gravity. The inertias had a worse convergence behaviour than in the previous case due to the excitation pattern. In this run of the experiment, the load was accelerated less. Thereforce, noise had more effect on the inertias.
+
+The reduced acceleration of the run in the second scenario was caused by the gripper at the robot side. With more movement and faster excitation the gripper was not able to grasp the load tight enough and we would have violated our basic assumption of a rigid connection between the agents and the load.
 
 \begin{figure}
 	\centering	
