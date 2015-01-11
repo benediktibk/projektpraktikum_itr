@@ -1,4 +1,4 @@
-TARGET=final_pres
+TARGET=project_progress_presentation
 
 all: $(TARGET).pdf
 
