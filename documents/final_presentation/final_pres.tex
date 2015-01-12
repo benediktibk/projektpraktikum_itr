@@ -36,7 +36,7 @@
 \begin{document}
 
 \begin{frame}
-    \titlepage
+	\titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,66 +51,66 @@
 \begin{frame}
 	\frametitle{Task}
 	\begin{block}{Goal}
-			Human-Robot cooperative estimation of load uncertainties.
+		Human-Robot cooperative estimation of load uncertainties.
 	\end{block}
 	\vspace{2mm}
 	\begin{block}{Key-Questions}
-			\begin{itemize}
-				\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
-				\item How should the agents excite the load?
-				\item How to exchange information between agents?
-			\end{itemize}	   
+		\begin{itemize}
+			\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
+			\item How should the agents excite the load?
+			\item How to exchange information between agents?
+		\end{itemize}	   
 	\end{block}	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Online Load Estimation}
-
+	
 	\begin{columns}
 		\centering
-		 	\begin{column}{0.25\textwidth}
+		\begin{column}{0.25\textwidth}
 			\begin{figure}
-			\centering
+				\centering
 				\include{tikz/load_one_grasping_point}
 			\end{figure}
-		 	\end{column}
-		 		
-		 	\begin{column}{0.75\textwidth}
+		\end{column}
+				 		
+		\begin{column}{0.75\textwidth}
 			Model:\\ \cite{literaturstelle2}\\
 			%\vspace{0.1cm}
 			\[^\scr{L}\vec{F} = m {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{g} + ^\scr{L}\vec{\dot{\omega}} \times m ^\scr{L}\vec{c} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{\omega} \times m ^\scr{L}\vec{c})\]
 			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
-			
+						
 			\vspace{0.1cm}
 			$\vec{\ddot{p}}$ EEF acceleration\\
 			$m$ Object mass\\
 			$\vec{I}$  Object inertia tensor
-		 	\end{column}
+		\end{column}
 	\end{columns}
-	 		\vspace{0.2cm}
-			RLS Estimation-Parameters: \\
-			$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
+	\vspace{0.2cm}
+	RLS Estimation-Parameters: \\
+	$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
 \end{frame}
 
 \begin{frame}
 	\frametitle{Cooperative Online Load Estimation}
 	\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{figure}
-					\centering
-					\include{tikz/load_multiple_grasping_points}
-				\end{figure}	
-		 	\end{column}
-		 	\begin{column}{0.5\textwidth}
-		 	$^\scr{L}\vec{F}_i$: Forces acting at grasping point $i$, measured w.r.t. the EEF frame L.\\ \vspace{0.3cm}
-		 	$^\scr{L}\vec{N}_i$: Torques acting at grasping point $i$, measured w.r.t. the EEF frame L.\\
-		 	\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\include{tikz/load_multiple_grasping_points}
+			\end{figure}	
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			$^\scr{L}\vec{F}_i$: Forces acting at grasping point $i$, measured w.r.t. the EEF frame L.\\ \vspace{0.3cm}
+			$^\scr{L}\vec{N}_i$: Torques acting at grasping point $i$, measured w.r.t. the EEF frame L.\\
+		\end{column}
 	\end{columns}
-
-\begin{align*} 
-\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i} &=  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right) \\ 
-\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} &= f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right)
-\end{align*}
+	
+	\begin{align*} 
+		\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i}                                                                   & =  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right)                          \\ 
+		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} & = f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right) 
+	\end{align*}
 \end{frame}
 
 \begin{frame}
@@ -122,11 +122,11 @@
 \begin{frame}
 	\frametitle{Excitation Pattern}
 	\simpleblock{
-	\begin{small}
-		\begin{center}
-			RLS convergence prerequisites
-		\end{center}
-	\end{small}
+		\begin{small}
+			\begin{center}
+				RLS convergence prerequisites
+			\end{center}
+		\end{small}
 	}
 	\vspace{1cm}	
 	\begin{itemize}
@@ -141,25 +141,25 @@
 \begin{frame}
 	\frametitle{Data Acquisition}
 	\begin{columns}
-	\begin{column}{0.35\textwidth}
-				\begin{figure}
-					\centering
-					\input{tikz/load_multiple_grasping_points}
-				\end{figure}	
-		 	\end{column}
-		 	\begin{column}{0.65\textwidth}
-		 	\begin{tabular}{llr}
+		\begin{column}{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\input{tikz/load_multiple_grasping_points}
+			\end{figure}	
+		\end{column}
+		\begin{column}{0.65\textwidth}
+			\begin{tabular}{llr}
 				\toprule
-				Information    & Tool & Frame Rate $\left[\mathrm{Hz}\right]$ \\
+				Information                                   & Tool              & Frame Rate $\left[\mathrm{Hz}\right]$ \\
 				\midrule
-				${^\scr{L}}\vec{F}_{i},{^\scr{L}}\vec{N}_{i}$      & \textsc{JR3}    & 8000 $\rightarrow$ 100      \\
-				          & \textsc{Qualisys}        & 100       \\
-				$^\scr{L}\vec{\omega}$       & \textsc{Qualisys}     & 100      \\
-				$^\scr{W}\vec{p}$       & \textsc{Qualisys}     & 100      \\
-				$^\scr{L}\vec{r}_{1i}$ & \textsc{Qualisys}      & 100       \\
+				${^\scr{L}}\vec{F}_{i},{^\scr{L}}\vec{N}_{i}$ & \textsc{JR3}      & 8000 $\rightarrow$ 100                \\
+				                                              & \textsc{Qualisys} & 100                                   \\
+				$^\scr{L}\vec{\omega}$                        & \textsc{Qualisys} & 100                                   \\
+				$^\scr{W}\vec{p}$                             & \textsc{Qualisys} & 100                                   \\
+				$^\scr{L}\vec{r}_{1i}$                        & \textsc{Qualisys} & 100                                   \\
 				\bottomrule
 			\end{tabular}
-		 	\end{column}
+		\end{column}
 	\end{columns}
 \end{frame}
 
