@@ -49,6 +49,10 @@
 
 \section{Online Load Estimation}
 \begin{frame}
+	\frametitle{Motivation}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Task}
 	\begin{block}{Goal}
 		Human-Robot cooperative estimation of load uncertainties.
@@ -115,8 +119,26 @@
 
 \begin{frame}
 	\frametitle{Cooperative Online Load Estimation}
-	\begin{overpic}[width=0.6\textwidth]{pics/setup}
-	\end{overpic}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{overpic}[width=\textwidth]{pics/setup}
+				\put(6,0){\color{red}{$x$}}
+				\put(10,10){\color{green}{$y$}}
+				\put(5,15){\color{blue}{$z$}}
+				\put(69,46){\small  $\mathrm{a}^{1}$)}
+				\put(55,64){\small  $\mathrm{a}^{2}$)}
+				\put(48,47){\small  $\mathrm{a}^{3}$)}
+				\put(35,51){\small b)}
+				\put(58,48){\tiny \color{red}{CoM}}
+			\end{overpic}
+		\end{column}
+		
+		\begin{column}{0.4\textwidth}
+			$\mathrm{a}^{1}$): Robot EEF grasping point, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			$\mathrm{a}^{2}$), $\mathrm{a}^{3}$): Human agent grasping points, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			b):  Vibrotactile wristband
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}

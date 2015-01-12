@@ -56,4 +56,25 @@
 		startorder="4"
 		stoporder="4"
 	/>
+	<application 
+        	name="BluetoothWristBand" 
+		rtdbobj="BluetoothWristBand" 
+		startcmd="rtdb-wrap BluetoothWristBand bash -c $PROJECTROOT/bin/bluetooth_wristband.sh"
+		startorder="1"
+		stoporder="4"
+    	/>
+    	<application 
+        	name="VibrotactileWristband" 
+        	rtdbobj="vibrotactile_wristband" 
+        	startcmd="VibrotactileWristband"
+         	startorder="2"
+         	stoporder="3"
+    	/>
+   	<application 
+        	name="IceServerVibroWristband" 
+         	rtdbobj="IceServerVibroWristband" 
+         	startcmd="IceServerVibroWristband -n IceServerVibroWristband -p 10025 -r IceServerVibroWristband -c VibrotactileWrist -d VibrotactileWristStatus"
+         	startorder="3"
+         	stoporder="2"
+     	/>
 </applications>

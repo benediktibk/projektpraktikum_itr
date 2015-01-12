@@ -72,13 +72,13 @@ cutOffFrequ = 20;
 
 maximumRotation = pi/180*[45;5;15];
 
-translationAmplitude = 0*[0.1;0;0];
-rotationAmplitude = 0*[pi/10;pi/20;0];
+translationAmplitude = [0.1;0;0];
+rotationAmplitude = [pi/10;pi/20;0];
 
 translationFrequency = [1;0.6283;1.0472];
 rotationFrequency = rotationAmplitude./maximumRotation*2;
 translationPhaseShift = [0;0;0];
-rotationPhaseShift =[pi;0;0];
+rotationPhaseShift = [pi;0;0];
 rampTime = 2;
 
 %% Estimation Properties
