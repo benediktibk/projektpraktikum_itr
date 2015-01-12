@@ -159,7 +159,7 @@
 	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
 \end{frame}
 
-\section{Experimental Setup}
+\section{Experimental Results}
 \begin{frame}
 	\frametitle{Data Acquisition}
 	\begin{columns}
@@ -183,28 +183,16 @@
 			\end{tabular}
 		\end{column}
 	\end{columns}
+	\textsc{Issue}: Noise prone first and second derivatives\\
+	\textsc{Solution}: Butterworth lowpass filter (Order: 3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
 \end{frame}
-
-%\begin{frame}
-%	%Florian
-%	\frametitle{Signal Processing}
-%	
-%	\textsc{Main Issue}: Noise prone first and second derivatives\\
-%	\textsc{Solution}: Butterworth lowpass filter (Order:3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
-%	\begin{figure}
-%		\centering
-%		\include{tikz/bodePlot}
-%	\end{figure}	
-%\end{frame}
-
-\section{Experimental Results}
 
 \begin{frame}
 	\frametitle{Experimental Results}
-	Conducted experiments: PROPOSAL
+	Conducted experiments:
+	\vspace{0.5cm}
 	\begin{itemize}
 		\item Multiple grasping points in simulation
-		\item One grasping point
 		\item Multiple grasping points
 	\end{itemize}
 \end{frame}
@@ -272,85 +260,91 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{One Grasping Point}
+	\frametitle{Multiple Grasping Points}
 	\begin{center}
-		Error of mass $m \left[\mathrm{kg}\right]$
 		\begin{figure}
 			\centering	
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxism}[bc][tr]{}
-			\psfrag{yaxisc}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
+			\psfrag{yaxis}[bc][tr]{$I\left[\scr{kg}/\scr{m}^2\right]$}
+			\psfrag{one}[c][Br]{$0$}
+			\psfrag{two}[c][Br]{$5$}
+			\psfrag{thr}[c][Br]{$10$}
+			\psfrag{fou}[c][Br]{$15$}
+			\psfrag{fiv}[c][Br]{$20$}
+			\psfrag{six}[c][Br]{$25$}
+			\psfrag{lllllllll}[Br][Bl]{$-0.1\  $}
+			\psfrag{lllllllli}[Br][Bl]{$-0.05\ $}
 			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.3\  $}
-			\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
-			\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
-			\psfrag{illllllil}[Br][Bl]{$0\  $}
-			\psfrag{illllllii}[Br][Bl]{$0.1\  $}
-			\psfrag{illlllill}[Br][Bl]{$0.2\  $}
-			\psfrag{cerror1}[][]{\tiny $c_{x}$}
-			\psfrag{cerror2}[][]{\tiny $c_{y}$}
-			\psfrag{cerror3}[][]{\tiny $c_{z}$}
-			\psfrag{merror}[][]{\tiny $m$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_mass_and_cog.eps}
+			\psfrag{lllllllii}[Br][Bl]{$0.05\  $}
+			\psfrag{llllllill}[Br][Bl]{$0.1\  $}
+			\psfrag{Ixx}[][]{\tiny \hspace{0.2cm} $I_{xx}$}
+			\psfrag{Iyy}[][]{\tiny \hspace{0.2cm} $I_{yy}$}
+			\psfrag{Izz}[][]{\tiny \hspace{0.2cm} $I_{zz}$}
+			\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
+			\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
+			\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
+			\includegraphics[width=0.6\textwidth]{fig/multiple_grasping_points_human_inertias.eps}
 		\end{figure}
 		\vspace{0.2cm}
-		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+		Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points
 	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{One Grasping Point}
+	\frametitle{Multiple Grasping Points}
 	\begin{center}
 		\begin{figure}
+			\centering	
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxis}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
-			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.02\  $}
-			\psfrag{Ixxerror}[][]{\tiny $I_{xx}$}
-			\psfrag{Iyyerror}[][]{\tiny $I_{yy}$}
-			\psfrag{Izzerror}[][]{\tiny $I_{zz}$}
-			\psfrag{Ixyerror}[][]{\tiny $I_{xy}$}
-			\psfrag{Ixzerror}[][]{\tiny $I_{xz}$}
-			\psfrag{Iyzerror}[][]{\tiny $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_inertias.eps}
+			\psfrag{yaxism}[bc][tr]{$m\left[\mathrm{kg}\right]$}
+			\psfrag{yaxisc}[bc][tr]{$CoM\left[\mathrm{m}\right]$}
+			\psfrag{one}[c][Br]{$0$}
+			\psfrag{two}[c][Br]{$5$}
+			\psfrag{thr}[c][Br]{$10$}
+			\psfrag{fou}[c][Br]{$15$}
+			\psfrag{fiv}[c][Br]{$20$}
+			\psfrag{six}[c][Br]{$25$}
+			\psfrag{lllllllll}[Br][Bl]{$3\  $}
+			\psfrag{lllllllli}[Br][Bl]{$4\ $}
+			\psfrag{lllllllil}[Br][Bl]{$5\  $}
+			\psfrag{lllllllii}[Br][Bl]{$6\  $}
+			\psfrag{illllllll}[Br][Bl]{$-0.4\  $}
+			\psfrag{illllllli}[Br][Bl]{$-0.2\ $}
+			\psfrag{illllllil}[Br][Bl]{$0\  $}
+			\psfrag{illllllii}[Br][Bl]{$0.2\  $}
+			\psfrag{illlllill}[Br][Bl]{$0.4\  $}
+			\psfrag{cx}[][]{\tiny $c_x$}
+			\psfrag{cy}[][]{\tiny $c_y$}
+			\psfrag{cz}[][]{\tiny $c_z$}
+			\psfrag{m}[][]{\tiny $m$}
+			\includegraphics[width=0.7\textwidth]{fig/multiple_grasping_points_human_mass_and_cog.eps}
 		\end{figure}
-		\vspace{0.4cm}
-		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+		\vspace{0.2cm}
+		Mass $m$ and center of mass $\vec{c}$ with multiple grasping points (dashed lines are the correct values)
 	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Multiple Grasping Points}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Multiple Grasping Points}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Conclusion}
+	\frametitle{Summary}
+	\begin{block}{Problems}
+		\begin{itemize}
+			\item Actuator limits
+			\item Gripper of robot
+			\item Singularity in Euler angles from \textsc{Qualisys}
+		\end{itemize}	   
+	\end{block}	
+	\begin{block}{Possible Solutions}
+		\begin{itemize}
+			\item Tighter grasp of the robot
+			\item Acquisition of quaternions from \textsc{Qualisys}
+		\end{itemize}  
+	\end{block}	
+	\begin{block}{Cooperative Online Load Estimation}
+		\begin{itemize}
+			\item Estimation of more and heavier objects
+			\item Unexperienced human agent needs guidance
+		\end{itemize}
+	\end{block}	
 \end{frame}
 
 \appendix
