@@ -141,7 +141,7 @@
 	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
 \end{frame}
 
-\section{Experimental Setup}
+\section{Experimental Results}
 \begin{frame}
 	\frametitle{Data Acquisition}
 	\begin{columns}
@@ -165,28 +165,16 @@
 			\end{tabular}
 		 	\end{column}
 	\end{columns}
+	\textsc{Issue}: Noise prone first and second derivatives\\
+	\textsc{Solution}: Butterworth lowpass filter (Order: 3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
 \end{frame}
-
-%\begin{frame}
-%	%Florian
-%	\frametitle{Signal Processing}
-%	
-%	\textsc{Main Issue}: Noise prone first and second derivatives\\
-%	\textsc{Solution}: Butterworth lowpass filter (Order:3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
-%	\begin{figure}
-%		\centering
-%		\include{tikz/bodePlot}
-%	\end{figure}	
-%\end{frame}
-
-\section{Experimental Results}
 
 \begin{frame}
 	\frametitle{Experimental Results}
-	Conducted experiments: PROPOSAL
+	Conducted experiments:
+	\vspace{0.5cm}
 	\begin{itemize}
 		\item Multiple grasping points in simulation
-		\item One grasping point
 		\item Multiple grasping points
 	\end{itemize}
 \end{frame}
@@ -249,76 +237,6 @@
 			\includegraphics[width=0.6\textwidth]{fig/inertia_multi_noise.eps}
 		\end{figure}
 		\vspace{0.5cm}
-		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{One Grasping Point}
-	\begin{center}
-		Error of mass $m \left[\mathrm{kg}\right]$
-		\begin{figure}
-			\centering	
-			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxism}[bc][tr]{}
-			\psfrag{yaxisc}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
-			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.3\  $}
-			\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
-			\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
-			\psfrag{illllllil}[Br][Bl]{$0\  $}
-			\psfrag{illllllii}[Br][Bl]{$0.1\  $}
-			\psfrag{illlllill}[Br][Bl]{$0.2\  $}
-			\psfrag{cerror1}[][]{\tiny $c_{x}$}
-			\psfrag{cerror2}[][]{\tiny $c_{y}$}
-			\psfrag{cerror3}[][]{\tiny $c_{z}$}
-			\psfrag{merror}[][]{\tiny $m$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_mass_and_cog.eps}
-		\end{figure}
-		\vspace{0.2cm}
-		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{One Grasping Point}
-	\begin{center}
-		\begin{figure}
-			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxis}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
-			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.02\  $}
-			\psfrag{Ixxerror}[][]{\tiny $I_{xx}$}
-			\psfrag{Iyyerror}[][]{\tiny $I_{yy}$}
-			\psfrag{Izzerror}[][]{\tiny $I_{zz}$}
-			\psfrag{Ixyerror}[][]{\tiny $I_{xy}$}
-			\psfrag{Ixzerror}[][]{\tiny $I_{xz}$}
-			\psfrag{Iyzerror}[][]{\tiny $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_inertias.eps}
-		\end{figure}
-		\vspace{0.4cm}
 		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
 	\end{center}
 \end{frame}
