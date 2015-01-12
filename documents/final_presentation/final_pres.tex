@@ -80,18 +80,24 @@
 		\end{column}
 				 		
 		\begin{column}{0.75\textwidth}
-			Model:\\ \cite{literaturstelle2}\\
+			Model:\\ \cite{literaturstelle2}
 			%\vspace{0.1cm}
 			\[^\scr{L}\vec{F} = m {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{g} + ^\scr{L}\vec{\dot{\omega}} \times m ^\scr{L}\vec{c} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{\omega} \times m ^\scr{L}\vec{c})\]
 			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
 						
-			\vspace{0.1cm}
-			$\vec{\ddot{p}}$ EEF acceleration\\
-			$m$ Object mass\\
-			$\vec{I}$  Object inertia tensor
+			\vspace{0.2cm}
+			\begin{tabular}{ll}
+				\toprule
+				$\vec{\ddot{p}}$       &  EEF acceleration \\
+				$\vec{\omega}$,$\vec{\dot{\omega}}$ & EEF angular velocity / acceleration \\
+				$m$                                        & Object mass \\
+				$\vec{I}$                        & Object inertia tensor \\
+				$\vec{c}$                             &  Center of mass   \\               
+				\bottomrule
+			\end{tabular}
 		\end{column}
 	\end{columns}
-	\vspace{0.2cm}
+	\vspace{0.35cm}
 	RLS Estimation-Parameters: \\
 	$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
 \end{frame}
@@ -112,8 +118,8 @@
 	\end{columns}
 	
 	\begin{align*} 
-		\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i}                                                                   & =  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right)                          \\ 
-		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} & = f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right) 
+		\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i}                                                                   & =  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},\color{red}^\scr{L}\vec{c}\color{black},\color{red}m\color{black}\right)                          \\ 
+		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} & = f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega},{^\scr{L}}\vec{\dot{\omega}},\color{red}{^\scr{L}}\vec{c}\color{black},\color{red}{{^\scr{L}}\vec{I}}\color{black}{,}\color{red}{m} \color{black}\right) 
 	\end{align*}
 \end{frame}
 
@@ -336,13 +342,13 @@
 	\begin{block}{Possible Solutions}
 		\begin{itemize}
 			\item Tighter grasp of the robot
-			\item Acquisition of quaternions from \textsc{Qualisys}
+			\item Acquisition of quaternions from IMUs or \textsc{Qualisys}
 		\end{itemize}  
 	\end{block}	
 	\begin{block}{Cooperative Online Load Estimation}
 		\begin{itemize}
 			\item Estimation of more and heavier objects
-			\item Unexperienced human agent needs guidance
+			\item Inexperienced human agent needs guidance
 		\end{itemize}
 	\end{block}	
 \end{frame}
