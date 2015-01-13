@@ -118,6 +118,25 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Excitation Pattern}
+	\simpleblock{
+		\begin{small}
+			\begin{center}
+				RLS convergence prerequisites
+			\end{center}
+		\end{small}
+	}
+	\vspace{1cm}	
+	\begin{itemize}
+		\item Reference trajectory must be persistently exciting(PE)
+		\item Non-zero acceleration of EEF in 6-DoF \cite{literaturstelle3}
+	\end{itemize}
+	\vspace{1cm}
+	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
+\end{frame}
+
+\section{Experimental Setup}
+\begin{frame}
 	\frametitle{Cooperative Online Load Estimation}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
@@ -141,25 +160,6 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Excitation Pattern}
-	\simpleblock{
-		\begin{small}
-			\begin{center}
-				RLS convergence prerequisites
-			\end{center}
-		\end{small}
-	}
-	\vspace{1cm}	
-	\begin{itemize}
-		\item Reference trajectory must be persistently exciting(PE)
-		\item Non-zero acceleration of EEF in 6-DoF \cite{literaturstelle3}
-	\end{itemize}
-	\vspace{1cm}
-	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
-\end{frame}
-
-\section{Experimental Results}
 \begin{frame}
 	\frametitle{Data Acquisition}
 	\begin{columns}
@@ -187,6 +187,7 @@
 	\textsc{Solution}: Butterworth lowpass filter (Order: 3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
 \end{frame}
 
+\section{Results}
 \begin{frame}
 	\frametitle{Experimental Results}
 	Conducted experiments:
