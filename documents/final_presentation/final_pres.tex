@@ -36,7 +36,7 @@
 \begin{document}
 
 \begin{frame}
-    \titlepage
+	\titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,82 +55,100 @@
 \begin{frame}
 	\frametitle{Task}
 	\begin{block}{Goal}
-			Human-Robot cooperative estimation of load uncertainties.
+		Human-Robot cooperative estimation of load uncertainties.
 	\end{block}
 	\vspace{2mm}
 	\begin{block}{Key-Questions}
-			\begin{itemize}
-				\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
-				\item How should the agents excite the load?
-				\item How to exchange information between agents?
-			\end{itemize}	   
+		\begin{itemize}
+			\item How to fuse and process sensor feedback, resulting in a reliable load-identification?
+			\item How should the agents excite the load?
+			\item How to exchange information between agents?
+		\end{itemize}	   
 	\end{block}	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Online Load Estimation}
-
+	
 	\begin{columns}
 		\centering
-		 	\begin{column}{0.25\textwidth}
+		\begin{column}{0.25\textwidth}
 			\begin{figure}
-			\centering
+				\centering
 				\include{tikz/load_one_grasping_point}
 			\end{figure}
-		 	\end{column}
-		 		
-		 	\begin{column}{0.75\textwidth}
+		\end{column}
+				 		
+		\begin{column}{0.75\textwidth}
 			Model:\\ \cite{literaturstelle2}\\
 			%\vspace{0.1cm}
 			\[^\scr{L}\vec{F} = m {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{g} + ^\scr{L}\vec{\dot{\omega}} \times m ^\scr{L}\vec{c} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{\omega} \times m ^\scr{L}\vec{c})\]
 			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
-			
+						
 			\vspace{0.1cm}
 			$\vec{\ddot{p}}$ EEF acceleration\\
 			$m$ Object mass\\
 			$\vec{I}$  Object inertia tensor
-		 	\end{column}
+		\end{column}
 	\end{columns}
-	 		\vspace{0.2cm}
-			RLS Estimation-Parameters: \\
-			$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
+	\vspace{0.2cm}
+	RLS Estimation-Parameters: \\
+	$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
 \end{frame}
 
 \begin{frame}
 	\frametitle{Cooperative Online Load Estimation}
 	\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{figure}
-					\centering
-					\include{tikz/load_multiple_grasping_points}
-				\end{figure}	
-		 	\end{column}
-		 	\begin{column}{0.5\textwidth}
-		 	$^\scr{L}\vec{F}_i$: Forces acting at grasping point $i$, measured w.r.t. the EEF frame L.\\ \vspace{0.3cm}
-		 	$^\scr{L}\vec{N}_i$: Torques acting at grasping point $i$, measured w.r.t. the EEF frame L.\\
-		 	\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\include{tikz/load_multiple_grasping_points}
+			\end{figure}	
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			$^\scr{L}\vec{F}_i$: Forces acting at grasping point $i$, measured w.r.t. the EEF frame L.\\ \vspace{0.3cm}
+			$^\scr{L}\vec{N}_i$: Torques acting at grasping point $i$, measured w.r.t. the EEF frame L.\\
+		\end{column}
 	\end{columns}
-
-\begin{align*} 
-\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i} &=  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right) \\ 
-\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} &= f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right)
-\end{align*}
+	
+	\begin{align*} 
+		\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i}                                                                   & =  f\left(^\scr{W}\vec{\ddot{p}},^\scr{L}\vec{\omega},^\scr{L}\vec{\dot{\omega}},^\scr{L}\vec{c},m\right)                          \\ 
+		\sum_{i = 1}^n {^\scr{L}}\vec{N}_{i} + \sum_{i = 2}^n {^\scr{L}}\vec{r}_{1i} \times {^\scr{L}}\vec{F}_{i} & = f\left({^\scr{W}}\vec{\ddot{p}},{^\scr{L}}\vec{\omega}{^\scr{L}},\vec{\dot{\omega}},{^\scr{L}}\vec{c},{^\scr{L}}\vec{I},m\right) 
+	\end{align*}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Cooperative Online Load Estimation}
-	\begin{overpic}[width=0.6\textwidth]{pics/setup}
-	\end{overpic}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{overpic}[width=\textwidth]{pics/setup}
+				\put(6,0){\color{red}{$x$}}
+				\put(10,10){\color{green}{$y$}}
+				\put(5,15){\color{blue}{$z$}}
+				\put(69,46){\small  $\mathrm{a}^{1}$)}
+				\put(55,64){\small  $\mathrm{a}^{2}$)}
+				\put(48,47){\small  $\mathrm{a}^{3}$)}
+				\put(35,51){\small b)}
+				\put(58,48){\tiny \color{red}{CoM}}
+			\end{overpic}
+		\end{column}
+		
+		\begin{column}{0.4\textwidth}
+			$\mathrm{a}^{1}$): Robot EEF grasping point, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			$\mathrm{a}^{2}$), $\mathrm{a}^{3}$): Human agent grasping points, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			b):  Vibrotactile wristband
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Excitation Pattern}
 	\simpleblock{
-	\begin{small}
-		\begin{center}
-			RLS convergence prerequisites
-		\end{center}
-	\end{small}
+		\begin{small}
+			\begin{center}
+				RLS convergence prerequisites
+			\end{center}
+		\end{small}
 	}
 	\vspace{1cm}	
 	\begin{itemize}
@@ -141,52 +159,40 @@
 	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
 \end{frame}
 
-\section{Experimental Setup}
+\section{Experimental Results}
 \begin{frame}
 	\frametitle{Data Acquisition}
 	\begin{columns}
-	\begin{column}{0.35\textwidth}
-				\begin{figure}
-					\centering
-					\input{tikz/load_multiple_grasping_points}
-				\end{figure}	
-		 	\end{column}
-		 	\begin{column}{0.65\textwidth}
-		 	\begin{tabular}{llr}
+		\begin{column}{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\input{tikz/load_multiple_grasping_points}
+			\end{figure}	
+		\end{column}
+		\begin{column}{0.65\textwidth}
+			\begin{tabular}{llr}
 				\toprule
-				Information    & Tool & Frame Rate $\left[\mathrm{Hz}\right]$ \\
+				Information                                   & Tool              & Frame Rate $\left[\mathrm{Hz}\right]$ \\
 				\midrule
-				${^\scr{L}}\vec{F}_{i},{^\scr{L}}\vec{N}_{i}$      & \textsc{JR3}    & 8000 $\rightarrow$ 100      \\
-				          & \textsc{Qualisys}        & 100       \\
-				$^\scr{L}\vec{\omega}$       & \textsc{Qualisys}     & 100      \\
-				$^\scr{W}\vec{p}$       & \textsc{Qualisys}     & 100      \\
-				$^\scr{L}\vec{r}_{1i}$ & \textsc{Qualisys}      & 100       \\
+				${^\scr{L}}\vec{F}_{i},{^\scr{L}}\vec{N}_{i}$ & \textsc{JR3}      & 8000 $\rightarrow$ 100                \\
+				                                              & \textsc{Qualisys} & 100                                   \\
+				$^\scr{L}\vec{\omega}$                        & \textsc{Qualisys} & 100                                   \\
+				$^\scr{W}\vec{p}$                             & \textsc{Qualisys} & 100                                   \\
+				$^\scr{L}\vec{r}_{1i}$                        & \textsc{Qualisys} & 100                                   \\
 				\bottomrule
 			\end{tabular}
-		 	\end{column}
+		\end{column}
 	\end{columns}
+	\textsc{Issue}: Noise prone first and second derivatives\\
+	\textsc{Solution}: Butterworth lowpass filter (Order: 3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
 \end{frame}
-
-%\begin{frame}
-%	%Florian
-%	\frametitle{Signal Processing}
-%	
-%	\textsc{Main Issue}: Noise prone first and second derivatives\\
-%	\textsc{Solution}: Butterworth lowpass filter (Order:3, $\omega_\mathrm{CutOff} = 30 \mathrm{Hz}$)
-%	\begin{figure}
-%		\centering
-%		\include{tikz/bodePlot}
-%	\end{figure}	
-%\end{frame}
-
-\section{Experimental Results}
 
 \begin{frame}
 	\frametitle{Experimental Results}
-	Conducted experiments: PROPOSAL
+	Conducted experiments:
+	\vspace{0.5cm}
 	\begin{itemize}
 		\item Multiple grasping points in simulation
-		\item One grasping point
 		\item Multiple grasping points
 	\end{itemize}
 \end{frame}
@@ -206,14 +212,14 @@
 			\psfrag{fou}[c][Bc]{$3$}
 			\psfrag{fiv}[c][Bc]{$4$}
 			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{lllllllll}[Br][Bl]{$10^{-6}\  $}
-			\psfrag{lllllllli}[Br][Bl]{$10^{-4}\  $}
-			\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Bl]{$10^0\  $}
-			\psfrag{llllllill}[Br][Bl]{$10^{-10}\  $}
-			\psfrag{llllllili}[Br][Bl]{$10^{-5}\  $}
-			\psfrag{lllllliil}[Br][Bl]{$10^0\  $}
-			\psfrag{cerror1}[][]{\tiny $c_{x}$}
+			\psfrag{lllllllll}[Br][Br]{$10^{-6}\  $}
+			\psfrag{lllllllli}[Br][Br]{$10^{-4}\  $}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}\  $}
+			\psfrag{lllllllii}[Br][Br]{$10^0\  $}
+			\psfrag{llllllill}[Br][Br]{$10^{-10}\  $}
+			\psfrag{llllllili}[Br][Br]{$10^{-5}\  $}
+			\psfrag{lllllliil}[Br][Br]{$10^0\  $}
+			\psfrag{cerror1}[][]{\tiny  $c_{x}$}
 			\psfrag{cerror2}[][]{\tiny $c_{y}$}
 			\psfrag{cerror3}[][]{\tiny $c_{z}$}
 			\includegraphics[width=0.6\textwidth]{fig/mass_multi_noise.eps}
@@ -236,10 +242,10 @@
 			\psfrag{fou}[c][Bc]{$3$}
 			\psfrag{fiv}[c][Bc]{$4$}
 			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{lllllllll}[Br][Bl]{$10^{-10}\  $}
-			\psfrag{lllllllli}[Br][Bl]{$10^{-6}\  $}
-			\psfrag{lllllllil}[Br][Bl]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Bl]{$10^2\  $}
+			\psfrag{lllllllll}[Br][Br]{$10^{-10}\  $}
+			\psfrag{lllllllli}[Br][Br]{$10^{-6}\  $}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}\  $}
+			\psfrag{lllllllii}[Br][Br]{$10^2\  $}
 			\psfrag{Ierror1}[][]{\tiny \  $I_{xx}$}
 			\psfrag{Ierror2}[][]{\tiny \  $I_{yy}$}
 			\psfrag{Ierror3}[][]{\tiny \  $I_{zz}$}
@@ -254,85 +260,91 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{One Grasping Point}
+	\frametitle{Multiple Grasping Points}
 	\begin{center}
-		Error of mass $m \left[\mathrm{kg}\right]$
 		\begin{figure}
 			\centering	
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxism}[bc][tr]{}
-			\psfrag{yaxisc}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
-			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.3\  $}
-			\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
-			\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
-			\psfrag{illllllil}[Br][Bl]{$0\  $}
-			\psfrag{illllllii}[Br][Bl]{$0.1\  $}
-			\psfrag{illlllill}[Br][Bl]{$0.2\  $}
-			\psfrag{cerror1}[][]{\tiny $c_{x}$}
-			\psfrag{cerror2}[][]{\tiny $c_{y}$}
-			\psfrag{cerror3}[][]{\tiny $c_{z}$}
-			\psfrag{merror}[][]{\tiny $m$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_mass_and_cog.eps}
+			\psfrag{yaxis}[bc][tr]{$I\left[\scr{kg}/\scr{m}^2\right]$}
+			\psfrag{one}[c][Br]{$0$}
+			\psfrag{two}[c][Br]{$5$}
+			\psfrag{thr}[c][Br]{$10$}
+			\psfrag{fou}[c][Br]{$15$}
+			\psfrag{fiv}[c][Br]{$20$}
+			\psfrag{six}[c][Br]{$25$}
+			\psfrag{lllllllll}[Br][Br]{$-0.1\  $}
+			\psfrag{lllllllli}[Br][Br]{$-0.05\ $}
+			\psfrag{lllllllil}[Br][Br]{$0\  $}
+			\psfrag{lllllllii}[Br][Br]{$0.05\  $}
+			\psfrag{llllllill}[Br][Br]{$0.1\  $}
+			\psfrag{Ixx}[][]{\tiny \hspace{0.2cm} $I_{xx}$}
+			\psfrag{Iyy}[][]{\tiny \hspace{0.2cm} $I_{yy}$}
+			\psfrag{Izz}[][]{\tiny \hspace{0.2cm} $I_{zz}$}
+			\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
+			\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
+			\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
+			\includegraphics[width=0.6\textwidth]{fig/multiple_grasping_points_human_inertias.eps}
 		\end{figure}
 		\vspace{0.2cm}
-		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+		Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points
 	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{One Grasping Point}
+	\frametitle{Multiple Grasping Points}
 	\begin{center}
 		\begin{figure}
+			\centering	
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-			\psfrag{yaxis}[bc][tr]{}
-			\psfrag{one}[c][Bc]{$0$}
-			\psfrag{two}[c][Bc]{$1$}
-			\psfrag{thr}[c][Bc]{$2$}
-			\psfrag{fou}[c][Bc]{$3$}
-			\psfrag{fiv}[c][Bc]{$4$}
-			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{sev}[c][Bc]{$6$}
-			\psfrag{eig}[c][Bc]{$7$}
-			\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
-			\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
-			\psfrag{lllllllil}[Br][Bl]{$0\  $}
-			\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
-			\psfrag{llllllill}[Br][Bl]{$0.02\  $}
-			\psfrag{Ixxerror}[][]{\tiny $I_{xx}$}
-			\psfrag{Iyyerror}[][]{\tiny $I_{yy}$}
-			\psfrag{Izzerror}[][]{\tiny $I_{zz}$}
-			\psfrag{Ixyerror}[][]{\tiny $I_{xy}$}
-			\psfrag{Ixzerror}[][]{\tiny $I_{xz}$}
-			\psfrag{Iyzerror}[][]{\tiny $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/one_grasping_point_fast_inertias.eps}
+			\psfrag{yaxism}[bc][tr]{$m\left[\mathrm{kg}\right]$}
+			\psfrag{yaxisc}[bc][tr]{$CoM\left[\mathrm{m}\right]$}
+			\psfrag{one}[c][Br]{$0$}
+			\psfrag{two}[c][Br]{$5$}
+			\psfrag{thr}[c][Br]{$10$}
+			\psfrag{fou}[c][Br]{$15$}
+			\psfrag{fiv}[c][Br]{$20$}
+			\psfrag{six}[c][Br]{$25$}
+			\psfrag{lllllllll}[Br][Br]{$3\  $}
+			\psfrag{lllllllli}[Br][Br]{$4\ $}
+			\psfrag{lllllllil}[Br][Br]{$5\  $}
+			\psfrag{lllllllii}[Br][Br]{$6\  $}
+			\psfrag{illllllll}[Br][Br]{$-0.4\  $}
+			\psfrag{illllllli}[Br][Br]{$-0.2\ $}
+			\psfrag{illllllil}[Br][Br]{$0\  $}
+			\psfrag{illllllii}[Br][Br]{$0.2\  $}
+			\psfrag{illlllill}[Br][Br]{$0.4\  $}
+			\psfrag{cx}[][]{\tiny $c_x$}
+			\psfrag{cy}[][]{\tiny $c_y$}
+			\psfrag{cz}[][]{\tiny $c_z$}
+			\psfrag{m}[][]{\tiny $m$}
+			\includegraphics[width=0.7\textwidth]{fig/multiple_grasping_points_human_mass_and_cog.eps}
 		\end{figure}
-		\vspace{0.4cm}
-		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+		\vspace{0.2cm}
+		Mass $m$ and center of mass $\vec{c}$ with multiple grasping points (dashed lines are the correct values)
 	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Multiple Grasping Points}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Multiple Grasping Points}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Conclusion}
+	\frametitle{Summary}
+	\begin{block}{Problems}
+		\begin{itemize}
+			\item Actuator limits
+			\item Gripper of robot
+			\item Singularity in Euler angles from \textsc{Qualisys}
+		\end{itemize}	   
+	\end{block}	
+	\begin{block}{Possible Solutions}
+		\begin{itemize}
+			\item Tighter grasp of the robot
+			\item Acquisition of quaternions from \textsc{Qualisys}
+		\end{itemize}  
+	\end{block}	
+	\begin{block}{Cooperative Online Load Estimation}
+		\begin{itemize}
+			\item Estimation of more and heavier objects
+			\item Unexperienced human agent needs guidance
+		\end{itemize}
+	\end{block}	
 \end{frame}
 
 \appendix
