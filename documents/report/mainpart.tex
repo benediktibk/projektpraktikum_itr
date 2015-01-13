@@ -213,17 +213,15 @@ In the simulation the recursive least squares converges in this case within seco
 \label{chap:experimental_evaluation}
 
 \section{Experimental Setup}
+
 \subsection{Framework}
-%% Florian
 All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile wrist bands. The wristband vibrates with different patterns which again depend on the movements.
+
 \subsection{Data Acquisition}
-%% Florian
 The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
 As mentioned before, feedback about the robot's upcoming actuation patterns is provided using vibrotactile wrist bands. The wrist bands can be accessed via \textsc{Bluetooth $^\text{\textregistered}$}. A high-level interface provides easy access from the main Simulink model.
 
-
 \subsection{Data Processing}
-%% Florian
 The estimation task derived in Section \ref{sec:multiple_grasping_points} requires information on the EEF position, acceleration, angular velocity and angular acceleration. Furthermore all forces and torques acting at the grasping points have to be expressed with respect to the EEF coordinate frame before being fed into the estimator and thus require an euclidean transform from the force-torque sensor measurement frame.
 
 Initial tests with all data being processed at \unit[1]{kHz}, led to a number of issues. As a consequence of its significantly lower sampling-rate, the processing model has to hold each value received from the motion-capture system for number of samples.  The consecutive identical samples again result in very error prone first
@@ -248,7 +246,7 @@ The second step is then running the software, which is described detailed in the
 \section{Results}
 Our experiments regarding the human-robot cooperation were divided into two seperate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent. As test load we used a wooden board, because for this object we could easily measure the correct mass and center of gravity.
 
-The result for the first scenario were a convergence of the mass and center of gravity \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of gravity did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of gravity.
+The results for the first scenario were a convergence of the mass and center of gravity \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of gravity did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of gravity.
 
 \begin{figure}
 	\centering	
@@ -299,7 +297,7 @@ The result for the first scenario were a convergence of the mass and center of g
 	\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
 	\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
 	\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
-	\includegraphics[width=0.7\textwidth]{figures/multiple_grasping_points_robot_inertias.eps}
+	\includegraphics[width=0.8\textwidth]{figures/multiple_grasping_points_robot_inertias.eps}
 	\vspace{0.2cm}
 	\caption[Inertia errors, multiple grasping points, excitation by robot]{Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points and excitation by the robot}
 	\label{fig:estim_inertia_multi_robot}
@@ -360,13 +358,13 @@ The reduced acceleration of the run in the second scenario was caused by the gri
 	\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
 	\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
 	\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
-	\includegraphics[width=0.7\textwidth]{figures/multiple_grasping_points_human_inertias.eps}
+	\includegraphics[width=0.8\textwidth]{figures/multiple_grasping_points_human_inertias.eps}
 	\vspace{0.2cm}
 	\caption[Inertia errors, multiple grasping points, excitation by human agent]{Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points and excitation by the human agent}
 	\label{fig:estim_inertia_multi_human}
 \end{figure}
 
-\chapter{Conclusion \& Outlook}
+\chapter{Conclusion and Outlook}
 
 As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
 
