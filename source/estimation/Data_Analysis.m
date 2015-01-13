@@ -203,6 +203,7 @@ set(gca,'XTick',[startTime, 1:1:endTime])
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
 set(gca,'XTickLabel',{})
 ylabel('y1')
+ylim([10^-6 10^0])
 
 ylabh = get(gca,'YLabel');
 set(ylabh,'Position',get(ylabh,'Position') - [0.1 0 0])
@@ -221,6 +222,9 @@ ylabh = get(gca,'YLabel');
 set(ylabh,'Position',get(ylabh,'Position') - [0.1 0 0])
 ylabel('y2')
 ylim([10^-6 10^2])
+set(gcf,'Position',[400 100 600 300])
+set(gcf, 'PaperPositionMode', 'auto');
+box on
 print(gcf,'../../documents/report/figures/mass_multi_noise','-depsc' );
 
 figure;
