@@ -113,7 +113,7 @@ and
 	\label{fig:load_multiple_grasping_points}
 \end{figure}
 
-Of course a load can also be hold by multiple manipulators, or arms in case of a human. As long as on every grasping point a force and torque sensor is mounted the basic principle of the previous section can be reused for the load estimation. In this case the forces and torques are distributed over all grippers, whereas the distribution depends on the reactive forces of the manipulators. Therefore, the only difference in the physics is that $n$ forces and torques are combined on the left hand sides of
+Of course a load can also be held by multiple manipulators, or arms in case of a human. As long as on every grasping point a force and torque sensor is mounted the basic recursive least-squares scheme derived in the previous section can be reused for the load estimation. Note, that in order to do so, all forces and torques, which are measured in different local coordinate frames have to be expressed with respect to the same frame, for our case, the robot EEF frame. Furthermore, one also has to measure the grasping offsets or respectively the distance between the grasping points (1,2,3) with respect to the robot EEF frame. In this case the forces and torques are distributed over all grippers, whereas the distribution depends on the reactive forces of the manipulators. Therefore, the only difference in the physics is that $n$ forces and torques are combined on the left hand sides of 
 \begin{equation}
 	\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i} = m {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{g} + {^\scr{L}}\vec{\dot{\omega}} \times m {^\scr{L}}\vec{c} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{\omega} \times m {^\scr{L}}\vec{c})
 	\label{eq:force_multiple}	
