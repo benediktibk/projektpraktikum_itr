@@ -46,7 +46,10 @@ set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
+set(gcf,'Position',[400 100 600 300])
+set(gcf, 'PaperPositionMode', 'auto');
 box on
+
 print(gcf,'../figures/multiple_grasping_points_robot_mass_and_cog','-depsc' );
 
 %Inertias
@@ -66,7 +69,7 @@ legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
 set(gcf,'Position',[400 100 600 300])
 set(gcf, 'PaperPositionMode', 'auto');
 box on
-print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
+%print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
 
 %% human
 
@@ -101,7 +104,7 @@ set(gca,'XTick',0:5:25)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
 box on
-print(gcf,'../figures/multiple_grasping_points_human_mass_and_cog','-depsc' );
+%print(gcf,'../figures/multiple_grasping_points_human_mass_and_cog','-depsc' );
 
 % Inertia
 figure;
@@ -120,4 +123,4 @@ legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
 set(gcf,'Position',[400 100 600 300])
 set(gcf, 'PaperPositionMode', 'auto');
 box on
-print(gcf,'../figures/multiple_grasping_points_human_inertias','-depsc' );
+%print(gcf,'../figures/multiple_grasping_points_human_inertias','-depsc' );
