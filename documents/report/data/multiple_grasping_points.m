@@ -15,6 +15,8 @@ estimationRobot = load('multiple_grasping_points_robot/estimation.dat');
 estimationHuman = load('multiple_grasping_points_human/estimation.dat');
 
 %% robot
+%Mass Com
+
 figure;
 t = Ts*(0:(stopRobot - startRobot));
 subplot(2, 1, 1);
@@ -29,6 +31,7 @@ set(gca,'YTick',3:1:6)
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
+box on
 subplot(2, 1, 2);
 hold on;
 plot(t, estimationRobot(startRobot:stopRobot, 2:4)/m);
@@ -43,7 +46,10 @@ set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
+box on
 print(gcf,'../figures/multiple_grasping_points_robot_mass_and_cog','-depsc' );
+
+%Inertias
 figure;
 hold on;
 plot(t, estimationRobot(startRobot:stopRobot, 5:10));
@@ -57,9 +63,14 @@ set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
+set(gcf,'Position',[400 100 600 300])
+set(gcf, 'PaperPositionMode', 'auto');
+box on
 print(gcf,'../figures/multiple_grasping_points_robot_inertias','-depsc' );
 
 %% human
+
+% Mass Com
 figure;
 t = Ts*(0:(stopHuman - startHuman));
 subplot(2, 1, 1);
@@ -74,6 +85,7 @@ set(gca,'YTick',3:1:6)
 set(gca,'XTick',0:5:22)
 set(gca,'XTickLabel',{})
 set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii'})
+box on
 subplot(2, 1, 2);
 hold on;
 plot(t, estimationHuman(startHuman:stopHuman, 2:4)/m);
@@ -88,7 +100,10 @@ set(gca,'YTickLabel',{'illllllll','illllllli','illllllil','illllllii','illlllill
 set(gca,'XTick',0:5:25)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('cx', 'cy', 'cz', 'Location', 'southeast');
+box on
 print(gcf,'../figures/multiple_grasping_points_human_mass_and_cog','-depsc' );
+
+% Inertia
 figure;
 hold on;
 plot(t, estimationHuman(startHuman:stopHuman, 5:10));
@@ -102,4 +117,7 @@ set(gca,'YTickLabel',{'lllllllll','lllllllli','lllllllil','lllllllii','llllllill
 set(gca,'XTick',0:5:25)
 set(gca,'XTickLabel',{'one','two','thr','fou','fiv','six'})
 legend('Ixx', 'Iyy', 'Izz', 'Ixy', 'Ixz', 'Iyz');
+set(gcf,'Position',[400 100 600 300])
+set(gcf, 'PaperPositionMode', 'auto');
+box on
 print(gcf,'../figures/multiple_grasping_points_human_inertias','-depsc' );
