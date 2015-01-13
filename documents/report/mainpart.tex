@@ -212,7 +212,24 @@ In the simulation the recursive least squares converges in this case within seco
 \section{Experimental Setup}
 
 \subsection{Framework}
-All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile wrist bands. The wristband vibrates with different patterns which again depend on the movements.
+
+\begin{figure}[h]
+\centering
+	\begin{overpic}[width=0.5\textwidth]{figures/setup}
+		\put(6,0){\color{red}{$x$}}
+		\put(10,10){\color{green}{$y$}}
+		\put(5,15){\color{blue}{$z$}}
+		\put(69,46){$\mathrm{a}^{1}$)}
+		\put(55,64){$\mathrm{a}^{2}$)}
+		\put(48,47){$\mathrm{a}^{3}$)}
+		\put(35,51){b)}
+		\put(58,47){\small \color{red}{CoM}}
+	\end{overpic}
+	\caption[Experimental Setup]{Experimental Setup. Forces and spatial informations are gathered using sensory feedback.}
+	\label{fig:setup}	
+\end{figure}
+
+All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The general setup is shown in Figure \ref{fig:setup}. The robotic part of our load estimation task is covered by a 7-DoF manipulator ($\mathrm{a}^{1}$)) which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent ($\mathrm{a}^{2}$),$\mathrm{a}^{3}$)). The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile (b)) wrist bands. The wristband vibrates with different patterns which again depend on the movements.
 
 \subsection{Data Acquisition}
 The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
