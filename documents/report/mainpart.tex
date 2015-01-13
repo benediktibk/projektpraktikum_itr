@@ -1,14 +1,14 @@
 \chapter{System Identification}
 \label{chap:system_identification}
 
-The target of the system identification is to estimate the parameter of the object, which are:
+The target of the system identification is to estimate the parameters of the object, which are:
 \begin{enumerate}
 	\item mass $m$
 	\item center of mass, represented through the offset $\vec c$ from the grasping point to the center of mass
 	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of mass
 \end{enumerate}
 
-For simplicity we will first discuss the problem of the identification of the object kinematics with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
+For simplicity we will first discuss the problem of the identification of the object parameters with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
 
 \section{One Grasping Point}
 \label{sec:one_grasping_point}
@@ -61,7 +61,7 @@ In the case of only one grasping point we then have in total ten unknowns:
 	\end{equation}
 \end{enumerate}
 
-These values are combined to the system parameter vector
+These values are combined to the system parameters vector
 \begin{equation}
 	\vec{\Theta} = [m, m c_x, m c_y, m c_z, I_{xx}, I_{xy}, I_{xz}, I_{yy},I_{yz}, I_{zz}]^\scr{T},
 \end{equation}
@@ -125,7 +125,7 @@ and
 \end{equation}
 The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets ${^\scr{L}}\vec{r}_{1i}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
 
-At this point nearly the same iterative steps can be applied to estimate the load kinematics. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
+At this point nearly the same iterative steps can be applied to estimate the load parameters. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
 \begin{equation}
 	\vec{h} = 
 	\begin{bmatrix}
@@ -363,7 +363,7 @@ The reduced acceleration of the run in the second scenario was caused by the gri
 
 \chapter{Conclusion and Outlook}
 
-As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
+As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameters estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
 
 Another advantageous adaptation to the presented data acquisition scheme could be the incorporation of inertial measurement units (IMUs). Firstly, the location of estimation experiment wouldn't be bound to a motion capture system. Secondly, the current motion-tracker cannot export quaternions and is thus affected by undesired singularities. Of course one has to take into account that the currently available IMU sensors are not able to provide sub-millimetre precision.
 
