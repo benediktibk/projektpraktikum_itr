@@ -44,7 +44,7 @@ For use in the estimator this value needs to be transformed into the load coordi
 \begin{equation}
 	^\scr{L}\vec{\omega} = \vec{R}({^\scr{W}}\vec{\varphi}) {^\scr{W}}\vec{\omega}
 \end{equation}
-must be applied. For the graviation, which changes its direction in the load coordinate frame with the rotation of the object, the same rotation is necessary. For the sake of legibility we will not denote the coordinate frames anymore during the rest of this section.
+must be applied. For the gravitation, which changes its direction in the load coordinate frame with the rotation of the object, the same transformation is necessary. For the sake of legibility we will not denote the coordinate frames anymore during the rest of this chapter.
 
 In the case of only one grasping point we then have in total ten unknowns:
 \begin{enumerate}
@@ -71,7 +71,7 @@ For the estimator as input information we have a vector filled with the forces a
 \begin{equation}
 	\vec{h} = [F_x, F_y, F_z, M_x, M_y, M_z]^\scr{T},
 \end{equation}
-the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need now the linear relation
+the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need then the linear relation
 \begin{equation}
 	\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)
 \end{equation}
