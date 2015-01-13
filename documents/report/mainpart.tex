@@ -1,14 +1,11 @@
-
-%_________Mainpart__________________________________
-
 \chapter{System Identification}
 \label{chap:system_identification}
 
-The target of the system identification is to estimate the kinematics of the object, which are:
+The target of the system identification is to estimate the parameter of the object, which are:
 \begin{enumerate}
 	\item mass $m$
-	\item center of gravity, represented through the offset $\vec c$ from the grasping point to the center of gravity
-	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of gravity
+	\item center of mass, represented through the offset $\vec c$ from the grasping point to the center of mass
+	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of mass
 \end{enumerate}
 
 For simplicity we will first discuss the problem of the identification of the object kinematics with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
@@ -52,7 +49,7 @@ must be applied. For the graviation, which changes its direction in the load coo
 In the case of only one grasping point we then have in total ten unknowns:
 \begin{enumerate}
 	\item mass $m$
-	\item grasping point offset from the center of gravity $\vec c = [c_x, c_y, c_z]^\scr{T}$ with three unknowns
+	\item grasping point offset from the center of mass $\vec c = [c_x, c_y, c_z]^\scr{T}$ with three unknowns
 	\item inertia matrix with six unknowns, as this matrix is by definition symmetric
 	\begin{equation}
 		\vec{I}_\scr{p} = 
@@ -244,9 +241,9 @@ The second step is then running the software, which is described detailed in the
 \end{enumerate}
 
 \section{Results}
-Our experiments regarding the human-robot cooperation were divided into two seperate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent. As test load we used a wooden board, because for this object we could easily measure the correct mass and center of gravity.
+Our experiments regarding the human-robot cooperation were divided into two separate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent. As test load we used a wooden board, because for this object we could easily measure the correct mass and center of mass.
 
-The results for the first scenario were a convergence of the mass and center of gravity \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of gravity did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of gravity.
+The results for the first scenario were a convergence of the mass and center of mass \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of mass did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of mass.
 
 \begin{figure}
 	\centering	
@@ -303,7 +300,7 @@ The results for the first scenario were a convergence of the mass and center of 
 	\label{fig:estim_inertia_multi_robot}
 \end{figure}
 
-In the second scenario, where the human was responsible for the excitation, we expected similar results, as we do not distinguish between the robot and the human agent in the load estimation. Consequently, mass and center of gravity \ref{fig:estim_mass_multi_human} were again accurate, beside the z value of the center of gravity. The inertias had a worse convergence behaviour than in the previous case due to the excitation pattern \ref{fig:estim_inertia_multi_human}. In this run of the experiment, the load was accelerated less. Therefore, noise had more effect on the inertias.
+In the second scenario, where the human was responsible for the excitation, we expected similar results, as we do not distinguish between the robot and the human agent in the load estimation. Consequently, mass and center of mass \ref{fig:estim_mass_multi_human} were again accurate, beside the z value of the center of mass. The inertias had a worse convergence behaviour than in the previous case due to the excitation pattern \ref{fig:estim_inertia_multi_human}. In this run of the experiment, the load was accelerated less. Therefore, noise had more effect on the inertias.
 
 The reduced acceleration of the run in the second scenario was caused by the gripper at the robot side. With more movement and faster excitation the gripper was not able to grasp the load tight enough and we would have violated our basic assumption of a rigid connection between the agents and the load.
 
