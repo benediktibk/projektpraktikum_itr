@@ -1,17 +1,14 @@
-
-%_________Mainpart__________________________________
-
 \chapter{System Identification}
 \label{chap:system_identification}
 
-The target of the system identification is to estimate the kinematics of the object, which are:
+The target of the system identification is to estimate the parameters of the object, which are:
 \begin{enumerate}
 	\item mass $m$
-	\item center of gravity, represented through the offset $\vec c$ from the grasping point to the center of gravity
-	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of gravity
+	\item center of mass, represented through the offset $\vec c$ from the grasping point to the center of mass
+	\item inertia matrix $\vec I_\scr{q}$, with respect to the center of mass
 \end{enumerate}
 
-For simplicity we will first discuss the problem of the identification of the object kinematics with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
+For simplicity we will first discuss the problem of the identification of the object parameters with only one grasping point. Starting from these formulas, we will then continue with multiple grasping points, which is the case for cooperative identification.
 
 \section{One Grasping Point}
 \label{sec:one_grasping_point}
@@ -47,12 +44,12 @@ For use in the estimator this value needs to be transformed into the load coordi
 \begin{equation}
 	^\scr{L}\vec{\omega} = \vec{R}({^\scr{W}}\vec{\varphi}) {^\scr{W}}\vec{\omega}
 \end{equation}
-must be applied. For the graviation, which changes its direction in the load coordinate frame with the rotation of the object, the same rotation is necessary. For the sake of legibility we will not denote the coordinate frames anymore during the rest of this section.
+must be applied. For the gravitation, which changes its direction in the load coordinate frame with the rotation of the object, the same transformation is necessary. For the sake of legibility we will not denote the coordinate frames anymore during the rest of this chapter.
 
 In the case of only one grasping point we then have in total ten unknowns:
 \begin{enumerate}
 	\item mass $m$
-	\item grasping point offset from the center of gravity $\vec c = [c_x, c_y, c_z]^\scr{T}$ with three unknowns
+	\item grasping point offset from the center of mass $\vec c = [c_x, c_y, c_z]^\scr{T}$ with three unknowns
 	\item inertia matrix with six unknowns, as this matrix is by definition symmetric
 	\begin{equation}
 		\vec{I}_\scr{p} = 
@@ -64,7 +61,7 @@ In the case of only one grasping point we then have in total ten unknowns:
 	\end{equation}
 \end{enumerate}
 
-These values are combined to the system parameter vector
+These values are combined to the system parameters vector
 \begin{equation}
 	\vec{\Theta} = [m, m c_x, m c_y, m c_z, I_{xx}, I_{xy}, I_{xz}, I_{yy},I_{yz}, I_{zz}]^\scr{T},
 \end{equation}
@@ -74,7 +71,7 @@ For the estimator as input information we have a vector filled with the forces a
 \begin{equation}
 	\vec{h} = [F_x, F_y, F_z, M_x, M_y, M_z]^\scr{T},
 \end{equation}
-the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need now the linear relation
+the position of the grasping point $\vec p$, the angular velocity $\vec \omega$ of the grasping point and the gravity $\vec g$. For a recursive least squares estimation we need then the linear relation
 \begin{equation}
 	\vec{h}(k) = \vec{\Phi}(k) \vec{\Theta}(k)
 \end{equation}
@@ -86,7 +83,7 @@ between $\vec{\Theta}$ and $\vec{h}$ with
 		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
 	\end{bmatrix},
 \end{equation}
-which is derived in \ref{MISSING}.
+which is derived in \cite{literaturstelle1}.
 
 The recursive least squares is then an iterative improvement of the estimation, where for every sampling step the formulas
 \begin{equation}
@@ -98,7 +95,7 @@ The recursive least squares is then an iterative improvement of the estimation, 
 \begin{equation}
 	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \vec{\hat \Theta}(k - 1))
 \end{equation}
-are applied \ref{MISSING}. The initialization of the algorithm can be done through
+are applied \cite{literaturstelle4}. The initialization of the algorithm can be done through
 \begin{equation}
 	\vec{P}(k_0) = \left( \vec{\Phi}^\scr{T}(k_0) \vec{\Phi}(k_0) \right)^{-1}
 \end{equation}
@@ -116,7 +113,7 @@ and
 	\label{fig:load_multiple_grasping_points}
 \end{figure}
 
-Of course a load can also be hold by multiple manipulators, or arms in case of a human. As long as on every grasping point a force and torque sensor is mounted the basic principle of the previous section can be reused for the load estimation. In this case the forces and torques are distributed over all grippers, whereas the distribution depends on the reactive forces of the manipulators. Therefore, the only difference in the physics is that $n$ forces and torques are combined on the left hand sides of
+Of course a load can also be held by multiple manipulators, or arms in case of a human. As long as on every grasping point a force and torque sensor is mounted the basic recursive least-squares scheme derived in the previous section can be reused for the load estimation. Note, that in order to do so, all forces and torques, which are measured in different local coordinate frames have to be expressed with respect to the same frame, for our case, the robot EEF frame. Furthermore, one also has to measure the grasping offsets or respectively the distance between the grasping points (1,2,3) with respect to the robot EEF frame. In this case the forces and torques are distributed over all grippers, whereas the distribution depends on the reactive forces of the manipulators. Therefore, the only difference in the physics is that $n$ forces and torques are combined on the left hand sides of 
 \begin{equation}
 	\sum_{i = 1}^{n}  {^\scr{L}}\vec{F}_{i} = m {^\scr{W}}\vec{\ddot{p}} + m {^\scr{L}}\vec{g} + {^\scr{L}}\vec{\dot{\omega}} \times m {^\scr{L}}\vec{c} + {^\scr{L}}\vec{\omega} \times ({^\scr{L}}\vec{\omega} \times m {^\scr{L}}\vec{c})
 	\label{eq:force_multiple}	
@@ -128,7 +125,7 @@ and
 \end{equation}
 The additional summands for the torques are caused by the forces which are not applied in the grasping point one. Implicitly for these formulas we assume that the load coordinate system has its origin in the grasping point of gripper one and that the offsets ${^\scr{L}}\vec{r}_{1i}$ from this gripper to the gripper $i$ are known. Additonally, we have again denoted the corresping coordinate systems, but we won't repeat this during the rest of the section for more legible formulas.
 
-At this point nearly the same iterative steps can be applied to estimate the load kinematics. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
+At this point nearly the same iterative steps can be applied to estimate the load parameters. The difference lies here within the calculation of $\vec{h}$, which is in this case not only the combination of the forces and torques to a vector, but instead has to consider the total sums of forces, torques and torques caused by the forces. The total forces and torques can be taken from \ref{eq:force_multiple} and \ref{eq:torque_multiple}, which leads us to
 \begin{equation}
 	\vec{h} = 
 	\begin{bmatrix}
@@ -148,8 +145,8 @@ As in reality the force and torques sensors typically have some noise on them we
 \begin{figure}
 	\centering	
 	\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
-	\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+	\psfrag{y1}[br][tr]{}
+	\psfrag{y2}[br][tr]{}
 	\psfrag{one}[c][Br]{$0$}
 	\psfrag{two}[c][Br]{$1$}
 	\psfrag{thr}[c][Br]{$2$}
@@ -167,7 +164,7 @@ As in reality the force and torques sensors typically have some noise on them we
 	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
 	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
 	\begin{overpic}[width=0.8\textwidth]{figures/mass_multi_noise.eps}
-		\put(0,55){\rotatebox{90}{$\epsilon_m \left[ \mathrm{kg}\right]$}}
+		\put(0,37){\rotatebox{90}{$\epsilon_m \left[ \mathrm{kg}\right]$}}
 		\put(0,11){\rotatebox{90}{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}}
 	\end{overpic}
 	\vspace{0.2cm}
@@ -178,7 +175,7 @@ As in reality the force and torques sensors typically have some noise on them we
 \begin{figure}
 	\centering	
 	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+	\psfrag{yaxis}[br][tr]{}
 	\psfrag{one}[c][Br]{$0$}
 	\psfrag{two}[c][Br]{$1$}
 	\psfrag{thr}[c][Br]{$2$}
@@ -213,17 +210,32 @@ In the simulation the recursive least squares converges in this case within seco
 \label{chap:experimental_evaluation}
 
 \section{Experimental Setup}
+
 \subsection{Framework}
-%% Florian
-All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The robotic part of our load estimation task is covered by a 7-DoF manipulator which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent. The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile wrist bands. The wristband vibrates with different patterns which again depend on the movements.
+
+\begin{figure}[h]
+\centering
+	\begin{overpic}[width=0.5\textwidth]{figures/setup}
+		\put(6,0){\color{red}{$x$}}
+		\put(10,10){\color{green}{$y$}}
+		\put(5,15){\color{blue}{$z$}}
+		\put(69,46){$\mathrm{a}^{1}$)}
+		\put(55,64){$\mathrm{a}^{2}$)}
+		\put(48,47){$\mathrm{a}^{3}$)}
+		\put(35,51){b)}
+		\put(58,47){\small \color{red}{CoM}}
+	\end{overpic}
+	\caption[Experimental Setup]{Experimental Setup. Forces and spatial informations are gathered using sensory feedback.}
+	\label{fig:setup}	
+\end{figure}
+
+All experiments were carried out at the multi-robot lab located at the \textit{Chair of Information-Oriented Control} (TUM), which provides a variety of both robotic actuators and sensory equipment. The general setup is shown in Figure \ref{fig:setup}. The robotic part of our load estimation task is covered by a 7-DoF manipulator ($\mathrm{a}^{1}$)) which can be controlled by either position, velocity or force commands. The manipulator's endeffector (EEF) is equipped with a \textsc{JR3} force-torque sensor and a \textsc{PG70} gripper. The forces and torques applied at the human agent's grasping points are measured using \textsc{JR3} force-torque sensors. Spatial information is gathered using a \textsc{Qualisys} motion-capture system, which tracks the position and orientation of a set of predefined rigid bodies in real-time. We track the robot base, the EEF as well as both grasping points of the human agent ($\mathrm{a}^{2}$),$\mathrm{a}^{3}$)). The rigid body coordinate frames are aligned with the frame of the corresponding force-torque sensor. The information exchange between the robot and the human agent is carried out via vibrotactile (b)) wrist bands. The wristband vibrates with different patterns which again depend on the movements.
+
 \subsection{Data Acquisition}
-%% Florian
 The \textsc{JR3} force-torque sensors provide data at a resolution of up to \unit[8]{kHz}. The real-time output of the \textsc{Qualisys} motion-capture system runs at a sampling rate of \unit[150]{Hz}. Information on the current endeffector pose gathered by joint encoders is provided at a sampling rate of \unit[1]{kHz}. All data mentioned above is streamed into a single \textsc{Matlab} Simulink model, executed on a real-time \textsc{Linux} operating system. Furthermore the Simulink model processes the data and forwards actuator commands to the relevant robot manipulator.
 As mentioned before, feedback about the robot's upcoming actuation patterns is provided using vibrotactile wrist bands. The wrist bands can be accessed via \textsc{Bluetooth $^\text{\textregistered}$}. A high-level interface provides easy access from the main Simulink model.
 
-
 \subsection{Data Processing}
-%% Florian
 The estimation task derived in Section \ref{sec:multiple_grasping_points} requires information on the EEF position, acceleration, angular velocity and angular acceleration. Furthermore all forces and torques acting at the grasping points have to be expressed with respect to the EEF coordinate frame before being fed into the estimator and thus require an euclidean transform from the force-torque sensor measurement frame.
 
 Initial tests with all data being processed at \unit[1]{kHz}, led to a number of issues. As a consequence of its significantly lower sampling-rate, the processing model has to hold each value received from the motion-capture system for number of samples.  The consecutive identical samples again result in very error prone first
@@ -246,210 +258,15 @@ The second step is then running the software, which is described detailed in the
 \end{enumerate}
 
 \section{Results}
+Our experiments regarding the human-robot cooperation were divided into two separate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent. As test load we used a wooden board, because for this object we could easily measure the correct mass and center of mass.
 
-We conducted several different experiments to evaluate our load estimation. First of all, we considered the case of only one agent, the robot. Second, we included a human agent in the experiment who hold the load at two points.
-
-As test load we used a wooden board, because for this object we could easily measure the correct mass and center of gravity.
-
-\subsection{Load Identification: Robot}
-
-TODO: WHICH PLOTS SHOULD STAY?
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
-	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
-	\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0\  $}
-	\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
-	\psfrag{llllllill}[Br][Bl]{$0.3\  $}
-	\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
-	\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
-	\psfrag{illllllil}[Br][Bl]{$0\  $}
-	\psfrag{illllllii}[Br][Bl]{$0.1\  $}
-	\psfrag{illlllill}[Br][Bl]{$0.2\  $}
-	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
-	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
-	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
-	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_no_movement_mass_and_cog.eps}
-	\vspace{0.2cm}
-	\caption[Mass error, one grasping point, no excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and no excitation}
-	\label{fig:estim_mass_one_no_movement}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.1\  $}
-	\psfrag{lllllllli}[Br][Bl]{$-0.05\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0\  $}
-	\psfrag{lllllllii}[Br][Bl]{$0.05\  $}
-	\psfrag{llllllill}[Br][Bl]{$0.1\  $}
-	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
-	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
-	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
-	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
-	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
-	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_no_movement_inertias.eps}
-	\vspace{0.2cm}
-	\caption[Inertia errors, one grasping point, no excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and no excitation}
-	\label{fig:estim_inertia_one_no_movement}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
-	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.1\  $}
-	\psfrag{lllllllli}[Br][Bl]{$0\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0.1\  $}
-	\psfrag{illllllll}[Br][Bl]{$-0.1\  $}
-	\psfrag{illllllli}[Br][Bl]{$-0.05\ $}
-	\psfrag{illllllil}[Br][Bl]{$0\  $}
-	\psfrag{illllllii}[Br][Bl]{$0.05\  $}
-	\psfrag{illlllill}[Br][Bl]{$0.1\  $}
-	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
-	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
-	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
-	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_slow_mass_and_cog.eps}
-	\vspace{0.2cm}
-	\caption[Mass error, one grasping point, slow excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and slow excitation}
-	\label{fig:estim_mass_one_slow}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.01\  $}
-	\psfrag{lllllllli}[Br][Bl]{$-0.005\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0\  $}
-	\psfrag{lllllllii}[Br][Bl]{$0.005\  $}
-	\psfrag{llllllill}[Br][Bl]{$0.01\  $}
-	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
-	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
-	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
-	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
-	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
-	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_slow_inertias.eps}
-	\vspace{0.2cm}
-	\caption[Inertia errors, one grasping point, slow excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and slow excitation}
-	\label{fig:estim_inertia_one_slow}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxism}[bc][tr]{$\epsilon_\scr{m}\left[\mathrm{kg}\right]$}
-	\psfrag{yaxisc}[bc][tr]{$\epsilon_\scr{CoM}\left[\mathrm{m}\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.3\  $}
-	\psfrag{lllllllli}[Br][Bl]{$-0.15\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0\  $}
-	\psfrag{lllllllii}[Br][Bl]{$0.15\  $}
-	\psfrag{llllllill}[Br][Bl]{$0.3\  $}
-	\psfrag{illllllll}[Br][Bl]{$-0.2\  $}
-	\psfrag{illllllli}[Br][Bl]{$-0.1\ $}
-	\psfrag{illllllil}[Br][Bl]{$0\  $}
-	\psfrag{illllllii}[Br][Bl]{$0.1\  $}
-	\psfrag{illlllill}[Br][Bl]{$0.2\  $}
-	\psfrag{cerror1}[][]{\tiny $c_{x,\scr{err}}$}
-	\psfrag{cerror2}[][]{\tiny $c_{y,\scr{err}}$}
-	\psfrag{cerror3}[][]{\tiny $c_{z,\scr{err}}$}
-	\psfrag{merror}[][]{\tiny $m_{\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_fast_mass_and_cog.eps}
-	\vspace{0.2cm}
-	\caption[Mass error, one grasping point, fast excitation]{Mass $m$ and center of mass $\vec{c}$ errors with one grasping point and fast excitation}
-	\label{fig:estim_mass_one_fast}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
-	\psfrag{yaxis}[bc][tr]{$\epsilon_\scr{I}\left[\scr{kg}/\scr{m}^2\right]$}
-	\psfrag{one}[c][Br]{$0$}
-	\psfrag{two}[c][Br]{$1$}
-	\psfrag{thr}[c][Br]{$2$}
-	\psfrag{fou}[c][Br]{$3$}
-	\psfrag{fiv}[c][Br]{$4$}
-	\psfrag{six}[c][Br]{$5$}
-	\psfrag{sev}[c][Br]{$6$}
-	\psfrag{eig}[c][Br]{$7$}
-	\psfrag{lllllllll}[Br][Bl]{$-0.02\  $}
-	\psfrag{lllllllli}[Br][Bl]{$-0.01\ $}
-	\psfrag{lllllllil}[Br][Bl]{$0\  $}
-	\psfrag{lllllllii}[Br][Bl]{$0.01\  $}
-	\psfrag{llllllill}[Br][Bl]{$0.02\  $}
-	\psfrag{Ixxerror}[][]{\tiny \hspace{0.5cm} $I_{xx,\scr{err}}$}
-	\psfrag{Iyyerror}[][]{\tiny \hspace{0.5cm} $I_{yy,\scr{err}}$}
-	\psfrag{Izzerror}[][]{\tiny \hspace{0.5cm} $I_{zz,\scr{err}}$}
-	\psfrag{Ixyerror}[][]{\tiny \hspace{0.5cm} $I_{xy,\scr{err}}$}
-	\psfrag{Ixzerror}[][]{\tiny \hspace{0.5cm} $I_{xz,\scr{err}}$}
-	\psfrag{Iyzerror}[][]{\tiny \hspace{0.5cm} $I_{yz,\scr{err}}$}
-	\includegraphics[width=0.8\textwidth]{figures/one_grasping_point_fast_inertias.eps}
-	\vspace{0.2cm}
-	\caption[Inertia errors, one grasping point, fast excitation]{Inertia Tensor $\vec{I}_\scr{p}$ errors with one grasping point and fast excitation}
-	\label{fig:estim_inertia_one_fast}
-\end{figure}
-
-\subsection{Load Identification: Human-Robot Cooperation}
-
-Our experiments regarding the human-robot cooperation were divided into two seperate scenarios. In the first one only the robot was responsible for the excitation and the human agent followed the movements. In the second scenario the robot was compliant and followed the excitation of the human agent.
-
-The result for the first scenario were a convergence of the mass and center of gravity \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of gravity did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of gravity.
+The results for the first scenario were a convergence of the mass and center of mass \ref{fig:estim_mass_multi_robot} in x and y close to the correct values. In the z-axis the center of mass did not converge sufficiently due to the excitation pattern. The problem here was that we could not rotate the load far enough to get a convergence for this value too, because then we would have approached the singularity of the euler angles. This problem could be avoided with a tracking system which exports the orientation of the objects in quaternions. The inertia values converged too \ref{fig:estim_inertia_multi_robot}, although we already knew from previous research that it is very tough with this equipment to get accurate results for these values. Therefore, we concentrated on the mass and center of mass.
 
 \begin{figure}
 	\centering	
 	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
 	\psfrag{yaxism}[bc][tr]{$m\left[\mathrm{kg}\right]$}
-	\psfrag{yaxisc}[bc][tr]{$CoM\left[\mathrm{m}\right]$}
+	\psfrag{yaxisc}[bc][tr]{$\scr{CoM}\left[\mathrm{m}\right]$}
 	\psfrag{one}[c][Br]{$0$}
 	\psfrag{two}[c][Br]{$5$}
 	\psfrag{thr}[c][Br]{$10$}
@@ -494,13 +311,13 @@ The result for the first scenario were a convergence of the mass and center of g
 	\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
 	\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
 	\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
-	\includegraphics[width=0.7\textwidth]{figures/multiple_grasping_points_robot_inertias.eps}
+	\includegraphics[width=0.8\textwidth]{figures/multiple_grasping_points_robot_inertias.eps}
 	\vspace{0.2cm}
 	\caption[Inertia errors, multiple grasping points, excitation by robot]{Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points and excitation by the robot}
 	\label{fig:estim_inertia_multi_robot}
 \end{figure}
 
-In the second scenario, where the human was responsible for the excitation, we expected similar results, as we do not distinguish between the robot and the human agent in the load estimation. Consequently, mass and center of gravity \ref{fig:estim_mass_multi_human} were again accurate, beside the z value of the center of gravity. The inertias had a worse convergence behaviour than in the previous case due to the excitation pattern. In this run of the experiment, the load was accelerated less. Thereforce, noise had more effect on the inertias.
+In the second scenario, where the human was responsible for the excitation, we expected similar results, as we do not distinguish between the robot and the human agent in the load estimation. Consequently, mass and center of mass \ref{fig:estim_mass_multi_human} were again accurate, beside the z value of the center of mass. The inertias had a worse convergence behaviour than in the previous case due to the excitation pattern \ref{fig:estim_inertia_multi_human}. In this run of the experiment, the load was accelerated less. Therefore, noise had more effect on the inertias.
 
 The reduced acceleration of the run in the second scenario was caused by the gripper at the robot side. With more movement and faster excitation the gripper was not able to grasp the load tight enough and we would have violated our basic assumption of a rigid connection between the agents and the load.
 
@@ -508,7 +325,7 @@ The reduced acceleration of the run in the second scenario was caused by the gri
 	\centering	
 	\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
 	\psfrag{yaxism}[bc][tr]{$m\left[\mathrm{kg}\right]$}
-	\psfrag{yaxisc}[bc][tr]{$CoM\left[\mathrm{m}\right]$}
+	\psfrag{yaxisc}[bc][tr]{$\scr{CoM}\left[\mathrm{m}\right]$}
 	\psfrag{one}[c][Br]{$0$}
 	\psfrag{two}[c][Br]{$5$}
 	\psfrag{thr}[c][Br]{$10$}
@@ -555,20 +372,16 @@ The reduced acceleration of the run in the second scenario was caused by the gri
 	\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
 	\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
 	\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
-	\includegraphics[width=0.7\textwidth]{figures/multiple_grasping_points_human_inertias.eps}
+	\includegraphics[width=0.8\textwidth]{figures/multiple_grasping_points_human_inertias.eps}
 	\vspace{0.2cm}
 	\caption[Inertia errors, multiple grasping points, excitation by human agent]{Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points and excitation by the human agent}
 	\label{fig:estim_inertia_multi_human}
 \end{figure}
 
-\chapter{Conclusion \& Outlook}
+\chapter{Conclusion and Outlook}
 
-$\left(...\right)$ Conclusion $\left(...\right)$
-
-
-As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameter estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
+As mentioned before, there exists a strong dependency between the choice of actuation pattern and the correct convergence of the estimation. Furthermore, we were able to design perturbation trajectories that significantly improve the convergence of one specific unknown parameter. The component $c_\scr{z}$ does not converge to the correct value unless the actuation pattern contains major rotations around the x-axis or the y-axis, just to name an example. Due to limitations on both the human and the robotic side it is however not possible to simply superpose the perturbation patterns to a pattern that leads to the convergence of all parameters at once. Thus, one possible improvement of the current estimation scheme could be a sequential parameters estimation. In a fist movement sequence, the object mass $m$ is estimated. Having estimated the mass, one proceeds to the again component-wise estimation of the center of mass $\vec{c}$. Again, having estimated the center of mass, one proceeds to apply a distinct pattern which allows a component-wise estimation of the object inertia $\vec{I}$.
 
 Another advantageous adaptation to the presented data acquisition scheme could be the incorporation of inertial measurement units (IMUs). Firstly, the location of estimation experiment wouldn't be bound to a motion capture system. Secondly, the current motion-tracker cannot export quaternions and is thus affected by undesired singularities. Of course one has to take into account that the currently available IMU sensors are not able to provide sub-millimetre precision.
-
 
 The overall estimation procedure is mainly bound by the robot actuator limits. The robot can not follow trajectories that include complex or fast motions (rotation 3-DoF, translation 3-DoF + rotation). These complex motions are required in order to achieve a convergence of all parameters. The estimation procedure could however be adapted to a human-human estimation with only little effort.

@@ -64,93 +64,72 @@
 
 %_______Titelseite__________________________________________
 \begin{document}
-\pagestyle{empty}
-\enlargethispage{4.5cm} %Damit das Titelbild weit genug unten ist!
-\begin{center}
-\phantom{u}
-\vspace{0.5cm}
-\Huge{\sc Object Exploration Using Haptic Information by a Human-Robot Team}\\
-\vspace{1.5cm}
-
-                                 \large{Bericht zum\\
-								PROJEKTPRAKTIKUM \\
-					   von\\          
-
-						\vspace{0.4cm}
-					Benedikt~Schmidt\\
-					\vspace{0.2cm}
-					Florian~Wirnshofer\\
-						\vspace{4cm}
-					Lehrstuhl f\"ur\\
-					INFORMATIONSTECHNISCHE REGELUNG \\
-					Technische Universit\"at M\"unchen\\
-					\vspace{0.6cm}
-                    Univ.-Prof. Dr.-Ing. Sandra Hirche}
-\end{center}
-\vspace{4.0cm}
-\begin{tabular}{ll}
-Betreuer: & M.Sc Denis Cehajic\\
-Beginn: & xx.xx.201x  \\
-Zwischenbericht: &  xx.xx.201x  \\
-Abgabe: &  xx.xx.201x \\
-\end{tabular}
-%____________________________________________________________
-
-\cleardoublepage
-
-%_______Abstract_____________________________________________
-\topmargin5mm
-\textheight220mm
-\pagenumbering{arabic}
-\phantom{u}
-
-\begin{abstractpage}
-	\begin{abstract}{english}
-	    \lipsum[1]
-	\end{abstract}
-	\vspace{2cm}
-	\begin{abstract}{ngerman}
-	    \lipsum[1]
-	\end{abstract}
-\end{abstractpage}
-\selectlanguage{english}
-
-\pagestyle{fancy}
-
-%_________Inhaltsverzeichnis__________________________
-\tableofcontents 
-%Intro______________________________________________
-
-\input{introduction.tex}
-
-
-%Mainpart______________________________________________
-
-\input{mainpart.tex}
-
-
-%Appendix______________________________________________
-
-\input{appendix.tex}
-
-
-
-%_______________________________________________________________
-
-
-%_____Abbildungsverzeichnis_________________________________
-\cleardoublepage
-\addcontentsline{toc}{chapter}{List of Figures} 
-\listoffigures 	 %Abbildungsverzeichnis
-
-%___________________________________________________________
-
-%_____Literaturverzeichnis_________________________________
-\cleardoublepage
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliography{ref}
-\bibliographystyle{alphaurl}
-%__________________________________________________________
-
-
+	\pagestyle{empty}
+	\enlargethispage{4.5cm} %Damit das Titelbild weit genug unten ist!
+	\begin{center}
+	\phantom{u}
+	\vspace{0.5cm}
+	\Huge{\sc Object Exploration Using Haptic Information by a Human-Robot Team}\\
+	\vspace{1.5cm}
+	
+	                                 \large{Bericht zum\\
+									PROJEKTPRAKTIKUM \\
+						   von\\          
+	
+							\vspace{0.4cm}
+						Benedikt~Schmidt\\
+						\vspace{0.2cm}
+						Florian~Wirnshofer\\
+							\vspace{4cm}
+						Lehrstuhl f\"ur\\
+						INFORMATIONSTECHNISCHE REGELUNG \\
+						Technische Universit\"at M\"unchen\\
+						\vspace{0.6cm}
+	                    Univ.-Prof. Dr.-Ing. Sandra Hirche}
+	\end{center}
+	\vspace{4.0cm}
+	\begin{tabular}{ll}
+	Betreuer: & M.Sc Denis Cehajic\\
+	Beginn: & 17.11.2014  \\
+	Zwischenbericht: &  11.12.2014  \\
+	Abgabe: &  23.01.2015 \\
+	\end{tabular}
+	%____________________________________________________________
+	
+	\cleardoublepage
+	
+	%_______Abstract_____________________________________________
+	\topmargin5mm
+	\textheight220mm
+	\pagenumbering{arabic}
+	\phantom{u}
+	
+	\begin{abstractpage}
+		\begin{abstract}{english}
+		    Robots are already parts of our daily lifes, but still they are able to fulfil only very special tasks. For a broader application the automatic identification of their surroundings is a key element, and one part of this is an online load estimation. With such an estimation a robot can identify load parameter like the mass, the center of gravity and the inertias only through measuring forces, torques and positions. As robots are limited in their abilities, regarding for instance the actuation, a cooperative online load estimation, together with a human agent, enables the estimation of more and heavier objects.
+		\end{abstract}
+		\vspace{2cm}
+		\begin{abstract}{ngerman}
+		    Roboter sind bereits Teil unseres Alltags, und das trotz deren begrenzter M\"oglichkeiten. F\"ur ein breiteres Anwendungsgebiet und einer Adaption an ihre Umgebung ist eine automatische Erfassung und Messung ihrer Umgebung ein wichtiger Punkt. Ein Teil dieses Prozesses ist die sogenannte Online Load Estimation, welche eine Sch\"atzung f\"ur die Masse, den Schwerpunkt und die Tr\"agheitsmomente aus der Messung von Kr\"aften, Drehmomenten und Positionen heraus ermittelt. Da Roboter in ihren F\"ahigkeiten begrenzt sind, zum Beispiel bez\"uglich der maximalen Last, erm\"oglicht ein kooperatives Vorgehen, gemeinsam mit einem Menschen, die Sch\"atzung von deutlich mehr und schwereren Objekten.
+		\end{abstract}
+	\end{abstractpage}
+	\selectlanguage{english}
+	
+	\pagestyle{fancy}
+	\tableofcontents 
+	
+	\input{introduction.tex}
+	\input{mainpart.tex}
+	\input{appendix.tex}	
+	
+	%_____Abbildungsverzeichnis_________________________________
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{List of Figures} 
+	\listoffigures
+	
+	%_____Literaturverzeichnis_________________________________
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\bibliography{ref}
+	\bibliographystyle{alphaurl}
 \end{document}
