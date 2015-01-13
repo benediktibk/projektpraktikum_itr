@@ -201,7 +201,6 @@
 	%Benedikt
 	\frametitle{Simulation Results with Noise ($P = \unit[0.05]{W}$)}
 	\begin{center}
-		Error of mass $m \left[\mathrm{kg}\right]$
 		\begin{figure}
 			\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
 			\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
@@ -212,19 +211,23 @@
 			\psfrag{fou}[c][Bc]{$3$}
 			\psfrag{fiv}[c][Bc]{$4$}
 			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{lllllllll}[Br][Br]{$10^{-6}\  $}
-			\psfrag{lllllllli}[Br][Br]{$10^{-4}\  $}
-			\psfrag{lllllllil}[Br][Br]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Br]{$10^0\  $}
-			\psfrag{llllllill}[Br][Br]{$10^{-10}\  $}
-			\psfrag{llllllili}[Br][Br]{$10^{-5}\  $}
-			\psfrag{lllllliil}[Br][Br]{$10^0\  $}
+			\psfrag{lllllllll}[Br][Br]{$10^{-6}$}
+			\psfrag{lllllllli}[Br][Br]{$10^{-4}$}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}$}
+			\psfrag{lllllllii}[Br][Br]{$10^0$}
+			\psfrag{llllllill}[Br][Br]{$10^{-10}$}
+			\psfrag{llllllili}[Br][Br]{$10^{-5}$}
+			\psfrag{lllllliil}[Br][Br]{$10^0$}
 			\psfrag{cerror1}[][]{\tiny  $c_{x}$}
 			\psfrag{cerror2}[][]{\tiny $c_{y}$}
 			\psfrag{cerror3}[][]{\tiny $c_{z}$}
-			\includegraphics[width=0.6\textwidth]{fig/mass_multi_noise.eps}
+			\begin{overpic}[width=0.8\textwidth]{fig/mass_multi_noise.eps}
+			\put(-3,50){\rotatebox{90}{$\epsilon_m \left[\mathrm{kg}\right]$}}
+			\put(-3,15){\rotatebox{90}{$\epsilon_{\vec{c}} \left[\mathrm{m}\right]$}}
+			\end{overpic}
 		\end{figure}
-		Error of center of gravity $\vec{c} \left[\mathrm{m}\right]$
+		\vspace{0.3cm}
+		Mass $m$ and CoM $\vec{c}$ with multiple grasping points in simulation
 	\end{center}
 \end{frame}
 
@@ -242,20 +245,22 @@
 			\psfrag{fou}[c][Bc]{$3$}
 			\psfrag{fiv}[c][Bc]{$4$}
 			\psfrag{six}[c][Bc]{$5$}
-			\psfrag{lllllllll}[Br][Br]{$10^{-10}\  $}
-			\psfrag{lllllllli}[Br][Br]{$10^{-6}\  $}
-			\psfrag{lllllllil}[Br][Br]{$10^{-2}\  $}
-			\psfrag{lllllllii}[Br][Br]{$10^2\  $}
+			\psfrag{lllllllll}[Br][Br]{$10^{-10}$}
+			\psfrag{lllllllli}[Br][Br]{$10^{-6}$}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}$}
+			\psfrag{lllllllii}[Br][Br]{$10^2$}
 			\psfrag{Ierror1}[][]{\tiny \  $I_{xx}$}
 			\psfrag{Ierror2}[][]{\tiny \  $I_{yy}$}
 			\psfrag{Ierror3}[][]{\tiny \  $I_{zz}$}
 			\psfrag{Ierror4}[][]{\tiny \  $I_{xy}$}
 			\psfrag{Ierror5}[][]{\tiny \  $I_{xz}$}
 			\psfrag{Ierror6}[][]{\tiny \  $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/inertia_multi_noise.eps}
+			\begin{overpic}[width=0.8\textwidth]{fig/inertia_multi_noise.eps}
+				\put(-3,20){\rotatebox{90}{$\epsilon_{\vec{I}} \left[\mathrm{kg} \, \mathrm{m}^2\right]$}}
+			\end{overpic}
 		\end{figure}
 		\vspace{0.5cm}
-		Error of inertias $I \left[\mathrm{kg} \cdot \mathrm{m}^2\right]$
+		Inertia tensor error with multiple grasping points in simulation
 	\end{center}
 \end{frame}
 
@@ -272,18 +277,20 @@
 			\psfrag{fou}[c][Br]{$15$}
 			\psfrag{fiv}[c][Br]{$20$}
 			\psfrag{six}[c][Br]{$25$}
-			\psfrag{lllllllll}[Br][Br]{$-0.1\  $}
-			\psfrag{lllllllli}[Br][Br]{$-0.05\ $}
-			\psfrag{lllllllil}[Br][Br]{$0\  $}
-			\psfrag{lllllllii}[Br][Br]{$0.05\  $}
-			\psfrag{llllllill}[Br][Br]{$0.1\  $}
-			\psfrag{Ixx}[][]{\tiny \hspace{0.2cm} $I_{xx}$}
-			\psfrag{Iyy}[][]{\tiny \hspace{0.2cm} $I_{yy}$}
-			\psfrag{Izz}[][]{\tiny \hspace{0.2cm} $I_{zz}$}
-			\psfrag{Ixy}[][]{\tiny \hspace{0.2cm} $I_{xy}$}
-			\psfrag{Ixz}[][]{\tiny \hspace{0.2cm} $I_{xz}$}
-			\psfrag{Iyz}[][]{\tiny \hspace{0.2cm} $I_{yz}$}
-			\includegraphics[width=0.6\textwidth]{fig/multiple_grasping_points_human_inertias.eps}
+			\psfrag{lllllllll}[Br][Br]{$-0.1$}
+			\psfrag{lllllllli}[Br][Br]{$-0.05$}
+			\psfrag{lllllllil}[Br][Br]{$0$}
+			\psfrag{lllllllii}[Br][Br]{$0.05$}
+			\psfrag{llllllill}[Br][Br]{$0.1$}
+			\psfrag{aaaa}[][]{}
+			\begin{overpic}[width=0.8\textwidth]{fig/multiple_grasping_points_human_inertias.eps}
+				\put(92,49){\tiny $I_{xx}$}
+				\put(92,46){\tiny $I_{yy}$}
+				\put(92,43){\tiny $I_{zz}$}
+				\put(92,40){\tiny $I_{xy}$}
+				\put(92,37){\tiny $I_{xz}$}
+				\put(92,34.3){\tiny $I_{yz}$}	
+			\end{overpic}
 		\end{figure}
 		\vspace{0.2cm}
 		Inertia Tensor $\vec{I}_\scr{p}$ with multiple grasping points
@@ -297,7 +304,7 @@
 			\centering	
 			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
 			\psfrag{yaxism}[bc][tr]{$m\left[\mathrm{kg}\right]$}
-			\psfrag{yaxisc}[bc][tr]{$CoM\left[\mathrm{m}\right]$}
+			\psfrag{yaxisc}[bc][tr]{$\mathrm{CoM}\left[\mathrm{m}\right]$}
 			\psfrag{one}[c][Br]{$0$}
 			\psfrag{two}[c][Br]{$5$}
 			\psfrag{thr}[c][Br]{$10$}
@@ -308,16 +315,16 @@
 			\psfrag{lllllllli}[Br][Br]{$4\ $}
 			\psfrag{lllllllil}[Br][Br]{$5\  $}
 			\psfrag{lllllllii}[Br][Br]{$6\  $}
-			\psfrag{illllllll}[Br][Br]{$-0.4\  $}
-			\psfrag{illllllli}[Br][Br]{$-0.2\ $}
-			\psfrag{illllllil}[Br][Br]{$0\  $}
-			\psfrag{illllllii}[Br][Br]{$0.2\  $}
-			\psfrag{illlllill}[Br][Br]{$0.4\  $}
+			\psfrag{illllllll}[Br][Br]{$-0.4$}
+			\psfrag{illllllli}[Br][Br]{$-0.2$}
+			\psfrag{illllllil}[Br][Br]{$0$}
+			\psfrag{illllllii}[Br][Br]{$0.2$}
+			\psfrag{illlllill}[Br][Br]{$0.4$}
 			\psfrag{cx}[][]{\tiny $c_x$}
 			\psfrag{cy}[][]{\tiny $c_y$}
 			\psfrag{cz}[][]{\tiny $c_z$}
 			\psfrag{m}[][]{\tiny $m$}
-			\includegraphics[width=0.7\textwidth]{fig/multiple_grasping_points_human_mass_and_cog.eps}
+			\includegraphics[width=0.8\textwidth]{fig/multiple_grasping_points_human_mass_and_cog.eps}
 		\end{figure}
 		\vspace{0.2cm}
 		Mass $m$ and center of mass $\vec{c}$ with multiple grasping points (dashed lines are the correct values)
