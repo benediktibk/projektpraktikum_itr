@@ -83,7 +83,7 @@ between $\vec{\Theta}$ and $\vec{h}$ with
 		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
 	\end{bmatrix},
 \end{equation}
-which is derived in \ref{MISSING}.
+which is derived in \cite{literaturstelle1}.
 
 The recursive least squares is then an iterative improvement of the estimation, where for every sampling step the formulas
 \begin{equation}
@@ -95,7 +95,7 @@ The recursive least squares is then an iterative improvement of the estimation, 
 \begin{equation}
 	\vec{\hat \Theta}(k)=\vec{ \hat \Theta}(k - 1) + \vec{K}(k) (\vec{h}(k) - \vec{\Phi}(k) \vec{\hat \Theta}(k - 1))
 \end{equation}
-are applied \ref{MISSING}. The initialization of the algorithm can be done through
+are applied \cite{literaturstelle4}. The initialization of the algorithm can be done through
 \begin{equation}
 	\vec{P}(k_0) = \left( \vec{\Phi}^\scr{T}(k_0) \vec{\Phi}(k_0) \right)^{-1}
 \end{equation}
