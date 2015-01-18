@@ -54,7 +54,7 @@
 	
 	\begin{block}{Motivation}
 		\begin{itemize}
-			\item !!!Verallgemeinerung!!! of the human-robot cooperative object manipulation task.
+			\item Generalization of the human-robot cooperative object manipulation task.
 			\item Extended range of possibly identifiable objects.
 		\end{itemize}
 	\end{block}
@@ -269,7 +269,7 @@
 			\end{overpic}
 		\end{figure}
 		\vspace{0.5cm}
-		Inertia tensor error with multiple grasping points
+		Inertia tensor error
 	\end{center}
 \end{frame}
 
@@ -367,6 +367,71 @@
 \begin{frame}
 	\frametitle{References}
 	\printbibliography
+\end{frame}
+
+\begin{frame}
+	\frametitle{Simulation Results without Noise}
+	\begin{center}
+		\begin{figure}
+			\psfrag{x}[tr][br]{$t\left[\mathrm{s}\right]$}
+			\psfrag{y1}[br][tr]{$\epsilon_\scr{Mass}$}
+			\psfrag{y2}[br][tr]{$\epsilon_\scr{CoM}$}
+			\psfrag{one}[c][Bc]{$0$}
+			\psfrag{two}[c][Bc]{$1$}
+			\psfrag{thr}[c][Bc]{$2$}
+			\psfrag{fou}[c][Bc]{$3$}
+			\psfrag{fiv}[c][Bc]{$4$}
+			\psfrag{six}[c][Bc]{$5$}
+			\psfrag{lllllllll}[Br][Br]{$10^{-6}$}
+			\psfrag{lllllllli}[Br][Br]{$10^{-4}$}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}$}
+			\psfrag{lllllllii}[Br][Br]{$10^0$}
+			\psfrag{llllllill}[Br][Br]{$10^{-10}$}
+			\psfrag{llllllili}[Br][Br]{$10^{-5}$}
+			\psfrag{lllllliil}[Br][Br]{$10^0$}
+			\psfrag{cerror1}[][]{\tiny  $c_{x}$}
+			\psfrag{cerror2}[][]{\tiny $c_{y}$}
+			\psfrag{cerror3}[][]{\tiny $c_{z}$}
+			\begin{overpic}[width=0.8\textwidth]{fig/mass_multi.eps}
+			\put(-3,50){\rotatebox{90}{$\epsilon_m \left[\mathrm{kg}\right]$}}
+			\put(-3,15){\rotatebox{90}{$\epsilon_{\vec{c}} \left[\mathrm{m}\right]$}}
+			\end{overpic}
+		\end{figure}
+		\vspace{0.3cm}
+		Error of mass and CoM for $m = \unit[2]{kg}$ and $\vec{c} = \unit[\begin{bmatrix} 0.5  & 0.1 & 0.03 \end{bmatrix}^T]{m}$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Simulation Results without Noise}
+	\begin{center}
+		\centering
+		\begin{figure}
+			\psfrag{xaxis}[tr][br]{$t\left[\mathrm{s}\right]$}
+			\psfrag{yaxis}[br][tr]{$\epsilon_{\scr{Inertia}}$}
+			\psfrag{one}[c][Bc]{$0$}
+			\psfrag{two}[c][Bc]{$1$}
+			\psfrag{thr}[c][Bc]{$2$}
+			\psfrag{fou}[c][Bc]{$3$}
+			\psfrag{fiv}[c][Bc]{$4$}
+			\psfrag{six}[c][Bc]{$5$}
+			\psfrag{lllllllll}[Br][Br]{$10^{-10}$}
+			\psfrag{lllllllli}[Br][Br]{$10^{-6}$}
+			\psfrag{lllllllil}[Br][Br]{$10^{-2}$}
+			\psfrag{lllllllii}[Br][Br]{$10^2$}
+			\psfrag{Ierror1}[][]{\tiny \  $I_{xx}$}
+			\psfrag{Ierror2}[][]{\tiny \  $I_{yy}$}
+			\psfrag{Ierror3}[][]{\tiny \  $I_{zz}$}
+			\psfrag{Ierror4}[][]{\tiny \  $I_{xy}$}
+			\psfrag{Ierror5}[][]{\tiny \  $I_{xz}$}
+			\psfrag{Ierror6}[][]{\tiny \  $I_{yz}$}
+			\begin{overpic}[width=0.8\textwidth]{fig/inertia_multi.eps}
+				\put(-3,20){\rotatebox{90}{$\epsilon_{\vec{I}} \left[\mathrm{kg} \, \mathrm{m}^2\right]$}}
+			\end{overpic}
+		\end{figure}
+		\vspace{0.5cm}
+		Inertia tensor error
+	\end{center}
 \end{frame}
 
 \end{document}
