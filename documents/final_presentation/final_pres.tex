@@ -99,26 +99,38 @@
 	
 	\begin{columns}
 		\centering
-		\begin{column}{0.25\textwidth}
+		\begin{column}{0.225\textwidth}
 			\begin{figure}
 				\centering
 				\include{tikz/load_one_grasping_point}
 			\end{figure}
 		\end{column}
 				 		
-		\begin{column}{0.75\textwidth}
-			Model:\\ \cite{literaturstelle2}
-			%\vspace{0.1cm}
-			\[^\scr{L}\vec{F} = m {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{g} + ^\scr{L}\vec{\dot{\omega}} \times m ^\scr{L}\vec{c} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{\omega} \times m ^\scr{L}\vec{c})\]
-			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
+		\begin{column}{0.775\textwidth}
+			Model: \cite{literaturstelle2}\\
+			\begin{center}
+			$\vec{F} = m \vec{\ddot{p}} + m \vec{g} + \vec{\dot{\omega}} \times m \vec{c} + \vec{\omega} \times (\vec{\omega} \times m \vec{c})$\\
+			$\vec{N} = \vec{I} \vec{\dot{\omega}} + \vec{\omega} \times (\vec{I} \vec{\omega}) + m \vec{c} \times \vec{\ddot{p}} + m \vec{c} \times \vec{g}$			
+			\end{center}				
+			%\vspace{0.2cm}
+			Regressor:\\ %\vspace{0.1cm}
+			\begin{center}
+			$\vec{\Phi}= 
+	\begin{bmatrix}
+		\vec{\ddot p} - \vec{g}	& [\vec{\dot \omega} \times] + [\vec{\omega}\times] [\vec{\omega} \times]	& 0 \\
+		0			& [(\vec{g} - \vec{\ddot p}) \times]									& [.  \vec{\dot \omega}] + [\vec{\omega} \times] [. \vec{\omega}]
+	\end{bmatrix}$
 						
-			\vspace{0.2cm}
-			Regressor:
-			balbla
+			\end{center}
+	%\vspace{0.2cm}
+	Linear relation:\\ %\vspace{0.1cm}
+	\begin{center}
+	$\begin{bmatrix} \vec{F}\\ \vec{N}	\end{bmatrix} = \vec{\Phi}\, \vec{\Theta}$				
+	\end{center}
 		\end{column}
 	\end{columns}
-	\vspace{0.35cm}
-	RLS Estimation-Parameters: \\
+	%\vspace{0.35cm}
+	RLS Estimation-Parameters: \\ %\vspace{0.1cm}
 	$\vec{\Theta} = [m, m c_\scr{x}, m c_\scr{y}, m c_\scr{z}, I_\scr{xx}, I_\scr{xy}, I_\scr{xz}, I_\scr{yy},I_\scr{yz}, I_\scr{zz}]^\scr{T}$ \\
 \end{frame}
 
