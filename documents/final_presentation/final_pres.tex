@@ -10,6 +10,7 @@
 \usepackage{subcaption}
 \usepackage{units}
 \usepackage{tikz}
+\usetikzlibrary{plotmarks}
 \usepackage{pgfplots}
 \usepackage{booktabs}
 \usetikzlibrary{positioning,shapes,fadings,decorations.pathmorphing,arrows}
@@ -43,7 +44,7 @@
 %INTRODUCTION , MOTIVATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Online Load Estimation}
+\section{Load Estimation}
 
 \begin{frame}
 	\frametitle{Task}
@@ -69,32 +70,32 @@
 
 \begin{frame}
 	\frametitle{Problem Statement}
-	
+
 	\begin{columns}
+	\column{0.5\textwidth}
+	Object parameters are unknown\\
+	~ \\ ~ \\
+	\column{0.45\textwidth}	
+	$\{\mathrm{R}\}$ robot grasping point \\
+	$\{\mathrm{H}^i\}$ human grasping points \\
+	\end{columns}	
+	
 		\centering
-		\begin{column}{0.25\textwidth}
+
 			\begin{figure}
 				\centering
 				\include{tikz/problem_statement}
 			\end{figure}
-		\end{column}
-				 		
-		\begin{column}{0.75\textwidth}
-			\begin{tabular}{ll}
-				\toprule
-				$\vec{\ddot{p}}$       &  EEF acceleration \\
-				$\vec{\omega}$,$\vec{\dot{\omega}}$ & EEF angular velocity / acceleration \\
-				\color{red}$m$                                        & Object mass \\
-				\color{red}$\vec{I}$                        & Object inertia tensor \\
-				\color{red}$\vec{c}$                             &  Center of mass   \\               
-				\bottomrule
-			\end{tabular}
-		\end{column}
-	\end{columns}
+	\begin{small}
+		\begin{itemize}
+ 		\item Kinematics: grasping offset $\vec{r}_i$, rotational angles $\vec{\omega}$, position $\vec{p}$
+ 		\item Dynamics: \ \ object mass \color{red}{$m$}, \color{black} inertia tensor \color{red}{$\vec{I}$}\color{black}, center of mass \color{red}$c$
+	\end{itemize}
+	\end{small}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Online Load Estimation - Single Grasping Point}
+	\frametitle{Load Estimation - Single Grasping Point}
 	
 	\begin{columns}
 		\centering
