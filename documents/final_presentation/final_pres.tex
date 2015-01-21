@@ -107,11 +107,13 @@
 		\end{column}
 				 		
 		\begin{column}{0.775\textwidth}
-			Model: \cite{literaturstelle2}\\
-			\begin{center}
-			$\vec{F} = m \vec{\ddot{p}} + m \vec{g} + \vec{\dot{\omega}} \times m \vec{c} + \vec{\omega} \times (\vec{\omega} \times m \vec{c})$\\
-			$\vec{N} = \vec{I} \vec{\dot{\omega}} + \vec{\omega} \times (\vec{I} \vec{\omega}) + m \vec{c} \times \vec{\ddot{p}} + m \vec{c} \times \vec{g}$			
-			\end{center}				
+			Model: \cite{literaturstelle2}
+			%\begin{center}
+			\begin{align*} 
+			\vec{F} &= m \vec{\ddot{p}} + m \vec{g} + \vec{\dot{\omega}} \times m \vec{c} + \vec{\omega} \times (\vec{\omega} \times m \vec{c})\\
+			\vec{N} &= \vec{I} \vec{\dot{\omega}} + \vec{\omega} \times (\vec{I} \vec{\omega}) + m \vec{c} \times \vec{\ddot{p}} + m \vec{c} \times \vec{g}
+			\end{align*} 	
+			%\end{center}				
 			%\vspace{0.2cm}
 			Regressor:\\ %\vspace{0.1cm}
 			\begin{center}
@@ -162,6 +164,7 @@
 			\begin{center}
 				RLS convergence prerequisites
 			\end{center}
+			\[\int_t^{t + T} \vec{\Phi}^\scr{T}\vec{\Phi}\, \mathrm{d}t \ge \alpha \vec I\]
 		\end{small}
 	}
 	\vspace{1cm}	
@@ -204,7 +207,7 @@
 		\begin{column}{0.35\textwidth}
 			\begin{figure}
 				\centering
-				\input{tikz/load_multiple_grasping_points}
+				\input{tikz/data_acquisition}
 			\end{figure}	
 		\end{column}
 		\begin{column}{0.65\textwidth}
