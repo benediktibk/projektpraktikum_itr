@@ -42,10 +42,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %INTRODUCTION , MOTIVATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Content}
-	\tableofcontents
-\end{frame}
 
 \section{Online Load Estimation}
 
@@ -54,13 +50,13 @@
 	
 	\begin{block}{Motivation}
 		\begin{itemize}
-			\item Generalization of the human-robot cooperative object manipulation task.
-			\item Extended range of possibly identifiable objects.
+			\item Generalization of the human-robot cooperative object manipulation task
+			\item Extended range of possibly identifiable objects
 		\end{itemize}
 	\end{block}
 	
 	\begin{block}{Goal}
-		Human-Robot cooperative estimation of load uncertainties.
+		Human-Robot cooperative estimation of object parameters
 	\end{block}
 	\vspace{2mm}
 	\begin{block}{Key-Questions}
@@ -72,7 +68,33 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Online Load Estimation}
+	\frametitle{Problem Statement}
+	
+	\begin{columns}
+		\centering
+		\begin{column}{0.25\textwidth}
+			\begin{figure}
+				\centering
+				\include{tikz/problem_statement}
+			\end{figure}
+		\end{column}
+				 		
+		\begin{column}{0.75\textwidth}
+			\begin{tabular}{ll}
+				\toprule
+				$\vec{\ddot{p}}$       &  EEF acceleration \\
+				$\vec{\omega}$,$\vec{\dot{\omega}}$ & EEF angular velocity / acceleration \\
+				\color{red}$m$                                        & Object mass \\
+				\color{red}$\vec{I}$                        & Object inertia tensor \\
+				\color{red}$\vec{c}$                             &  Center of mass   \\               
+				\bottomrule
+			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Online Load Estimation - Single Grasping Point}
 	
 	\begin{columns}
 		\centering
@@ -90,15 +112,8 @@
 			\[^\scr{L}\vec{N} = ^\scr{L}\vec{I} ^\scr{L}\vec{\dot{\omega}} + ^\scr{L}\vec{\omega} \times (^\scr{L}\vec{I} ^\scr{L}\vec{\omega}) + m ^\scr{L}\vec{c} \times {^\scr{W}}\vec{\ddot{p}} + m ^\scr{L}\vec{c} \times ^\scr{L}\vec{g}\]
 						
 			\vspace{0.2cm}
-			\begin{tabular}{ll}
-				\toprule
-				$\vec{\ddot{p}}$       &  EEF acceleration \\
-				$\vec{\omega}$,$\vec{\dot{\omega}}$ & EEF angular velocity / acceleration \\
-				\color{red}$m$                                        & Object mass \\
-				\color{red}$\vec{I}$                        & Object inertia tensor \\
-				\color{red}$\vec{c}$                             &  Center of mass   \\               
-				\bottomrule
-			\end{tabular}
+			Regressor:
+			balbla
 		\end{column}
 	\end{columns}
 	\vspace{0.35cm}
@@ -107,12 +122,12 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Cooperative Online Load Estimation}
+	\frametitle{Online Load Estimation - Multiple Grasping Points}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\centering
-				\include{tikz/load_multiple_grasping_points}
+				\input{tikz/load_multiple_grasping_points}
 			\end{figure}	
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -142,30 +157,30 @@
 		\item Non-zero acceleration of EEF in 6-DoF \cite{literaturstelle3}
 	\end{itemize}
 	\vspace{1cm}
-	\textsc{Challenge}: Satisfaction of actuator limits, especially when trying to identify big objects.
+	\textsc{Challenge}: Find satisfactory excitation pattern
 \end{frame}
 
 \section{Experimental Setup}
 \begin{frame}
-	\frametitle{Cooperative Online Load Estimation}
+	\frametitle{Experimental Setup}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			\begin{overpic}[width=\textwidth]{pics/setup}
 				\put(6,0){\color{red}{$x$}}
 				\put(10,10){\color{green}{$y$}}
 				\put(5,15){\color{blue}{$z$}}
-				\put(69,44){\small  $\mathrm{a}^{1}$)}
-				\put(55,64){\small  $\mathrm{a}^{2}$)}
-				\put(48,45){\small  $\mathrm{a}^{3}$)}
-				\put(35,49){\small b)}
+				\put(69,44){\scriptsize  $\left\lbrace \mathrm{R} \right\rbrace$}
+				\put(55,64){\scriptsize  $\left\lbrace  \mathrm{H}^1 \right\rbrace$}
+				\put(46,45){\scriptsize  $\left\lbrace  \mathrm{H}^2 \right\rbrace$}
+				\put(34,49){\scriptsize   $\left\lbrace  \mathrm{V} \right\rbrace$}
 				\put(58,46){\tiny \color{red}{CoM}}
 			\end{overpic}
 		\end{column}
 		
 		\begin{column}{0.4\textwidth}
-			$\mathrm{a}^{1}$): Robot EEF grasping point, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
-			$\mathrm{a}^{2}$), $\mathrm{a}^{3}$): Human agent grasping points, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
-			b):  Vibrotactile wristband
+			$\left\lbrace  \mathrm{R} \right\rbrace$: Robot EEF grasping point, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			$\left\lbrace  \mathrm{H}^1 \right\rbrace$, $\left\lbrace  \mathrm{H}^2 \right\rbrace$: Human agent grasping points, \textsc{JR3} F-T Sensor, tracked\\ \vspace{0.3cm}
+			$\left\lbrace  \mathrm{V} \right\rbrace$:  Vibrotactile wristband
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -198,15 +213,6 @@
 \end{frame}
 
 \section{Results}
-\begin{frame}
-	\frametitle{Results}
-	Conducted experiments:
-	\vspace{0.5cm}
-	\begin{itemize}
-		\item Multiple grasping points in simulation
-		\item Multiple grasping points
-	\end{itemize}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Simulation Results with Noise ($P = \unit[0.05]{W}$)}
@@ -355,10 +361,11 @@
 			\item Acquisition of quaternions from IMUs or \textsc{Qualisys}
 		\end{itemize}  
 	\end{block}	
-	\begin{block}{Cooperative Online Load Estimation}
+	\begin{block}{Outlook}
 		\begin{itemize}
 			\item Estimation of more and heavier objects
 			\item Inexperienced human agent needs guidance
+			\item Investigate in further usage of vibrotactile wristbands
 		\end{itemize}
 	\end{block}	
 \end{frame}
@@ -430,7 +437,7 @@
 			\end{overpic}
 		\end{figure}
 		\vspace{0.5cm}
-		Inertia tensor error
+		Inertia tensor error \color{white}{\cite{literaturstelle1},\cite{literaturstelle4}}
 	\end{center}
 \end{frame}
 
